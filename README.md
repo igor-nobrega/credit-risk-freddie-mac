@@ -30,7 +30,7 @@ tests/             testes automatizados
 
 ## Como reproduzir (Windows 11 / Linux / macOS)
 ```powershell
-git clone https://github.com/SEU_USUARIO/credit-risk-freddie-mac.git
+git clone https://github.com/igor-nobrega/credit-risk-freddie-mac.git
 cd credit-risk-freddie-mac
 uv sync            # cria o .venv com versões travadas (uv.lock)
 uv run poe check   # diagnóstico do ambiente
