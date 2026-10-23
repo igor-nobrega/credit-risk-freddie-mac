@@ -1,0 +1,16 @@
+name: credit_risk
+version: "0.1.0"
+config-version: 2
+profile: credit_risk
+model-paths: ["models"]
+log-path: "logs"
+target-path: "target"
+clean-targets: ["target", "logs"]
+
+flags:
+  send_anonymous_usage_stats: false
+
+models:
+  credit_risk:
+    smoke:
+      +materialized: table

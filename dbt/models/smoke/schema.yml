@@ -1,0 +1,9 @@
+version: 2
+models:
+  - name: smoke
+    description: "Modelo de verificacao do pipeline dbt + DuckDB (pode ser removido depois)."
+    columns:
+      - name: id
+        data_tests:
+          - not_null
+          - unique

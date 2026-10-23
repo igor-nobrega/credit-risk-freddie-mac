@@ -1,0 +1,12 @@
+credit_risk:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      # relativo a raiz do projeto (onde voce roda `uv run poe ...`). Para mover os dados: CREDIT_RISK_DATA_DIR
+      path: "{{ env_var('CREDIT_RISK_DATA_DIR', 'data') }}/warehouse.duckdb"
+      threads: 4
+      settings:
+        memory_limit: "{{ env_var('DUCKDB_MEMORY_LIMIT', '12GB') }}"
+        temp_directory: "{{ env_var('CREDIT_RISK_DATA_DIR', 'data') }}/tmp"
+        preserve_insertion_order: false
