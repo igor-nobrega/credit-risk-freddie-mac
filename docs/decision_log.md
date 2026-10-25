@@ -5,9 +5,9 @@ Uma entrada por decisao. Nao apague entradas antigas: se mudar de ideia, crie um
 
 ## Metadados do dataset
 - Dataset: Freddie Mac Single-Family Loan-Level Dataset, arquivo **Sample** / Standard
-- Release do User Guide usada: ______ (data: ______)
-- Data do download: ______
-- Vintages carregadas: ______
+- Release do User Guide usada: 47 (data: julho/2026)
+- Data do download: 2026-10-23
+- Vintages carregadas: 27
 
 ---
 
