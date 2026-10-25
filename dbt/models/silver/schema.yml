@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: silver_orig
+    description: "Originacao tipada: sentinelas -> NULL (com flags *_was_missing), 1 linha por loan_id."
+    columns:
+      - name: loan_id
+        data_tests: [not_null, unique]
+      - name: credit_score
+      - name: occupancy_status
+        data_tests:
+          - accepted_values:
+              arguments: {values: ["P", "I", "S"]}
+              config: {severity: warn}
+      - name: channel
+        data_tests:
+          - accepted_values:
+              arguments: {values: ["R", "B", "C", "T"]}
+              config: {severity: warn}
+      - name: loan_purpose
+        data_tests:
+          - accepted_values:
+              arguments: {values: ["P", "C", "N", "R"]}
+              config: {severity: warn}
+      - name: amortization_type
+        data_tests:
+          - accepted_values:
+              arguments: {values: ["FRM"]}
+              config: {severity: warn}
+
+  - name: silver_perf
+    description: "Performance mensal tipada, sem remover linhas; dlq_months e is_reo derivados do status."
+    data_tests:
+      - unique_combination:
+          arguments: {columns: ["loan_id", "monthly_reporting_period"]}
+          config: {severity: error}
+    columns:
+      - name: loan_id
+        data_tests: [not_null]
+      - name: monthly_reporting_period
+        data_tests: [not_null]

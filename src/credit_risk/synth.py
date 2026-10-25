@@ -92,6 +92,7 @@ def make_synthetic(
                 estimated_ltv=rng.choice([str(ltv), "999"]),
             )
             if last:
+                p.update(current_actual_upb="0.00", current_interest_bearing_upb="0.00")
                 if goes_bad:
                     loss = round(bal * rng.uniform(0.0, 0.6), 2)
                     p.update(

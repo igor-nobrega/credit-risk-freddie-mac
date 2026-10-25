@@ -1,0 +1,11 @@
+version: 2
+models:
+  - name: dq_rule_results
+    description: "Resultado das regras de consistencia de negocio (n_checked, n_failed)."
+    columns:
+      - name: rule_id
+        data_tests: [not_null, unique]
+  - name: dq_column_profile
+    description: "Por coluna: brancos, sentinelas e falhas de conversao de tipo (sobre a bronze)."
+  - name: dq_missing_by_vintage
+    description: "Percentual de ausentes/sentinelas por vintage e variavel (sobre a silver)."

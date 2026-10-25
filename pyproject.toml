@@ -61,5 +61,13 @@ lint = "ruff check ."
 fmt = "ruff format ."
 test = "pytest -q"
 dbt-debug = "dbt debug --project-dir dbt --profiles-dir dbt"
-dbt-smoke = "dbt build --project-dir dbt --profiles-dir dbt"
+dbt-smoke = "dbt build --select smoke --project-dir dbt --profiles-dir dbt"
+gen-sql = "python scripts/gen_silver_sql.py"
+dq-report = "python scripts/report_dq.py"
 lab = "jupyter lab"
+[tool.poe.tasks.silver]
+help = "Silver + DQ: roda os modelos e depois os testes"
+sequence = [
+  { cmd = "dbt run --select silver dq --project-dir dbt --profiles-dir dbt" },
+  { cmd = "dbt test --select silver dq --project-dir dbt --profiles-dir dbt" },
+]

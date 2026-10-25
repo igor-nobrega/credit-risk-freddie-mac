@@ -1,0 +1,8 @@
+version: 2
+sources:
+  - name: bronze
+    schema: main
+    description: "Views sobre os Parquet da camada bronze (criadas por `uv run poe ingest`)."
+    tables:
+      - name: bronze_orig
+      - name: bronze_perf

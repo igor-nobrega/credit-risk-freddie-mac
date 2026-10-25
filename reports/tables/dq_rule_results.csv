@@ -1,0 +1,25 @@
+rule_id,table_name,description,severity,n_checked,n_failed,pct_failed,suggested_action
+R01,orig,loan_id duplicado na bronze_orig (loans com mais de uma linha),warn,1350000,0,0.0,manter 1 linha por loan (arquivo mais recente) e registrar
+R02,orig,credit_score fora de 300-850 (apos sentinela),warn,1347887,0,0.0,tratar como ausente
+R03,orig,dti fora de 0-65 (apos sentinela),warn,1254498,0,0.0,tratar como ausente
+R04,orig,mi_pct fora de 0-55 (apos sentinela),warn,1349981,0,0.0,tratar como ausente
+R05,orig,"cltv menor que ltv (o guia diz que cltv seria ""nao disponivel"")",warn,1349954,0,0.0,investigar; flag
+R06,orig,maturity_date <= first_payment_date,warn,1350000,0,0.0,excluir ou flag
+R07,orig,original_loan_term diferente de (maturity - first_payment + 1) em meses,warn,1350000,0,0.0,flag
+R08,orig,original_upb nulo ou <= 0,error,1350000,0,0.0,excluir
+R09,orig,"original_interest_rate fora de (0, 20]",warn,1350000,0,0.0,investigar
+R10,orig,property_state diferente de 2 letras maiusculas,warn,1350000,0,0.0,flag
+R11,orig,loan_id fora do formato PYYQnXXXXXXX,error,1350000,0,0.0,investigar
+R12,orig,ano do loan_id difere da vintage do arquivo,warn,1350000,1,0.0001,investigar
+R13,perf,loans na performance sem registro de originacao (orfaos),error,1349995,0,0.0,excluir da modelagem
+R14,orig,loans na originacao sem nenhuma linha de performance,warn,1350000,5,0.0004,excluir da modelagem
+R15,perf,"linhas duplicadas por (loan_id, periodo)",error,74919968,0,0.0,deduplicar
+R16,perf,current_actual_upb nulo ou negativo,warn,74919968,0,0.0,flag
+R17,perf,zero_balance_code preenchido com current_actual_upb > 0,warn,1007408,0,0.0,investigar
+R18,perf,linhas com periodo posterior ao evento de saldo zero,warn,51994265,7,0.0,excluir linhas pos-evento
+R19,perf,loans com buraco na serie mensal (meses esperados != linhas),warn,1349995,195,0.0144,flag; tratar na construcao do painel
+R20,perf,actual_loss preenchido com zero_balance_code fora de 02/03/09/15,warn,19639,0,0.0,investigar
+R21,perf,actual_loss ausente em zero_balance_code 02/03/09/15 (esperado nos 3 ultimos meses e em defeitos),info,21156,1517,7.1705,censura no LGD: tratar na modelagem
+R22,perf,net_sales_proceeds positivo (guia: recuperacoes sao negativas),info,19638,72,0.3666,verificar convencao de sinal
+R23,perf,loan_age difere dos meses desde first_payment_date (loans nao modificados),warn,73781293,20508,0.0278,usar idade recalculada
+R24,perf,loan_id fora do formato PYYQnXXXXXXX,error,74919968,0,0.0,investigar

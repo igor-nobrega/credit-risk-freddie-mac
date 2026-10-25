@@ -1,6 +1,6 @@
 # Risco de Crédito: Investigando as hipotecas americanas com Dados Reais do Freddie Mac
 
-> **Status:** 🚧 em construção · Fase atual: **0 — ambiente e fundações**
+> **Status:** 🚧 em construção · Fase atual: **2 - Camada Silver e DQ**
 
 Pipeline completo de risco de crédito (Score, PD, LGD, EAD e ECL) sobre o **Freddie Mac Single-Family Loan-Level Dataset**: arquivos pipe-delimited sem header, valores sentinela, eventos de término codificados e perdas realizadas. Roda **100% local e offline** (DuckDB + Parquet + dbt + Quarto), sem cotas de nuvem.
 
@@ -46,8 +46,17 @@ _(a preencher conforme as fases avançam; sempre com número e figura)_
 - Roda no arquivo **Sample** do dataset; pipeline parametrizado para escalar.
 
 ## Roadmap
-- [ ] 0 Ambiente · [ ] 1 Ingestão bronze · [ ] 2 Silver e DQ · [ ] 3 Default e target · [ ] 4 EDA e insights
-- [ ] 5 Scorecard/PD · [ ] 6 PD alternativo · [ ] 7 LGD · [ ] 8 EAD · [ ] 9 ECL e relatório final
+- [x] 0 Ambiente
+
+- [x] 1 Ingestão bronze
+- [x] 2 Silver e DQ
+- [ ] 3 Default e target
+- [ ] 4 EDA e insights
+- [ ] 5 Scorecard/PD
+- [ ] 6 PD alternativo
+- [ ] 7 LGD
+- [ ] 8 EAD
+- [ ] 9 ECL e relatório final
 
 ## Licença e créditos
 Código sob licença MIT. Dados © Freddie Mac, sujeitos aos termos de uso do dataset (consulte o Clarity).

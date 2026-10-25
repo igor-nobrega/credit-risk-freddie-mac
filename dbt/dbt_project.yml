@@ -1,8 +1,10 @@
 name: credit_risk
-version: "0.1.0"
+version: "0.2.0"
 config-version: 2
 profile: credit_risk
 model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
 log-path: "logs"
 target-path: "target"
 clean-targets: ["target", "logs"]
@@ -13,4 +15,10 @@ flags:
 models:
   credit_risk:
     smoke:
+      +materialized: table
+    silver:
+      +schema: silver
+      +materialized: table
+    dq:
+      +schema: dq
       +materialized: table
