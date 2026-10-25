@@ -56,6 +56,7 @@ testpaths = ["tests"]
 check = "python scripts/check_env.py"
 smoke = "python scripts/smoke_test.py"
 manifest = "python scripts/make_manifest.py"
+ingest = "python scripts/ingest_bronze.py"
 lint = "ruff check ."
 fmt = "ruff format ."
 test = "pytest -q"
