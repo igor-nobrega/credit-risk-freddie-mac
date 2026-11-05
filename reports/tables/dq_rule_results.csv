@@ -23,3 +23,5 @@ R21,perf,actual_loss ausente em zero_balance_code 02/03/09/15 (esperado nos 3 ul
 R22,perf,net_sales_proceeds positivo (guia: recuperacoes sao negativas),info,19638,72,0.3666,verificar convencao de sinal
 R23,perf,loan_age difere dos meses desde first_payment_date (loans nao modificados),warn,73781293,20508,0.0278,usar idade recalculada
 R24,perf,loan_id fora do formato PYYQnXXXXXXX,error,74919968,0,0.0,investigar
+R25,perf,loans sem saldo zero cujo ultimo periodo e anterior ao corte dos dados (serie truncada),warn,1349995,0,0.0,tratar como censurado ou investigar
+R26,orig,first_payment_date nulo (idade e observabilidade incalculaveis),error,1350000,0,0.0,excluir da modelagem

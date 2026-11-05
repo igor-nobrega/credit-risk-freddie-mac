@@ -72,7 +72,8 @@ r12 as (
 ),
 
 loans_perf as (select loan_id, count(*) as n_rows, min(monthly_reporting_period) as d_min,
-                      max(monthly_reporting_period) as d_max
+                      max(monthly_reporting_period) as d_max,
+                      bool_or(zero_balance_code is not null) as has_zb
                from p group by loan_id),
 r13 as (
   select 'R13', 'perf', 'loans na performance sem registro de originacao (orfaos)', 'error',
@@ -139,6 +140,16 @@ r24 as (
          count(*), count(*) filter (where loan_id is null or not regexp_matches(loan_id, '^[FA][0-9]{2}Q[1-4][0-9]{7}$')),
          'investigar' from p
 ),
+r25 as (
+  select 'R25', 'perf', 'loans sem saldo zero cujo ultimo periodo e anterior ao corte dos dados (serie truncada)', 'warn',
+         count(*), count(*) filter (where not has_zb and d_max < (select max(d_max) from loans_perf)),
+         'tratar como censurado ou investigar'
+  from loans_perf
+),
+r26 as (
+  select 'R26', 'orig', 'first_payment_date nulo (idade e observabilidade incalculaveis)', 'error',
+         count(*), count(*) filter (where first_payment_date is null), 'excluir da modelagem' from o
+),
 
 allr as (
   select * from r01 union all select * from r02 union all select * from r03 union all select * from r04
@@ -147,6 +158,7 @@ allr as (
   union all select * from r13 union all select * from r14 union all select * from r15 union all select * from r16
   union all select * from r17 union all select * from r18 union all select * from r19 union all select * from r20
   union all select * from r21 union all select * from r22 union all select * from r23 union all select * from r24
+  union all select * from r25 union all select * from r26
 )
 select rule_id, table_name, description, severity,
        cast(n_checked as bigint) as n_checked, cast(n_failed as bigint) as n_failed,

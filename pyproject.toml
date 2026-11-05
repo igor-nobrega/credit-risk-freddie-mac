@@ -53,6 +53,8 @@ ignore = ["E501"]
 testpaths = ["tests"]
 
 [tool.poe.tasks]
+default-report = "python scripts/report_default.py"
+inspect-dq = "python scripts/inspect_dq.py"
 check = "python scripts/check_env.py"
 smoke = "python scripts/smoke_test.py"
 manifest = "python scripts/make_manifest.py"
@@ -70,4 +72,11 @@ help = "Silver + DQ: roda os modelos e depois os testes"
 sequence = [
   { cmd = "dbt run --select silver dq --project-dir dbt --profiles-dir dbt" },
   { cmd = "dbt test --select silver dq --project-dir dbt --profiles-dir dbt" },
+]
+
+[tool.poe.tasks.gold]
+help = "Gold (eventos de default, curvas, dataset de PD): modelos e depois testes"
+sequence = [
+  { cmd = "dbt run --select gold --project-dir dbt --profiles-dir dbt" },
+  { cmd = "dbt test --select gold --project-dir dbt --profiles-dir dbt" },
 ]

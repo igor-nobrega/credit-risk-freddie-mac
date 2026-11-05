@@ -1,0 +1,24 @@
+version: 2
+models:
+  - name: gold_loan_events
+    description: "1 linha por loan com todos os eventos candidatos a default (idades em meses desde first_payment_date)."
+    columns:
+      - name: loan_id
+        data_tests: [not_null, unique]
+      - name: default_trigger
+        data_tests:
+          - accepted_values:
+              arguments: {values: ["dpd90", "credit_event", "both"]}
+      - name: terminal_state
+        data_tests:
+          - accepted_values:
+              arguments: {values: ["credit_event", "prepaid_or_matured", "other_removal", "active"]}
+  - name: gold_pd_dataset
+    description: "1 loan por linha ao originar + alvos default_12m/24m e flags de observabilidade (LOCAL, nao versionar)."
+    columns:
+      - name: loan_id
+        data_tests: [not_null, unique]
+  - name: gold_vintage_curves
+    description: "Default cumulativo por vintage, idade e definicao candidata (agregado)."
+  - name: gold_default_summary
+    description: "Resumo por vintage: estados terminais, eventos, curas, observabilidade (agregado)."

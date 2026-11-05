@@ -1,5 +1,5 @@
 name: credit_risk
-version: "0.2.0"
+version: "0.3.0"
 config-version: 2
 profile: credit_risk
 model-paths: ["models"]
@@ -21,4 +21,7 @@ models:
       +materialized: table
     dq:
       +schema: dq
+      +materialized: table
+    gold:
+      +schema: gold
       +materialized: table

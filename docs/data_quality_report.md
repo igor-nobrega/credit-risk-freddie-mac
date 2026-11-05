@@ -1,6 +1,6 @@
 # Relatorio de Qualidade de Dados
 
-Gerado em 2026-10-25 por `uv run poe dq-report` (somente agregados).
+Gerado em 2026-11-05 por `uv run poe dq-report` (somente agregados).
 
 ## 1. Volumetria e reconciliacao (arquivo -> bronze)
 | tabela | arquivos | linhas_arquivo | carregadas | rejeitadas |
@@ -11,10 +11,10 @@ Gerado em 2026-10-25 por `uv run poe dq-report` (somente agregados).
 ## 2. Bronze -> Silver
 | tabela | bronze | silver | diferenca |
 |---|---|---|---|
-| perf | 74.919.968 | 74.919.968 | 0 |
 | orig | 1.350.000 | 1.350.000 | 0 |
+| perf | 74.919.968 | 74.919.968 | 0 |
 
-A diferenca em `orig` corresponde a loans duplicados na bronze (regra R01); `perf` nao remove linhas.
+Nenhum loan duplicado na originacao e nenhuma linha removida na performance.
 
 ## 3. Regras de consistencia de negocio
 | rule_id | table_name | severity | description | n_checked | n_failed | pct_failed | suggested_action |
@@ -43,27 +43,52 @@ A diferenca em `orig` corresponde a loans duplicados na bronze (regra R01); `per
 | R22 | perf | info | net_sales_proceeds positivo (guia: recuperacoes sao negativas) | 19.638 | 72 | 0.37% | verificar convencao de sinal |
 | R23 | perf | warn | loan_age difere dos meses desde first_payment_date (loans nao modificados) | 73.781.293 | 20.508 | 0.03% | usar idade recalculada |
 | R24 | perf | error | loan_id fora do formato PYYQnXXXXXXX | 74.919.968 | 0 | 0.00% | investigar |
+| R25 | perf | warn | loans sem saldo zero cujo ultimo periodo e anterior ao corte dos dados (serie truncada) | 1.349.995 | 0 | 0.00% | tratar como censurado ou investigar |
+| R26 | orig | error | first_payment_date nulo (idade e observabilidade incalculaveis) | 1.350.000 | 0 | 0.00% | excluir da modelagem |
 
-## 4. Variaveis com mais ausentes (brancos + sentinelas)
-| table_name | column_name | n_blank | n_sentinel | pct_ausente |
-|---|---|---|---|---|
-| orig | vantage_score_4 | 0 | 1.350.000 | 100.00% |
-| perf | defect_settlement_date | 74.914.321 | 0 | 99.99% |
-| perf | total_expenses | 74.900.424 | 0 | 99.97% |
-| perf | non_mi_recoveries | 74.900.424 | 0 | 99.97% |
-| perf | miscellaneous_expenses | 74.900.424 | 0 | 99.97% |
-| perf | maintenance_preservation_costs | 74.900.424 | 0 | 99.97% |
-| perf | taxes_insurance | 74.900.424 | 0 | 99.97% |
-| perf | mi_recoveries | 74.900.424 | 0 | 99.97% |
-| perf | legal_costs | 74.900.424 | 0 | 99.97% |
-| perf | net_sales_proceeds | 74.900.330 | 0 | 99.97% |
-| perf | delinquent_accrued_interest | 74.900.329 | 0 | 99.97% |
-| perf | actual_loss | 74.900.329 | 0 | 99.97% |
-| perf | delinquency_due_to_disaster | 74.690.509 | 0 | 99.69% |
-| perf | borrower_assistance_plan | 74.630.285 | 0 | 99.61% |
-| perf | ddlpi | 74.561.733 | 0 | 99.52% |
+## 4. Ausentes e sentinelas
+### 4.1 Originacao: variaveis com informacao ausente (brancos + sentinelas)
+| column_name | n_blank | n_sentinel | pct_ausente |
+|---|---|---|---|
+| special_eligibility_program | 1.308.941 | 0 | 96.96% |
+| pre_harp_loan_id | 1.266.527 | 0 | 93.82% |
+| property_valuation_method | 0 | 1.042.606 | 77.23% |
+| msa | 284.473 | 0 | 21.07% |
+| dti | 0 | 95.502 | 7.07% |
+| credit_score | 0 | 2.113 | 0.16% |
+| first_time_homebuyer_flag | 0 | 753 | 0.06% |
+| number_of_borrowers | 0 | 195 | 0.01% |
+| postal_code | 0 | 103 | 0.01% |
+| number_of_units | 0 | 75 | 0.01% |
+| property_type | 0 | 66 | 0.00% |
+| channel | 0 | 49 | 0.00% |
+| cltv | 0 | 46 | 0.00% |
+| ltv | 0 | 43 | 0.00% |
+| mi_pct | 0 | 19 | 0.00% |
+| loan_purpose | 0 | 3 | 0.00% |
+
+### 4.2 Originacao: variaveis sem informacao (ausentes em ~100% das linhas) - candidatas a remocao
+| column_name | n_blank | n_sentinel | pct_ausente |
+|---|---|---|---|
+| vantage_score_4 | 0 | 1.350.000 | 100.00% |
 
 ![Ausencia por vintage](../reports/figures/missing_by_vintage.png)
+
+### 4.3 Performance: ausencia ESTRUTURAL (campos so preenchidos em eventos; nao e sujeira)
+| column_name | n_blank | n_sentinel | pct_ausente |
+|---|---|---|---|
+| defect_settlement_date | 74.914.321 | 0 | 99.99% |
+| miscellaneous_expenses | 74.900.424 | 0 | 99.97% |
+| legal_costs | 74.900.424 | 0 | 99.97% |
+| mi_recoveries | 74.900.424 | 0 | 99.97% |
+| total_expenses | 74.900.424 | 0 | 99.97% |
+| non_mi_recoveries | 74.900.424 | 0 | 99.97% |
+| taxes_insurance | 74.900.424 | 0 | 99.97% |
+| maintenance_preservation_costs | 74.900.424 | 0 | 99.97% |
+| net_sales_proceeds | 74.900.330 | 0 | 99.97% |
+| delinquent_accrued_interest | 74.900.329 | 0 | 99.97% |
+| actual_loss | 74.900.329 | 0 | 99.97% |
+| delinquency_due_to_disaster | 74.690.509 | 0 | 99.69% |
 
 ## 5. Falhas de conversao de tipo (valor existia mas nao converteu)
 Nenhuma.

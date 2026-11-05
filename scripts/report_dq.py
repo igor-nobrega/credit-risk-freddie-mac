@@ -16,6 +16,8 @@ import matplotlib.pyplot as plt
 from credit_risk import config
 from credit_risk.duck import connect
 
+CONSTANT_PCT = 99.99  # coluna ausente em (quase) 100% das linhas = sem informacao
+
 con = connect(config.WAREHOUSE, read_only=True)
 df = lambda sql: con.execute(sql).fetchdf()  # noqa: E731
 
@@ -29,10 +31,10 @@ def md(frame, fmt=None) -> str:
     fmt = fmt or {}
     cols = list(frame.columns)
     lines = ["| " + " | ".join(cols) + " |", "|" + "|".join("---" for _ in cols) + "|"]
-    for _, r in frame.iterrows():
+    for i in range(len(frame)):
         cells = []
         for c in cols:
-            v = r[c]
+            v = frame[c].iloc[i]
             cells.append(fmt[c](v) if c in fmt else ("" if v is None else str(v)))
         lines.append("| " + " | ".join(cells) + " |")
     return "\n".join(lines)
@@ -57,13 +59,22 @@ sil["diferenca"] = sil["bronze"] - sil["silver"]
 prof["pct_blank"] = 100 * prof["n_blank"] / prof["n_rows"]
 prof["pct_sentinel"] = 100 * prof["n_sentinel"] / prof["n_rows"]
 prof["pct_cast_fail"] = 100 * prof["n_cast_fail"] / prof["n_rows"]
+prof["pct_ausente"] = prof["pct_blank"] + prof["pct_sentinel"]
 
 rules.to_csv(tables / "dq_rule_results.csv", index=False, lineterminator="\n")
 prof.to_csv(tables / "dq_column_profile.csv", index=False, lineterminator="\n")
 miss.to_csv(tables / "dq_missing_by_vintage.csv", index=False, lineterminator="\n")
 
-# figura: evolucao do % de ausentes (sentinela/branco) por vintage nas variaveis mais afetadas
-mo = miss[miss["table_name"] == "orig"]
+orig = prof[prof["table_name"] == "orig"]
+perf = prof[prof["table_name"] == "perf"]
+const = orig[orig["pct_ausente"] >= CONSTANT_PCT]
+orig_var = orig[(orig["pct_ausente"] > 0) & (orig["pct_ausente"] < CONSTANT_PCT)].sort_values(
+    "pct_ausente", ascending=False
+)
+perf_struct = perf[perf["pct_ausente"] > 0].sort_values("pct_ausente", ascending=False).head(12)
+
+# figura: ausencia por vintage nas variaveis de originacao com informacao (exclui colunas ~100% ausentes)
+mo = miss[(miss["table_name"] == "orig") & (~miss["column_name"].isin(const["column_name"]))]
 top = mo.groupby("column_name")["pct_missing"].max().sort_values(ascending=False).head(6).index
 fig, ax = plt.subplots(figsize=(9, 4.8))
 for c in top:
@@ -77,12 +88,16 @@ ax.legend(fontsize=8)
 fig.tight_layout()
 fig.savefig(figs / "missing_by_vintage.png", dpi=150)
 
-worst = prof[(prof["n_blank"] > 0) | (prof["n_sentinel"] > 0)].copy()
-worst["pct_ausente"] = worst["pct_blank"] + worst["pct_sentinel"]
-worst = worst.sort_values("pct_ausente", ascending=False).head(15)
 cast = prof[prof["n_cast_fail"] > 0][
     ["table_name", "column_name", "declared_type", "n_cast_fail", "pct_cast_fail"]
 ]
+dup_note = (
+    "Nenhum loan duplicado na originacao e nenhuma linha removida na performance."
+    if int(sil["diferenca"].sum()) == 0
+    else "A diferenca em `orig` corresponde a loans duplicados na bronze (regra R01); `perf` nao remove linhas."
+)
+fmt_miss = {"n_blank": n, "n_sentinel": n, "pct_ausente": p}
+cols_miss = ["column_name", "n_blank", "n_sentinel", "pct_ausente"]
 
 doc = [
     "# Relatorio de Qualidade de Dados",
@@ -91,7 +106,7 @@ doc = [
     md(vol, {c: n for c in ["arquivos", "linhas_arquivo", "carregadas", "rejeitadas"]}),
     "\n## 2. Bronze -> Silver",
     md(sil, {c: n for c in ["bronze", "silver", "diferenca"]}),
-    "\nA diferenca em `orig` corresponde a loans duplicados na bronze (regra R01); `perf` nao remove linhas.\n",
+    f"\n{dup_note}\n",
     "## 3. Regras de consistencia de negocio",
     md(
         rules[
@@ -108,19 +123,21 @@ doc = [
         ],
         {"n_checked": n, "n_failed": n, "pct_failed": p},
     ),
-    "\n## 4. Variaveis com mais ausentes (brancos + sentinelas)",
-    md(
-        worst[["table_name", "column_name", "n_blank", "n_sentinel", "pct_ausente"]],
-        {"n_blank": n, "n_sentinel": n, "pct_ausente": p},
-    ),
+    "\n## 4. Ausentes e sentinelas",
+    "### 4.1 Originacao: variaveis com informacao ausente (brancos + sentinelas)",
+    md(orig_var[cols_miss], fmt_miss) if len(orig_var) else "Nenhuma.",
+    "\n### 4.2 Originacao: variaveis sem informacao (ausentes em ~100% das linhas) - candidatas a remocao",
+    md(const[cols_miss], fmt_miss) if len(const) else "Nenhuma.",
     "\n![Ausencia por vintage](../reports/figures/missing_by_vintage.png)\n",
-    "## 5. Falhas de conversao de tipo (valor existia mas nao converteu)",
+    "### 4.3 Performance: ausencia ESTRUTURAL (campos so preenchidos em eventos; nao e sujeira)",
+    md(perf_struct[cols_miss], fmt_miss),
+    "\n## 5. Falhas de conversao de tipo (valor existia mas nao converteu)",
     md(cast, {"n_cast_fail": n, "pct_cast_fail": p}) if len(cast) else "Nenhuma.",
     "\n## 6. Conclusoes e riscos para a modelagem",
     "_(a preencher a mao apos ler as tabelas acima: o que muda no target, nas features e na amostra)_\n",
 ]
 Path("docs/data_quality_report.md").write_text(
-    "\n".join(doc) + "\n", encoding="utf-8", newline="\n"
+    "\n".join(doc).rstrip("\n") + "\n", encoding="utf-8", newline="\n"
 )
 con.close()
 print(
