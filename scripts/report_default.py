@@ -18,6 +18,7 @@ import pandas as pd
 
 from credit_risk import config
 from credit_risk.duck import connect
+from credit_risk.reportlib import read_manual
 
 MIN_EVENTS = 100  # abaixo disso a vintage tem poucos eventos para validar modelo
 
@@ -202,7 +203,11 @@ doc = [
     if r21 is not None
     else "(rode `uv run poe silver` antes)",
     "\n## 8. Decisao (D-002)",
-    "_(a preencher a mao: gatilho, janela, tratamento de cura e de prepagamento, com base nas tabelas acima)_\n",
+    read_manual(
+        "docs/default_decision.md",
+        "_(a preencher: crie `docs/default_decision.md` com gatilho, janela, tratamento de cura e de "
+        "prepagamento; ele sera incluido aqui a cada execucao)_",
+    ),
 ]
 Path("docs/default_definition_report.md").write_text(
     "\n".join(doc).rstrip("\n") + "\n", encoding="utf-8", newline="\n"

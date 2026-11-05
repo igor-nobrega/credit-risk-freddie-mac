@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 
 from credit_risk import config
 from credit_risk.duck import connect
+from credit_risk.reportlib import read_manual
 
 CONSTANT_PCT = 99.99  # coluna ausente em (quase) 100% das linhas = sem informacao
 
@@ -134,7 +135,11 @@ doc = [
     "\n## 5. Falhas de conversao de tipo (valor existia mas nao converteu)",
     md(cast, {"n_cast_fail": n, "pct_cast_fail": p}) if len(cast) else "Nenhuma.",
     "\n## 6. Conclusoes e riscos para a modelagem",
-    "_(a preencher a mao apos ler as tabelas acima: o que muda no target, nas features e na amostra)_\n",
+    read_manual(
+        "docs/dq_conclusions.md",
+        "_(a preencher: crie `docs/dq_conclusions.md` com o que muda no target, nas features e na amostra; "
+        "ele sera incluido aqui a cada execucao)_",
+    ),
 ]
 Path("docs/data_quality_report.md").write_text(
     "\n".join(doc).rstrip("\n") + "\n", encoding="utf-8", newline="\n"

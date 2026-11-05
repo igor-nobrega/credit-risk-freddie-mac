@@ -103,4 +103,4 @@ Vintages recentes ainda estao censuradas: as taxas delas vao subir com o tempo.
 Eventos de credito com `actual_loss` ausente (regra R21): 1.517 de 21.156 (7.17%). Esperado nos 3 ultimos meses antes do corte e em defeitos; tratar como censura.
 
 ## 8. Decisao (D-002)
-_(a preencher a mao: gatilho, janela, tratamento de cura e de prepagamento, com base nas tabelas acima)_
+_(a preencher: crie `docs/default_decision.md` com gatilho, janela, tratamento de cura e de prepagamento; ele sera incluido aqui a cada execucao)_
