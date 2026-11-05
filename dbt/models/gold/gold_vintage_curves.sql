@@ -5,7 +5,7 @@
 
 with base as (
   select e.vintage_year, e.months_observable,
-         e.dpd60_age, e.dpd90_age, e.dpd180_age, e.credit_event_age, e.default_age
+         e.dpd60_age, e.dpd90_age, e.dpd90_na_age, e.dpd180_age, e.credit_event_age, e.default_age, e.default_na_age
   from {{ ref('gold_loan_events') }} e
   where e.has_perf
 ),
@@ -14,7 +14,9 @@ defs as (
   union all select 'dpd90', vintage_year, months_observable, dpd90_age from base
   union all select 'dpd180', vintage_year, months_observable, dpd180_age from base
   union all select 'credit_event', vintage_year, months_observable, credit_event_age from base
+  union all select 'dpd90_noassist', vintage_year, months_observable, dpd90_na_age from base
   union all select 'dpd90_or_credit_event', vintage_year, months_observable, default_age from base
+  union all select 'dpd90_noassist_or_credit_event', vintage_year, months_observable, default_na_age from base
 ),
 agg as (
   select definition, vintage_year, months_observable, age, count(*) as n

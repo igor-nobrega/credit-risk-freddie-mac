@@ -36,12 +36,17 @@ def _f(s: str):
 
 
 def oracle(raw: Path):
-    first_pay = {}
+    first_pay, m2fp = {}, {}
     for f in (raw / "orig").glob("*.txt"):
         for line in f.read_text().split("\n"):
             if line:
                 c = line.split("|")
-                first_pay[c[OI["loan_id"]]] = _ym(c[OI["first_payment_date"]])
+                lid = c[OI["loan_id"]]
+                first_pay[lid] = _ym(c[OI["first_payment_date"]])
+                yy, q = int(lid[1:3]), int(lid[4])
+                m2fp[lid] = first_pay[lid] - (
+                    (1999 if yy == 99 else 2000 + yy) * 12 + (q - 1) * 3 + 1
+                )
     rows = defaultdict(list)
     cutoff = 0
     for f in (raw / "perf").glob("*.txt"):
@@ -58,19 +63,27 @@ def oracle(raw: Path):
                         upb=_f(c[PI["current_actual_upb"]]),
                         zb_upb=_f(c[PI["zero_balance_removal_upb"]]),
                         mod=c[PI["modification_flag"]],
+                        assisted=bool(
+                            c[PI["borrower_assistance_plan"]] in ("F", "R", "T")
+                            or c[PI["delinquency_due_to_disaster"]] == "Y"
+                            or c[PI["payment_deferral_flag"]] in ("C", "P")
+                        ),
                     )
                 )
     out = {}
     for lid, rs in rows.items():
         rs.sort(key=lambda r: r["per"])
         fp = first_pay[lid]
-        d90r = next(
-            (r for r in rs if r["st"] == "RA" or (r["st"].isdigit() and int(r["st"]) >= 3)), None
-        )
+        is90 = lambda r: r["st"] == "RA" or (r["st"].isdigit() and int(r["st"]) >= 3)  # noqa: E731
+        d90r = next((r for r in rs if is90(r)), None)
+        d90n = next((r for r in rs if is90(r) and not r["assisted"]), None)
         cer = next((r for r in rs if r["zb"] in CREDIT_EVENT), None)
         d90, ce = (d90r["per"] if d90r else None), (cer["per"] if cer else None)
+        d90na = d90n["per"] if d90n else None
         cands = [x for x in (d90, ce) if x is not None]
+        cands_na = [x for x in (d90na, ce) if x is not None]
         dper = min(cands) if cands else None
+        dper_na = min(cands_na) if cands_na else None
         zb = [r for r in rs if r["zb"]]
         if d90r and (cer is None or d90 <= ce):
             upb_def = d90r["upb"]
@@ -78,6 +91,9 @@ def oracle(raw: Path):
             upb_def = cer["zb_upb"] if cer else None
         out[lid] = dict(
             default_age=(dper - fp + 1) if dper else None,
+            default_na_age=(dper_na - fp + 1) if dper_na else None,
+            dpd90_na_age=(d90na - fp + 1) if d90na else None,
+            assisted_dpd90=any(is90(r) and r["assisted"] for r in rs),
             trigger=None
             if not cands
             else ("both" if d90 and ce else "dpd90" if d90 else "credit_event"),
@@ -95,6 +111,8 @@ def oracle(raw: Path):
             ),
             modified=any(r["mod"] for r in rs),
             upb_default=upb_def,
+            ce_code=cer["zb"] if cer else None,
+            m2fp=m2fp[lid],
         )
     return out
 
@@ -147,7 +165,9 @@ def test_events_match_oracle_for_every_loan(gold):
     con = connect(data / "warehouse.duckdb", read_only=True)
     rows = con.execute(
         "select loan_id, default_age, default_trigger, cured_after_dpd90, zb_age, months_observable, "
-        "terminal_state, ever_modified, upb_at_default from gold.gold_loan_events where has_perf"
+        "terminal_state, ever_modified, upb_at_default, credit_event_code, default_na_age, dpd90_na_age, "
+        "assisted_while_dpd90, months_to_first_payment, first_payment_inconsistent "
+        "from gold.gold_loan_events where has_perf"
     ).fetchall()
     n_no_perf = con.execute(
         "select count(*) from gold.gold_loan_events where not has_perf"
@@ -155,7 +175,23 @@ def test_events_match_oracle_for_every_loan(gold):
     con.close()
     assert len(rows) == len(orc) == 3 * N_PER_VINTAGE
     assert n_no_perf == ORIG_ONLY
-    for lid, dage, trig, cured, zage, mobs, term, mod, upb in rows:
+    for (
+        lid,
+        dage,
+        trig,
+        cured,
+        zage,
+        mobs,
+        term,
+        mod,
+        upb,
+        cecode,
+        dna,
+        d90na,
+        asst,
+        m2fp,
+        fpi,
+    ) in rows:
         o = orc[lid]
         assert (dage, trig, cured, zage, mobs, term, mod) == (
             o["default_age"],
@@ -165,6 +201,14 @@ def test_events_match_oracle_for_every_loan(gold):
             o["months_obs"],
             o["terminal"],
             o["modified"],
+        ), lid
+        assert cecode == o["ce_code"], lid
+        assert (dna, d90na, asst, m2fp, fpi) == (
+            o["default_na_age"],
+            o["dpd90_na_age"],
+            o["assisted_dpd90"],
+            o["m2fp"],
+            not 0 <= o["m2fp"] <= 8,
         ), lid
         if o["upb_default"] is None:
             assert upb is None, lid
@@ -184,6 +228,12 @@ def test_synthetic_covers_every_branch(gold):
     assert {o["trigger"] for o in orc} == {None, "dpd90", "credit_event", "both"}
     assert any(o["cured"] for o in orc) and any(o["modified"] for o in orc)
     assert any(o["months_obs"] < 24 for o in orc) and any(o["months_obs"] >= 24 for o in orc)
+    assert any(o["assisted_dpd90"] for o in orc), "falta 90+ sob assistencia"
+    # ha loans cujo default A some na definicao B (todo o 90+ sob assistencia) e loans em que o default B vem depois
+    assert any(o["default_age"] is not None and o["default_na_age"] is None for o in orc)
+    assert any(
+        o["default_na_age"] is not None and o["default_na_age"] > o["default_age"] for o in orc
+    )
 
 
 def test_pd_dataset_targets_and_observability(gold):
@@ -250,3 +300,4 @@ def test_new_dq_rules_run(gold):
     assert r["R26"] == 0
     assert r["R14"] == ORIG_ONLY  # loans na originacao sem performance
     assert r["R25"] == 0  # as series truncadas terminam exatamente no corte
+    assert r["R27"] == 0  # um unico evento de saldo zero por loan

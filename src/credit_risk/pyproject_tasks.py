@@ -21,6 +21,7 @@ SIMPLE: dict[str, str] = {
     "dq-report": "python scripts/report_dq.py",
     "default-report": "python scripts/report_default.py",
     "inspect-dq": "python scripts/inspect_dq.py",
+    "diagnose-age": "python scripts/diagnose_default_age.py",
     "lint": "ruff check .",
     "fmt": "ruff format .",
     "test": "pytest -q",

@@ -73,7 +73,8 @@ r12 as (
 
 loans_perf as (select loan_id, count(*) as n_rows, min(monthly_reporting_period) as d_min,
                       max(monthly_reporting_period) as d_max,
-                      bool_or(zero_balance_code is not null) as has_zb
+                      bool_or(zero_balance_code is not null) as has_zb,
+                      count(*) filter (where zero_balance_code is not null) as n_zb
                from p group by loan_id),
 r13 as (
   select 'R13', 'perf', 'loans na performance sem registro de originacao (orfaos)', 'error',
@@ -150,6 +151,26 @@ r26 as (
   select 'R26', 'orig', 'first_payment_date nulo (idade e observabilidade incalculaveis)', 'error',
          count(*), count(*) filter (where first_payment_date is null), 'excluir da modelagem' from o
 ),
+r27 as (
+  select 'R27', 'perf', 'loans com mais de uma linha de saldo zero (mais de um evento de termino)', 'warn',
+         count(*), count(*) filter (where n_zb > 1), 'investigar; usar o ultimo evento'
+  from loans_perf
+),
+r28 as (
+  select 'R28', 'orig', '1o pagamento incompativel com o trimestre do loan_id (fora de 0-8 meses; modificados/convertidos reiniciam a data)', 'warn',
+         count(*) filter (where months_to_first_payment is not null),
+         count(*) filter (where months_to_first_payment < 0 or months_to_first_payment > 8),
+         'excluir da amostra de PD (idade incalculavel)'
+  from (
+    select case when regexp_matches(loan_id, '^[FA][0-9]{2}Q[1-4]')
+                then date_diff('month',
+                       make_date(case when try_cast(substr(loan_id, 2, 2) as integer) = 99 then 1999
+                                      else 2000 + try_cast(substr(loan_id, 2, 2) as integer) end,
+                                 (try_cast(substr(loan_id, 5, 1) as integer) - 1) * 3 + 1, 1),
+                       first_payment_date) end as months_to_first_payment
+    from o
+  )
+),
 
 allr as (
   select * from r01 union all select * from r02 union all select * from r03 union all select * from r04
@@ -158,7 +179,7 @@ allr as (
   union all select * from r13 union all select * from r14 union all select * from r15 union all select * from r16
   union all select * from r17 union all select * from r18 union all select * from r19 union all select * from r20
   union all select * from r21 union all select * from r22 union all select * from r23 union all select * from r24
-  union all select * from r25 union all select * from r26
+  union all select * from r25 union all select * from r26 union all select * from r27 union all select * from r28
 )
 select rule_id, table_name, description, severity,
        cast(n_checked as bigint) as n_checked, cast(n_failed as bigint) as n_failed,

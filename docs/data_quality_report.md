@@ -45,6 +45,8 @@ Nenhum loan duplicado na originacao e nenhuma linha removida na performance.
 | R24 | perf | error | loan_id fora do formato PYYQnXXXXXXX | 74.919.968 | 0 | 0.00% | investigar |
 | R25 | perf | warn | loans sem saldo zero cujo ultimo periodo e anterior ao corte dos dados (serie truncada) | 1.349.995 | 0 | 0.00% | tratar como censurado ou investigar |
 | R26 | orig | error | first_payment_date nulo (idade e observabilidade incalculaveis) | 1.350.000 | 0 | 0.00% | excluir da modelagem |
+| R27 | perf | warn | loans com mais de uma linha de saldo zero (mais de um evento de termino) | 1.349.995 | 0 | 0.00% | investigar; usar o ultimo evento |
+| R28 | orig | warn | 1o pagamento incompativel com o trimestre do loan_id (fora de 0-8 meses; modificados/convertidos reiniciam a data) | 1.350.000 | 5.628 | 0.42% | excluir da amostra de PD (idade incalculavel) |
 
 ## 4. Ausentes e sentinelas
 ### 4.1 Originacao: variaveis com informacao ausente (brancos + sentinelas)
@@ -83,8 +85,8 @@ Nenhum loan duplicado na originacao e nenhuma linha removida na performance.
 | mi_recoveries | 74.900.424 | 0 | 99.97% |
 | total_expenses | 74.900.424 | 0 | 99.97% |
 | non_mi_recoveries | 74.900.424 | 0 | 99.97% |
-| taxes_insurance | 74.900.424 | 0 | 99.97% |
 | maintenance_preservation_costs | 74.900.424 | 0 | 99.97% |
+| taxes_insurance | 74.900.424 | 0 | 99.97% |
 | net_sales_proceeds | 74.900.330 | 0 | 99.97% |
 | delinquent_accrued_interest | 74.900.329 | 0 | 99.97% |
 | actual_loss | 74.900.329 | 0 | 99.97% |

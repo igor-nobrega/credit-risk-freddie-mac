@@ -12,8 +12,11 @@
 
 ## Convencoes
 - **Idade** = meses desde `first_payment_date` (1 = primeiro mes), recalculada das datas (a regra R23 mostra que `loan_age` do arquivo diverge em alguns casos).
-- **Defaults candidatos:** `dpd60` (>=2), `dpd90` (>=3 ou REO), `dpd180` (>=6 ou REO), `credit_event` (ZB 02/03/09/15), e a definicao primaria `dpd90_or_credit_event` (o que ocorrer primeiro).
+- **Defaults candidatos:** `dpd60` (>=2), `dpd90` (>=3 ou REO), `dpd180` (>=6 ou REO), `credit_event` (ZB 02/03/09/15).
+- **Definicao A:** `dpd90_or_credit_event` (o que ocorrer primeiro). **Definicao B:** igual a A, mas ignorando meses 90+ sob plano de assistencia (`borrower_assistance_plan` F/R/T), atraso por desastre (`delinquency_due_to_disaster` = Y) ou adiamento (`payment_deferral_flag` C/P), campos populados desde 2014. B responde a forbearance e desastres (ex.: pandemia); a escolha entre A e B e a D-002.
+- **Exclusoes:** `excluded_reason` no `gold_pd_dataset`: `first_payment_inconsistent` (1o pagamento fora de 0-8 meses do trimestre do loan_id; modificados e convertidos reiniciam a data) e `default_before_first_payment` (idade < 1). Treino: `excluded_reason is null and observable_24m`.
 - **Observabilidade (anti-vies):** `observable_Nm = months_observable >= N`, onde `months_observable` = meses do 1o pagamento ate o corte dos dados. Treine so com `observable_Nm = true`. Incluir loans de janela incompleta apenas quando o desfecho ja e conhecido superestima a taxa de default.
+- **Codigo do evento de credito:** `credit_event_code` (02 venda de terceiros, 03 short sale/charge-off, 09 REO, 15 venda de nota) para segmentar o LGD; `zb_code` e o ULTIMO codigo de saldo zero (estado terminal).
 - **UPB no default:** `upb_at_default` = saldo no 1o mes 90+ ou, se o evento de credito veio antes, o saldo removido (`zero_balance_removal_upb`).
 - **Prepagamento:** loan que liquida (ZB 01) sem default conta como "nao default" (risco competitivo: documentar e testar sensibilidade).
 
@@ -25,6 +28,11 @@ uv run poe gold            # dbt run + dbt test da camada gold
 uv run poe default-report  # docs/default_definition_report.md + 2 figuras + CSVs agregados
 uv run poe inspect-dq      # exemplos (nivel de emprestimo, SO no terminal) de loans que violam regras do DQ
 ```
+
+## Se o `dbt test` mostrar WARN em `assert_default_age_positive`
+Significa que ha loans com default ANTES do primeiro pagamento (idade < 1). Rode `uv run poe diagnose-age`: ele
+mostra quantos sao, por gatilho, codigo do evento, vintage e a idade da primeira linha de cada loan. A saida fica em
+`data/tmp/diagnose_default_age.txt`. Decida na D-002 se esses loans ficam, sao ajustados para idade 1 ou saem da amostra.
 
 ## Como decidir a D-002 (proposta inicial a validar com os numeros)
 1. **Gatilho:** 90+ dias ou REO ou evento de credito, o primeiro que ocorrer. Conferir na secao 4 do relatorio se "so evento de credito" e raro (se for, 90+ dias ja captura quase tudo).

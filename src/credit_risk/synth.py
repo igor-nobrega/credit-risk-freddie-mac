@@ -92,6 +92,14 @@ def make_synthetic(
             n_months // 3 if (kind == "good" and n_months >= 12 and rng.random() < 0.10) else 0
         )
         mod_start = n_months // 2 if (n_months >= 12 and rng.random() < 0.08) else 0
+        # assistencia ao mutuario (forbearance / desastre / adiamento): cobre atrasos 90+ sem perda real (estilo COVID)
+        assist = None
+        if cure_start:
+            assist = rng.choice([None, "F", "Y", "C"])
+        elif kind == "bad":
+            assist = rng.choice([None, None, None, "F"])
+        # em 'bad', o 1o mes 90+ e assistido e os posteriores nao (a definicao B demora mais que a A)
+        assist_until = n_months // 2 + 4 if kind == "bad" else 10**6
         for k in range(1, n_months + 1):
             period = _yyyymm(year, 3 + k - 1)
             if cutoff and period > cutoff:
@@ -125,6 +133,13 @@ def make_synthetic(
                 if (mod_start and k == mod_start)
                 else ("P" if mod_start and k > mod_start else ""),
             )
+            if assist and st >= 1 and k <= assist_until:
+                if assist == "F":
+                    p["borrower_assistance_plan"] = "F"
+                elif assist == "Y":
+                    p["delinquency_due_to_disaster"] = "Y"
+                else:
+                    p["payment_deferral_flag"] = "C"
             if last:
                 zb = {
                     "bad": rng.choice(["02", "03", "09"]),

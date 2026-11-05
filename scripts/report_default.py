@@ -77,23 +77,38 @@ for lab, col in [
     ("dpd90", "n_ever_dpd90"),
     ("dpd180", "n_ever_dpd180"),
     ("evento_credito", "n_ever_credit_event"),
-    ("dpd90_ou_evento", "n_ever_default"),
+    ("dpd90_ou_evento_A", "n_ever_default"),
+    ("B_sem_assistencia", "n_ever_default_noassist"),
 ]:
     T2[lab] = S[col] / S["n_with_perf"]
 
-# 3) taxa a 24 meses (definicao primaria), so loans com 24m de historico
+# 3) taxa a 24 meses: definicao A (simples) vs B (ignora atraso sob assistencia/desastre/adiamento)
 T3 = pd.DataFrame(
     {
         "vintage": S["vintage_year"],
         "loans_obs_24m": S["n_obs_24m"],
-        "defaults_24m": S["n_default_24m"],
+        "eventos_A": S["n_default_24m"],
+        "taxa_A": S["n_default_24m"] / S["n_obs_24m"].where(S["n_obs_24m"] > 0),
+        "eventos_B": S["n_default_na_24m"],
+        "taxa_B": S["n_default_na_24m"] / S["n_obs_24m"].where(S["n_obs_24m"] > 0),
     }
 )
-T3["taxa_24m"] = T3["defaults_24m"] / T3["loans_obs_24m"].where(T3["loans_obs_24m"] > 0)
 T3["alerta"] = np.where(
     T3["loans_obs_24m"] == 0,
     "sem janela de 24m",
-    np.where(T3["defaults_24m"] < MIN_EVENTS, f"< {MIN_EVENTS} eventos", ""),
+    np.where(T3["eventos_B"] < MIN_EVENTS, f"B: < {MIN_EVENTS} eventos", ""),
+)
+
+# 3b) atrasos 90+ sob plano de assistencia / desastre / adiamento, por vintage
+T3b = pd.DataFrame(
+    {
+        "vintage": S["vintage_year"],
+        "loans_90mais": S["n_ever_dpd90"],
+        "com_assistencia": S["n_dpd90_with_assistance"],
+    }
+)
+T3b["pct_com_assistencia"] = T3b["com_assistencia"] / T3b["loans_90mais"].where(
+    T3b["loans_90mais"] > 0
 )
 
 # 4) gatilhos, curas, modificacoes
@@ -177,6 +192,15 @@ ax.legend(fontsize=8)
 fig.tight_layout()
 fig.savefig(figs / "default_definitions_compare.png", dpi=150)
 
+T7 = pd.DataFrame(
+    [
+        ("sem nenhuma linha de performance", tot["n_without_perf"]),
+        ("1o pagamento incompativel com o loan_id", tot["n_first_payment_inconsistent"]),
+        ("default antes do 1o pagamento (idade < 1)", tot["n_default_before_first_payment"]),
+    ],
+    columns=["motivo", "loans"],
+)
+
 r21 = dq.iloc[0] if len(dq) else None
 doc = [
     "# Relatorio de Definicao de Default",
@@ -188,21 +212,28 @@ doc = [
     "Vintages recentes ainda estao censuradas: as taxas delas vao subir com o tempo.\n",
     md(T2, {c: pc for c in T2.columns if c not in ("vintage", "loans")} | {"loans": n}),
     "\n![Sensibilidade a definicao](../reports/figures/default_definitions_compare.png)\n",
-    "## 3. Taxa de default em 24 meses (definicao primaria: 90+ dias ou evento de credito)",
-    md(T3, {"loans_obs_24m": n, "defaults_24m": n, "taxa_24m": pc}),
+    "## 3. Taxa de default em 24 meses: A (90+ dias ou evento de credito) vs B (A sem atraso sob assistencia)",
+    "A = qualquer mes 90+ conta. B ignora meses 90+ sob plano de assistencia (forbearance/repayment/trial), "
+    "atraso por desastre ou adiamento de pagamento (campos populados desde 2014).\n",
+    md(T3, {"loans_obs_24m": n, "eventos_A": n, "eventos_B": n, "taxa_A": pc, "taxa_B": pc}),
     "\n![Curvas por vintage](../reports/figures/vintage_default_curves.png)\n",
+    "### 3b. Loans que chegaram a 90+ dias e tiveram assistencia/desastre/adiamento no periodo",
+    md(T3b, {"loans_90mais": n, "com_assistencia": n, "pct_com_assistencia": pc}),
+    "\nCampos de assistencia e desastre so existem a partir de 2014: antes disso o percentual e ~0 por construcao.\n",
     "## 4. Gatilhos dos defaults",
     md(T4, {"loans": n, "pct_dos_defaults": pc}),
     "\n## 5. Curas (loans que chegaram a 90+ dias)",
     md(T5, {"loans": n, "pct_dos_90plus": pc}),
     "\n## 6. Modificacoes",
     md(mod, {"loans": n, "pct": pc}),
-    "\n## 7. Prontidao para LGD",
+    "\n## 7. Exclusoes da amostra de PD (coluna `excluded_reason` do `gold_pd_dataset`)",
+    md(T7, {"loans": n}),
+    "\n## 8. Prontidao para LGD",
     f"Eventos de credito com `actual_loss` ausente (regra R21): {n(r21['n_failed'])} de {n(r21['n_checked'])} "
     f"({r21['pct_failed']:.2f}%). Esperado nos 3 ultimos meses antes do corte e em defeitos; tratar como censura."
     if r21 is not None
     else "(rode `uv run poe silver` antes)",
-    "\n## 8. Decisao (D-002)",
+    "\n## 9. Decisao (D-002)",
     read_manual(
         "docs/default_decision.md",
         "_(a preencher: crie `docs/default_decision.md` com gatilho, janela, tratamento de cura e de "

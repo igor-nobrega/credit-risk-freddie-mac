@@ -53,6 +53,7 @@ ignore = ["E501"]
 testpaths = ["tests"]
 
 [tool.poe.tasks]
+diagnose-age = "python scripts/diagnose_default_age.py"
 default-report = "python scripts/report_default.py"
 inspect-dq = "python scripts/inspect_dq.py"
 check = "python scripts/check_env.py"
