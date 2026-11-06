@@ -30,6 +30,7 @@ select
   count(*) filter (where e.has_perf and e.default_age <= 24 and e.months_observable >= 24) as n_default_24m,
   count(*) filter (where e.has_perf and e.default_na_age <= 24 and e.months_observable >= 24) as n_default_na_24m,
   count(*) filter (where e.first_payment_inconsistent) as n_first_payment_inconsistent,
+  count(*) filter (where e.first_payment_inconsistent and e.default_age is not null) as n_default_in_first_payment_inconsistent,
   count(*) filter (where e.has_perf and not e.first_payment_inconsistent and e.default_age < 1) as n_default_before_first_payment,
   count(*) filter (where not e.has_perf) as n_without_perf,
   max(e.cutoff_period) as cutoff_period

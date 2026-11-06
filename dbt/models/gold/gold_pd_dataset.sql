@@ -14,6 +14,13 @@ select
   e.default_na_age,
   coalesce(e.default_na_age <= 12, false) as default_na_12m,
   coalesce(e.default_na_age <= 24, false) as default_na_24m,
+  -- ALVO OFICIAL (D-002): definicao B. Treino/validacao: usable_Nm = true
+  coalesce(e.default_na_age <= 12, false) as target_12m,
+  coalesce(e.default_na_age <= 24, false) as target_24m,
+  coalesce(not e.first_payment_inconsistent and not coalesce(e.default_age < 1, false)
+           and e.months_observable >= 12, false) as usable_12m,
+  coalesce(not e.first_payment_inconsistent and not coalesce(e.default_age < 1, false)
+           and e.months_observable >= 24, false) as usable_24m,
   e.assisted_while_dpd90, e.months_to_first_payment,
   -- exclusoes: 1o pagamento incompativel com o loan_id (loans modificados/convertidos) ou default antes do 1o pagamento
   case when e.first_payment_inconsistent then 'first_payment_inconsistent'

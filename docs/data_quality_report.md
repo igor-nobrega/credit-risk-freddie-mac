@@ -85,8 +85,8 @@ Nenhum loan duplicado na originacao e nenhuma linha removida na performance.
 | mi_recoveries | 74.900.424 | 0 | 99.97% |
 | total_expenses | 74.900.424 | 0 | 99.97% |
 | non_mi_recoveries | 74.900.424 | 0 | 99.97% |
-| maintenance_preservation_costs | 74.900.424 | 0 | 99.97% |
 | taxes_insurance | 74.900.424 | 0 | 99.97% |
+| maintenance_preservation_costs | 74.900.424 | 0 | 99.97% |
 | net_sales_proceeds | 74.900.330 | 0 | 99.97% |
 | delinquent_accrued_interest | 74.900.329 | 0 | 99.97% |
 | actual_loss | 74.900.329 | 0 | 99.97% |

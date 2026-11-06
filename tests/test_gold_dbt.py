@@ -240,18 +240,22 @@ def test_pd_dataset_targets_and_observability(gold):
     data, orc = gold
     con = connect(data / "warehouse.duckdb", read_only=True)
     rows = con.execute(
-        "select loan_id, default_24m, observable_24m, default_12m, observable_12m from gold.gold_pd_dataset"
+        "select loan_id, default_24m, observable_24m, default_12m, observable_12m, "
+        "target_24m, target_12m, usable_24m, usable_12m, excluded_reason from gold.gold_pd_dataset"
     ).fetchall()
     cols = [c[0] for c in con.execute("describe gold.gold_pd_dataset").fetchall()]
     con.close()
     assert len(rows) == 3 * N_PER_VINTAGE  # loans sem performance ficam de fora
     assert "vantage_score_4" not in cols and "credit_score" in cols
     assert not {"default_period", "upb_at_default"} & set(cols[: cols.index("default_period")])
-    for lid, d24, o24, d12, o12 in rows:
+    for lid, d24, o24, d12, o12, t24, t12, u24, u12, excl in rows:
         o = orc[lid]
-        da, mo = o["default_age"], o["months_obs"]
+        da, dna, mo = o["default_age"], o["default_na_age"], o["months_obs"]
         assert d24 == (da is not None and da <= 24) and d12 == (da is not None and da <= 12)
         assert o24 == (mo >= 24) and o12 == (mo >= 12)
+        # alvo OFICIAL = definicao B; usable = janela completa e nenhuma exclusao
+        assert t24 == (dna is not None and dna <= 24) and t12 == (dna is not None and dna <= 12)
+        assert excl is None and u24 == (mo >= 24) and u12 == (mo >= 12)
     # janela incompleta nao pode entrar no treino: a vintage 2021 nao tem NENHUM loan observavel a 24m
     con = connect(data / "warehouse.duckdb", read_only=True)
     n21 = con.execute(

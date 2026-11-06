@@ -183,8 +183,11 @@ def test_first_payment_inconsistency_is_flagged_and_excluded(early):
         "select count(*) from gold.gold_loan_events where first_payment_inconsistent"
     ).fetchone()[0]
     r28 = con.execute("select n_failed from dq.dq_rule_results where rule_id = 'R28'").fetchone()[0]
+    usable = dict(con.execute("select loan_id, usable_24m from gold.gold_pd_dataset").fetchall())
     con.close()
     assert ev == (True, 41)
+    assert [usable[i] for i in [*ids, bad_fp]] == [False] * 4  # excluidos nao entram no treino
+    assert sum(usable.values()) == len(usable) - 4
     assert reasons[bad_fp] == "first_payment_inconsistent"
     assert [reasons[i] for i in ids] == ["default_before_first_payment"] * 3
     assert (

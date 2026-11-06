@@ -7,6 +7,7 @@ Somente agregados (contagens e taxas por vintage): publicaveis.
 """
 
 import datetime as dt
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -33,6 +34,30 @@ S = df("select * from gold.gold_default_summary order by vintage_year")
 MIN_AT_RISK = max(1, int(0.2 * S["n_with_perf"].max()))
 C = df("select * from gold.gold_vintage_curves")
 dq = df("select * from dq.dq_rule_results where rule_id = 'R21'")
+
+# --- guarda: a gold precisa ter sido reconstruida com a versao atual dos modelos -------------------------
+REQUIRED_SUMMARY = [
+    "n_default_na_24m",
+    "n_ever_default_noassist",
+    "n_dpd90_with_assistance",
+    "n_first_payment_inconsistent",
+    "n_default_in_first_payment_inconsistent",
+    "n_default_before_first_payment",
+    "n_without_perf",
+]
+REQUIRED_DEFS = {"dpd90_noassist", "dpd90_noassist_or_credit_event"}
+missing = [c for c in REQUIRED_SUMMARY if c not in S.columns]
+missing_defs = sorted(REQUIRED_DEFS - set(C["definition"].unique()))
+if missing or missing_defs:
+    print(
+        "ERRO: a camada gold esta DESATUALIZADA em relacao a este script (o relatorio NAO foi gerado)."
+    )
+    if missing:
+        print(f"  colunas ausentes em gold.gold_default_summary: {missing}")
+    if missing_defs:
+        print(f"  definicoes ausentes em gold.gold_vintage_curves: {missing_defs}")
+    print("  Corrija com:  uv run poe gold   (e depois:  uv run poe default-report)")
+    sys.exit(1)
 
 n = lambda v: f"{int(v):,}".replace(",", ".")  # noqa: E731
 pc = lambda v: "" if v != v else f"{100 * float(v):.2f}%"  # noqa: E731
@@ -194,17 +219,27 @@ fig.savefig(figs / "default_definitions_compare.png", dpi=150)
 
 T7 = pd.DataFrame(
     [
-        ("sem nenhuma linha de performance", tot["n_without_perf"]),
-        ("1o pagamento incompativel com o loan_id", tot["n_first_payment_inconsistent"]),
-        ("default antes do 1o pagamento (idade < 1)", tot["n_default_before_first_payment"]),
+        ("sem nenhuma linha de performance", tot["n_without_perf"], 0),
+        (
+            "1o pagamento incompativel com o loan_id",
+            tot["n_first_payment_inconsistent"],
+            tot["n_default_in_first_payment_inconsistent"],
+        ),
+        (
+            "default antes do 1o pagamento (idade < 1), nao explicado acima",
+            tot["n_default_before_first_payment"],
+            tot["n_default_before_first_payment"],
+        ),
     ],
-    columns=["motivo", "loans"],
+    columns=["motivo", "loans", "defaults_entre_eles"],
 )
+T7["pct_dos_loans"] = T7["loans"] / (tot["n_with_perf"] + tot["n_without_perf"])
 
 r21 = dq.iloc[0] if len(dq) else None
 doc = [
     "# Relatorio de Definicao de Default",
-    f"\nGerado em {dt.date.today().isoformat()} por `uv run poe default-report` (somente agregados).",
+    f"\nGerado em {dt.datetime.now():%Y-%m-%d %H:%M} por `uv run poe default-report` (somente agregados). "
+    "**Layout v3: definicoes A e B, assistencia e exclusoes.**",
     f"Corte de dados (ultimo periodo de performance): **{cutoff}**. Idade = meses desde o primeiro pagamento.\n",
     "## 1. Estados terminais (todas as vintages)",
     md(T1, {"loans": n, "pct": pc}),
@@ -219,7 +254,8 @@ doc = [
     "\n![Curvas por vintage](../reports/figures/vintage_default_curves.png)\n",
     "### 3b. Loans que chegaram a 90+ dias e tiveram assistencia/desastre/adiamento no periodo",
     md(T3b, {"loans_90mais": n, "com_assistencia": n, "pct_com_assistencia": pc}),
-    "\nCampos de assistencia e desastre so existem a partir de 2014: antes disso o percentual e ~0 por construcao.\n",
+    "\nOs campos de assistencia e desastre so existem desde 2014 e so marcam meses 90+ ocorridos de 2014 em diante: "
+    "vintages antigas (1999-2008) tem percentuais menores porque a maior parte dos atrasos delas veio antes.\n",
     "## 4. Gatilhos dos defaults",
     md(T4, {"loans": n, "pct_dos_defaults": pc}),
     "\n## 5. Curas (loans que chegaram a 90+ dias)",
@@ -227,7 +263,7 @@ doc = [
     "\n## 6. Modificacoes",
     md(mod, {"loans": n, "pct": pc}),
     "\n## 7. Exclusoes da amostra de PD (coluna `excluded_reason` do `gold_pd_dataset`)",
-    md(T7, {"loans": n}),
+    md(T7, {"loans": n, "defaults_entre_eles": n, "pct_dos_loans": pc}),
     "\n## 8. Prontidao para LGD",
     f"Eventos de credito com `actual_loss` ausente (regra R21): {n(r21['n_failed'])} de {n(r21['n_checked'])} "
     f"({r21['pct_failed']:.2f}%). Esperado nos 3 ultimos meses antes do corte e em defeitos; tratar como censura."
