@@ -100,6 +100,7 @@ select
   c.cutoff_period,
   date_diff('month', o.first_payment_date, c.cutoff_period) + 1 as months_observable,
   q.months_to_first_payment,
+  date_diff('month', o.first_payment_date, a.first_period) + 1 as first_row_age,
   coalesce(q.months_to_first_payment < 0 or q.months_to_first_payment > 8, false) as first_payment_inconsistent
 from {{ ref('silver_orig') }} o
 cross join cutoff c

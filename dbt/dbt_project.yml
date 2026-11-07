@@ -1,5 +1,5 @@
 name: credit_risk
-version: "0.3.0"
+version: "0.4.0"
 config-version: 2
 profile: credit_risk
 model-paths: ["models"]
@@ -24,4 +24,7 @@ models:
       +materialized: table
     gold:
       +schema: gold
+      +materialized: table
+    eda:
+      +schema: eda
       +materialized: table

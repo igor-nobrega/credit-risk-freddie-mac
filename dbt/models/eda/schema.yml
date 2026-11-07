@@ -1,0 +1,15 @@
+version: 2
+models:
+  - name: eda_features
+    description: "Default em 24m por variavel, faixa e vintage (usable_24m, vintages <= 2023). Agregado."
+    columns:
+      - name: feature
+        data_tests: [not_null]
+      - name: bucket
+        data_tests: [not_null]
+      - name: n_loans
+        data_tests: [not_null]
+  - name: eda_exclusion_check
+    description: "Risco por faixa de first_payment_months e first_row_age em toda a populacao observavel (calibracao das exclusoes)."
+  - name: eda_fico_ltv
+    description: "FICO x LTV por era (agregado)."

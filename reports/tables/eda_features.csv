@@ -1,0 +1,2987 @@
+feature,bucket,vintage_year,n_loans,n_defaults
+rate_band,e 6-6.99,2011,33,3
+rate_band,d 5-5.99,2018,13102,136
+rate_band,f >=7,2001,20908,427
+rate_band,d 5-5.99,2014,2760,41
+rate_band,e 6-6.99,2007,37502,1696
+rate_band,f >=7,2003,230,10
+rate_band,d 5-5.99,2010,16359,225
+rate_band,a <3,2011,18,0
+rate_band,d 5-5.99,2015,456,6
+rate_band,b 3-3.99,2021,20867,125
+rate_band,d 5-5.99,2023,7435,96
+rate_band,f >=7,2009,13,1
+rate_band,c 4-4.99,2002,48,0
+rate_band,e 6-6.99,2004,12672,174
+rate_band,d 5-5.99,2000,3,0
+rate_band,a <3,2017,224,0
+rate_band,f >=7,2000,48134,745
+rate_band,a <3,2022,2408,11
+rate_band,f >=7,2023,16636,301
+rate_band,e 6-6.99,2005,14990,264
+rate_band,c 4-4.99,2006,44,0
+rate_band,d 5-5.99,2009,22168,224
+rate_band,e 6-6.99,2019,217,4
+rate_band,b 3-3.99,2020,26588,103
+rate_band,c 4-4.99,2010,29607,107
+rate_band,a <3,2012,3318,4
+rate_band,b 3-3.99,2013,22673,51
+rate_band,c 4-4.99,2015,26996,165
+rate_band,d 5-5.99,2002,12024,28
+rate_band,c 4-4.99,2023,499,5
+rate_band,f >=7,2006,3333,173
+rate_band,b 3-3.99,2019,19099,68
+rate_band,e 6-6.99,2020,5,0
+rate_band,b 3-3.99,2005,1,0
+rate_band,e 6-6.99,1999,14688,64
+rate_band,b 3-3.99,2017,13547,28
+rate_band,c 4-4.99,2018,33519,148
+rate_band,c 4-4.99,2014,37399,171
+rate_band,a <3,2020,20280,45
+rate_band,b 3-3.99,2022,9381,89
+rate_band,f >=7,2008,2595,337
+rate_band,f >=7,1999,34229,376
+rate_band,c 4-4.99,2017,34160,236
+rate_band,b 3-3.99,2018,2934,5
+rate_band,b 3-3.99,2014,9627,24
+rate_band,c 4-4.99,2022,10712,127
+rate_band,e 6-6.99,2008,24087,1226
+rate_band,b 3-3.99,2011,11676,7
+rate_band,c 4-4.99,2016,15526,122
+rate_band,a <3,2021,28286,75
+rate_band,d 5-5.99,2008,22043,415
+rate_band,c 4-4.99,2003,7599,5
+rate_band,c 4-4.99,2001,1,0
+rate_band,d 5-5.99,2017,1951,41
+rate_band,e 6-6.99,2001,26979,128
+rate_band,d 5-5.99,2022,15846,217
+rate_band,e 6-6.99,2016,1,0
+rate_band,f >=7,2007,4238,553
+rate_band,e 6-6.99,2003,9406,93
+rate_band,d 5-5.99,2011,8446,171
+rate_band,c 4-4.99,2012,16644,206
+rate_band,a <3,2015,1088,1
+rate_band,f >=7,2022,2554,44
+rate_band,d 5-5.99,2007,7926,185
+rate_band,e 6-6.99,2018,345,6
+rate_band,a <3,2023,3,0
+rate_band,e 6-6.99,2002,29831,180
+rate_band,c 4-4.99,2004,4844,7
+rate_band,d 5-5.99,2020,322,4
+rate_band,b 3-3.99,2009,8,0
+rate_band,f >=7,2002,7814,227
+rate_band,d 5-5.99,2006,5879,58
+rate_band,c 4-4.99,2009,26976,65
+rate_band,b 3-3.99,2004,1,0
+rate_band,a <3,2016,3237,5
+rate_band,d 5-5.99,2013,1902,40
+rate_band,c 4-4.99,2021,814,15
+rate_band,d 5-5.99,2005,33725,239
+rate_band,e 6-6.99,2009,776,27
+rate_band,f >=7,2004,277,10
+rate_band,d 5-5.99,2019,4625,31
+rate_band,e 6-6.99,2010,111,7
+rate_band,a <3,2018,3,0
+rate_band,e 6-6.99,2000,463,4
+rate_band,a <3,2014,114,0
+rate_band,c 4-4.99,2020,2757,23
+rate_band,e 6-6.99,2023,25272,320
+rate_band,f >=7,2005,252,16
+rate_band,d 5-5.99,2004,31805,196
+rate_band,d 5-5.99,1999,333,2
+rate_band,c 4-4.99,2011,29783,135
+rate_band,d 5-5.99,2012,419,12
+rate_band,b 3-3.99,2016,30728,103
+rate_band,c 4-4.99,2007,47,0
+rate_band,b 3-3.99,2003,5,0
+rate_band,b 3-3.99,2010,3886,4
+rate_band,c 4-4.99,2013,21428,134
+rate_band,b 3-3.99,2015,21360,41
+rate_band,d 5-5.99,2021,17,0
+rate_band,b 3-3.99,2023,106,1
+rate_band,c 4-4.99,2005,688,3
+rate_band,e 6-6.99,2006,40396,724
+rate_band,c 4-4.99,2019,25680,122
+rate_band,b 3-3.99,2012,29572,59
+rate_band,a <3,2013,3920,2
+rate_band,d 5-5.99,2016,421,4
+rate_band,e 6-6.99,2017,4,0
+rate_band,d 5-5.99,2001,1779,1
+rate_band,e 6-6.99,2022,9078,160
+rate_band,c 4-4.99,2008,1047,3
+rate_band,d 5-5.99,2003,32557,106
+rate_band,a <3,2019,294,0
+ltv_band,z missing,1999,3,0
+ltv_band,a <=60,2017,9246,40
+ltv_band,b 61-70,2021,8996,43
+ltv_band,e 91-95,2021,4748,38
+ltv_band,a <=60,2022,11582,137
+ltv_band,c 71-80,2008,20056,826
+ltv_band,f >95,2008,275,20
+ltv_band,z missing,2012,3,0
+ltv_band,b 61-70,2010,7810,43
+ltv_band,e 91-95,2010,2175,41
+ltv_band,c 71-80,2011,17254,63
+ltv_band,f >95,2011,3196,128
+ltv_band,e 91-95,2015,6389,39
+ltv_band,b 61-70,2015,6699,30
+ltv_band,d 81-90,2018,6050,36
+ltv_band,e 91-95,2000,5387,198
+ltv_band,b 61-70,2000,6398,61
+ltv_band,d 81-90,2014,5530,41
+ltv_band,b 61-70,2023,4869,53
+ltv_band,e 91-95,2023,9445,197
+ltv_band,c 71-80,2007,21471,983
+ltv_band,f >95,2007,1628,239
+ltv_band,z missing,2003,3,0
+ltv_band,d 81-90,1999,5032,79
+ltv_band,a <=60,2011,15222,18
+ltv_band,d 81-90,2012,4421,21
+ltv_band,b 61-70,2020,8280,27
+ltv_band,a <=60,2007,11609,201
+ltv_band,e 91-95,2020,4765,24
+ltv_band,d 81-90,2010,4142,54
+ltv_band,d 81-90,2015,5582,38
+ltv_band,e 91-95,2018,7877,81
+ltv_band,b 61-70,2018,5330,27
+ltv_band,d 81-90,2000,5144,141
+ltv_band,a <=60,2002,14424,31
+ltv_band,e 91-95,2014,7187,35
+ltv_band,b 61-70,2014,6110,23
+ltv_band,d 81-90,2023,6633,97
+ltv_band,c 71-80,2004,20876,164
+ltv_band,f >95,2004,518,8
+ltv_band,z missing,2009,2,0
+ltv_band,d 81-90,2016,5655,28
+ltv_band,c 71-80,2017,20101,91
+ltv_band,f >95,2017,1801,32
+ltv_band,d 81-90,2001,4559,125
+ltv_band,c 71-80,2022,15937,174
+ltv_band,f >95,2022,1620,25
+ltv_band,a <=60,2008,13222,195
+ltv_band,b 61-70,2009,8044,42
+ltv_band,e 91-95,2009,1472,24
+ltv_band,d 81-90,2003,3844,41
+ltv_band,z missing,2014,2,0
+ltv_band,z missing,2018,1,0
+ltv_band,a <=60,2010,15642,29
+ltv_band,a <=60,2015,10344,21
+ltv_band,a <=60,2000,10760,58
+ltv_band,d 81-90,2002,4076,87
+ltv_band,c 71-80,2020,16954,63
+ltv_band,a <=60,2023,10529,122
+ltv_band,f >95,2020,999,8
+ltv_band,z missing,2006,9,0
+ltv_band,c 71-80,2010,18092,75
+ltv_band,f >95,2010,2101,101
+ltv_band,e 91-95,2011,2739,41
+ltv_band,b 61-70,2011,7277,23
+ltv_band,c 71-80,2015,20034,68
+ltv_band,f >95,2015,851,17
+ltv_band,c 71-80,2000,19711,261
+ltv_band,f >95,2000,1195,30
+ltv_band,a <=60,2020,13436,34
+ltv_band,f >95,2023,3294,101
+ltv_band,c 71-80,2023,15181,153
+ltv_band,e 91-95,2007,3231,302
+ltv_band,b 61-70,2007,6920,280
+ltv_band,d 81-90,2004,4077,60
+ltv_band,z missing,2005,2,0
+ltv_band,c 71-80,2013,17020,43
+ltv_band,f >95,2013,4836,93
+ltv_band,b 61-70,2016,6996,30
+ltv_band,e 91-95,2016,6538,50
+ltv_band,b 61-70,2001,7950,49
+ltv_band,e 91-95,2001,3199,111
+ltv_band,c 71-80,2005,21897,218
+ltv_band,f >95,2005,708,17
+ltv_band,a <=60,2006,12347,97
+ltv_band,d 81-90,2009,3379,42
+ltv_band,b 61-70,2003,9360,31
+ltv_band,e 91-95,2003,2016,37
+ltv_band,z missing,2015,1,0
+ltv_band,f >95,2019,2207,20
+ltv_band,c 71-80,2019,19209,78
+ltv_band,z missing,2000,5,0
+ltv_band,z missing,2010,1,0
+ltv_band,a <=60,2013,11484,19
+ltv_band,d 81-90,2021,4583,25
+ltv_band,a <=60,2005,13476,63
+ltv_band,c 71-80,2006,23478,429
+ltv_band,f >95,2006,1045,71
+ltv_band,a <=60,2019,8934,36
+ltv_band,b 61-70,1999,7308,34
+ltv_band,e 91-95,1999,4466,84
+ltv_band,b 61-70,2012,6644,15
+ltv_band,e 91-95,2012,3299,26
+ltv_band,c 71-80,2002,20283,171
+ltv_band,f >95,2002,295,6
+ltv_band,d 81-90,2020,5518,19
+ltv_band,a <=60,2004,13249,44
+ltv_band,d 81-90,2013,5134,27
+ltv_band,b 61-70,2017,5864,34
+ltv_band,e 91-95,2017,7238,71
+ltv_band,a <=60,2021,15016,40
+ltv_band,b 61-70,2022,6231,94
+ltv_band,e 91-95,2022,8626,122
+ltv_band,d 81-90,2005,3359,79
+ltv_band,c 71-80,2009,19551,132
+ltv_band,f >95,2009,887,39
+ltv_band,d 81-90,2019,6465,25
+ltv_band,z missing,2004,2,0
+ltv_band,c 71-80,2021,15698,62
+ltv_band,f >95,2021,943,7
+ltv_band,d 81-90,2006,3586,144
+ltv_band,b 61-70,2008,7551,282
+ltv_band,e 91-95,2008,3053,239
+ltv_band,a <=60,2009,16606,38
+ltv_band,z missing,2002,5,0
+ltv_band,c 71-80,1999,19491,164
+ltv_band,f >95,1999,930,32
+ltv_band,c 71-80,2012,15195,32
+ltv_band,f >95,2012,7518,170
+ltv_band,a <=60,2018,8894,45
+ltv_band,b 61-70,2002,8081,47
+ltv_band,e 91-95,2002,2553,93
+ltv_band,a <=60,2014,9292,30
+ltv_band,z missing,2008,1,0
+ltv_band,a <=60,1999,12020,49
+ltv_band,d 81-90,2011,4266,43
+ltv_band,a <=60,2012,12873,17
+ltv_band,c 71-80,2018,19211,75
+ltv_band,f >95,2018,2540,31
+ltv_band,c 71-80,2014,20062,63
+ltv_band,f >95,2014,1717,44
+ltv_band,d 81-90,2007,4853,429
+ltv_band,b 61-70,2004,8273,53
+ltv_band,e 91-95,2004,2604,58
+ltv_band,b 61-70,2013,6487,16
+ltv_band,e 91-95,2013,4962,29
+ltv_band,c 71-80,2016,19343,81
+ltv_band,f >95,2016,821,16
+ltv_band,d 81-90,2017,5636,37
+ltv_band,c 71-80,2001,21666,214
+ltv_band,f >95,2001,347,6
+ltv_band,d 81-90,2022,5983,96
+ltv_band,b 61-70,2005,8132,89
+ltv_band,e 91-95,2005,2082,56
+ltv_band,c 71-80,2003,17795,68
+ltv_band,f >95,2003,230,6
+ltv_band,b 61-70,2019,5582,25
+ltv_band,e 91-95,2019,7518,41
+ltv_band,z missing,2007,1,0
+ltv_band,z missing,2011,2,0
+ltv_band,a <=60,2016,10560,29
+ltv_band,a <=60,2001,11946,51
+ltv_band,b 61-70,2006,7219,143
+ltv_band,e 91-95,2006,1968,71
+ltv_band,d 81-90,2008,5614,419
+ltv_band,a <=60,2003,16549,31
+dti_band,d 41-45,2017,11178,116
+dti_band,b 21-30,2002,14377,92
+dti_band,c 31-40,2020,16612,52
+dti_band,d 41-45,2022,12632,270
+dti_band,a <=20,2008,5664,70
+dti_band,f >50,2004,4149,47
+dti_band,e 46-50,2004,4223,56
+dti_band,z missing,2004,906,4
+dti_band,d 41-45,2010,5043,24
+dti_band,d 41-45,2015,9744,58
+dti_band,e 46-50,2016,4010,17
+dti_band,z missing,2016,2528,32
+dti_band,d 41-45,2000,6130,142
+dti_band,f >50,2001,2161,44
+dti_band,z missing,2001,1095,17
+dti_band,e 46-50,2001,3625,46
+dti_band,a <=20,2020,5845,3
+dti_band,d 41-45,2023,11245,169
+dti_band,c 31-40,2008,13436,469
+dti_band,f >50,2003,2903,25
+dti_band,z missing,2003,940,7
+dti_band,e 46-50,2003,3295,25
+dti_band,b 21-30,1999,14643,105
+dti_band,b 21-30,2012,10033,8
+dti_band,e 46-50,2018,7809,57
+dti_band,z missing,2018,513,10
+dti_band,z missing,2014,7309,109
+dti_band,e 46-50,2014,2441,6
+dti_band,a <=20,2021,5139,8
+dti_band,d 41-45,2009,4810,37
+dti_band,b 21-30,2011,10113,23
+dti_band,a <=20,2013,4773,8
+dti_band,c 31-40,2018,16938,78
+dti_band,c 31-40,2014,15808,51
+dti_band,a <=20,2005,6172,47
+dti_band,d 41-45,2006,6896,174
+dti_band,b 21-30,2007,10717,306
+dti_band,a <=20,2019,3847,13
+dti_band,c 31-40,2016,16547,71
+dti_band,b 21-30,2017,10936,29
+dti_band,c 31-40,2001,14913,181
+dti_band,d 41-45,2002,5153,69
+dti_band,b 21-30,2022,9227,71
+dti_band,f >50,2008,6801,496
+dti_band,e 46-50,2008,5359,344
+dti_band,z missing,2008,1023,54
+dti_band,c 31-40,2003,12929,59
+dti_band,a <=20,2004,7875,38
+dti_band,d 41-45,1999,4942,62
+dti_band,d 41-45,2012,4806,10
+dti_band,c 31-40,2013,11928,28
+dti_band,a <=20,2018,3496,14
+dti_band,a <=20,2014,4035,2
+dti_band,e 46-50,2021,5368,20
+dti_band,f >50,2021,15,0
+dti_band,c 31-40,2005,14478,159
+dti_band,b 21-30,2009,13273,34
+dti_band,c 31-40,2019,17351,76
+dti_band,z missing,2021,8,0
+dti_band,z missing,1999,1918,13
+dti_band,f >50,1999,2317,28
+dti_band,e 46-50,1999,3042,44
+dti_band,c 31-40,2011,10866,22
+dti_band,e 46-50,2012,1932,3
+dti_band,z missing,2012,17400,239
+dti_band,b 21-30,2018,10604,42
+dti_band,b 21-30,2014,10849,20
+dti_band,d 41-45,2021,9882,63
+dti_band,c 31-40,2007,14078,638
+dti_band,a <=20,2009,8134,7
+dti_band,f >50,2012,1,0
+dti_band,a <=20,2011,5376,2
+dti_band,b 21-30,2013,10068,9
+dti_band,b 21-30,2005,11083,92
+dti_band,f >50,2006,6093,181
+dti_band,e 46-50,2006,5467,153
+dti_band,z missing,2006,1051,22
+dti_band,a <=20,2007,5029,114
+dti_band,c 31-40,2009,12303,54
+dti_band,b 21-30,2019,11094,32
+dti_band,a <=20,2010,5760,4
+dti_band,a <=20,2015,4557,6
+dti_band,b 21-30,2016,11915,35
+dti_band,c 31-40,2017,16765,103
+dti_band,a <=20,2000,6202,60
+dti_band,b 21-30,2001,14360,127
+dti_band,d 41-45,2020,9095,53
+dti_band,c 31-40,2022,16389,200
+dti_band,a <=20,2023,2485,10
+dti_band,b 21-30,2003,13599,41
+dti_band,c 31-40,1999,14449,151
+dti_band,z missing,2011,15498,236
+dti_band,e 46-50,2011,2712,11
+dti_band,c 31-40,2012,10122,18
+dti_band,d 41-45,2013,6771,27
+dti_band,d 41-45,2005,6324,74
+dti_band,a <=20,2006,4861,33
+dti_band,e 46-50,2007,5496,371
+dti_band,z missing,2007,1118,50
+dti_band,f >50,2007,6654,534
+dti_band,d 41-45,2019,11028,66
+dti_band,f >50,2011,4,0
+dti_band,d 41-45,2011,5387,22
+dti_band,z missing,2013,14384,153
+dti_band,e 46-50,2013,1999,2
+dti_band,c 31-40,2021,17014,87
+dti_band,e 46-50,2005,4888,70
+dti_band,f >50,2005,5192,65
+dti_band,z missing,2005,1519,15
+dti_band,b 21-30,2006,10676,121
+dti_band,d 41-45,2007,6621,421
+dti_band,e 46-50,2019,6564,37
+dti_band,z missing,2019,31,1
+dti_band,b 21-30,2010,10355,18
+dti_band,b 21-30,2015,11634,23
+dti_band,a <=20,2016,4473,4
+dti_band,b 21-30,2000,12972,151
+dti_band,a <=20,2001,8082,54
+dti_band,b 21-30,2023,7964,68
+dti_band,a <=20,2003,11409,22
+dti_band,c 31-40,2004,14343,113
+dti_band,e 46-50,2020,4937,21
+dti_band,z missing,2010,14662,238
+dti_band,e 46-50,2010,2663,8
+dti_band,f >50,2010,726,8
+dti_band,z missing,2015,4020,48
+dti_band,e 46-50,2015,3734,7
+dti_band,d 41-45,2016,10440,75
+dti_band,e 46-50,2000,4390,100
+dti_band,f >50,2000,2459,57
+dti_band,z missing,2000,1035,7
+dti_band,d 41-45,2001,5431,87
+dti_band,c 31-40,2002,13794,136
+dti_band,b 21-30,2020,13463,46
+dti_band,e 46-50,2023,12919,275
+dti_band,d 41-45,2003,4722,35
+dti_band,z missing,2023,3,0
+dti_band,f >50,2023,1,0
+dti_band,a <=20,1999,7939,39
+dti_band,a <=20,2012,5659,3
+dti_band,d 41-45,2018,10543,94
+dti_band,d 41-45,2014,9458,48
+dti_band,b 21-30,2021,12558,37
+dti_band,c 31-40,2006,14608,271
+dti_band,e 46-50,2009,3211,32
+dti_band,f >50,2009,2748,37
+dti_band,z missing,2009,5462,116
+dti_band,e 46-50,2017,5473,29
+dti_band,z missing,2017,1806,20
+dti_band,a <=20,2002,8670,37
+dti_band,e 46-50,2022,8799,90
+dti_band,f >50,2022,13,0
+dti_band,b 21-30,2008,11275,203
+dti_band,d 41-45,2004,5957,45
+dti_band,z missing,2022,3,0
+dti_band,c 31-40,2010,10754,43
+dti_band,c 31-40,2015,16211,71
+dti_band,a <=20,2017,3728,8
+dti_band,c 31-40,2000,15412,232
+dti_band,e 46-50,2002,3659,64
+dti_band,f >50,2002,3079,31
+dti_band,z missing,2002,985,6
+dti_band,a <=20,2022,2916,17
+dti_band,c 31-40,2023,15334,201
+dti_band,d 41-45,2008,6214,345
+dti_band,b 21-30,2004,12146,84
+channel,C,2021,14066,65
+channel,R,2008,24036,598
+channel,R,1999,26434,192
+channel,R,2012,33631,251
+channel,C,2002,9,0
+channel,B,2011,3983,10
+channel,R,2018,28251,146
+channel,T,2001,26013,397
+channel,R,2014,30385,179
+channel,T,2003,21293,134
+channel,C,2004,132,0
+channel,B,2007,19,0
+channel,C,2010,14044,47
+channel,R,2011,31601,272
+channel,C,2015,14599,58
+channel,B,2018,5088,30
+channel,B,2014,4389,12
+channel,C,2023,18773,270
+channel,R,2007,23009,831
+channel,C,2000,10,0
+channel,C,2012,12400,24
+channel,R,2002,23985,114
+channel,B,2020,6637,24
+channel,C,1999,36,0
+channel,T,2006,29445,649
+channel,T,1999,22759,250
+channel,C,2006,26,0
+channel,B,2008,5965,393
+channel,B,2013,3711,13
+channel,C,2017,15613,95
+channel,T,2000,24127,488
+channel,missing,2002,3,0
+channel,C,2022,15708,181
+channel,B,2005,35,0
+channel,R,2009,29738,197
+channel,B,2019,6123,29
+channel,R,2010,31390,275
+channel,C,2011,14372,34
+channel,R,2015,30350,138
+channel,R,2000,24430,261
+channel,R,2023,23208,337
+channel,B,2004,30,0
+channel,C,2007,15,1
+channel,T,2002,25709,321
+channel,B,2021,6919,36
+channel,missing,2000,19,0
+channel,R,2006,20171,306
+channel,R,2013,33315,174
+channel,C,2016,14643,73
+channel,R,2005,23267,183
+channel,C,2001,4,0
+channel,B,2009,7854,58
+channel,C,2003,41,0
+channel,T,2004,24902,250
+channel,R,2019,26011,106
+channel,C,2013,12897,40
+channel,R,2016,30372,130
+channel,B,2017,4704,28
+channel,R,2001,23624,159
+channel,B,2022,7496,95
+channel,C,2005,90,0
+channel,R,2003,28426,80
+channel,C,2019,17781,90
+channel,B,2010,4529,21
+channel,B,2015,4951,17
+channel,C,2018,16564,119
+channel,B,2000,14,0
+channel,C,2014,15126,45
+channel,B,2023,7970,116
+channel,T,2005,26264,339
+channel,R,2004,24531,137
+channel,B,2002,11,0
+channel,R,2020,28804,101
+channel,R,2021,28999,114
+channel,B,2006,10,0
+channel,C,2008,10266,376
+channel,missing,2004,4,0
+channel,B,1999,19,0
+channel,B,2012,3922,6
+channel,missing,2001,19,0
+channel,C,2020,14511,50
+channel,T,2008,9505,614
+channel,missing,2003,2,0
+channel,B,2016,4898,31
+channel,R,2017,29569,182
+channel,R,2022,26775,372
+channel,B,2001,7,0
+channel,T,2007,26670,1602
+channel,C,2009,12349,62
+channel,B,2003,35,0
+channel,missing,1999,2,0
+upb_band,b 100-199k,2017,17675,113
+upb_band,a <100k,2018,5437,46
+upb_band,a <100k,2014,8155,59
+upb_band,d 300-499k,2020,15795,46
+upb_band,e >=500k,2021,5068,30
+upb_band,b 100-199k,2022,12758,188
+upb_band,c 200-299k,2006,10933,226
+upb_band,a <100k,2011,8791,41
+upb_band,b 100-199k,2016,17041,78
+upb_band,b 100-199k,2001,23460,212
+upb_band,d 300-499k,2002,1742,7
+upb_band,c 200-299k,2021,14106,64
+upb_band,e >=500k,2006,56,2
+upb_band,a <100k,2007,10280,370
+upb_band,b 100-199k,2003,23310,102
+upb_band,e >=500k,2013,868,2
+upb_band,e >=500k,2005,36,0
+upb_band,c 200-299k,2009,12163,83
+upb_band,d 300-499k,2004,3319,19
+upb_band,e >=500k,2019,1818,12
+upb_band,e >=500k,2012,1063,0
+upb_band,a <100k,2009,7450,44
+upb_band,b 100-199k,2004,23141,169
+upb_band,c 200-299k,1999,5197,43
+upb_band,b 100-199k,2010,20348,135
+upb_band,c 200-299k,2012,12068,89
+upb_band,a <100k,2013,8884,46
+upb_band,b 100-199k,2015,18266,79
+upb_band,b 100-199k,2000,22365,319
+upb_band,b 100-199k,2023,11869,207
+upb_band,a <100k,2005,11113,147
+upb_band,d 300-499k,2008,10067,506
+upb_band,a <100k,2019,4167,30
+upb_band,e >=500k,2008,238,24
+upb_band,b 100-199k,2009,19324,120
+upb_band,a <100k,2004,13542,148
+upb_band,a <100k,2017,5768,51
+upb_band,b 100-199k,2018,18003,115
+upb_band,b 100-199k,2014,19094,88
+upb_band,c 200-299k,2020,14319,58
+upb_band,a <100k,2022,2823,64
+upb_band,d 300-499k,2006,6459,128
+upb_band,e >=500k,2002,6,0
+upb_band,d 300-499k,1999,73,0
+upb_band,a <100k,2010,8036,40
+upb_band,d 300-499k,2012,8876,39
+upb_band,b 100-199k,2013,19846,91
+upb_band,a <100k,2015,6402,42
+upb_band,a <100k,2000,19505,371
+upb_band,a <100k,2023,2852,77
+upb_band,b 100-199k,2005,22328,226
+upb_band,c 200-299k,2008,12010,554
+upb_band,b 100-199k,2019,15424,81
+upb_band,a <100k,1999,22004,215
+upb_band,d 300-499k,2010,8820,71
+upb_band,a <100k,2012,7975,34
+upb_band,c 200-299k,2013,11679,60
+upb_band,d 300-499k,2015,10998,35
+upb_band,d 300-499k,2000,69,0
+upb_band,d 300-499k,2023,14822,175
+upb_band,c 200-299k,2005,11090,112
+upb_band,b 100-199k,2008,19196,671
+upb_band,e >=500k,2009,832,0
+upb_band,c 200-299k,2019,14055,45
+upb_band,c 200-299k,2011,11573,86
+upb_band,d 300-499k,2016,12462,38
+upb_band,e >=500k,2018,1301,7
+upb_band,d 300-499k,2001,155,1
+upb_band,b 100-199k,2002,23242,160
+upb_band,e >=500k,2014,1095,0
+upb_band,a <100k,2021,2504,21
+upb_band,c 200-299k,2007,10735,632
+upb_band,d 300-499k,2003,2137,3
+upb_band,e >=500k,2011,1120,2
+upb_band,d 300-499k,2017,11637,57
+upb_band,c 200-299k,2018,13395,63
+upb_band,c 200-299k,2014,12127,47
+upb_band,b 100-199k,2020,12954,50
+upb_band,d 300-499k,2022,15311,158
+upb_band,a <100k,2006,10313,175
+upb_band,e >=500k,2007,87,6
+upb_band,d 300-499k,2011,8906,52
+upb_band,c 200-299k,2016,13660,70
+upb_band,e >=500k,2017,1441,6
+upb_band,c 200-299k,2001,9377,60
+upb_band,a <100k,2002,15835,216
+upb_band,b 100-199k,2021,13364,60
+upb_band,e >=500k,2022,6309,94
+upb_band,d 300-499k,2007,7260,476
+upb_band,c 200-299k,2003,8573,32
+upb_band,b 100-199k,2011,19566,135
+upb_band,a <100k,2016,5350,45
+upb_band,a <100k,2001,16669,283
+upb_band,c 200-299k,2002,8892,52
+upb_band,d 300-499k,2021,14942,40
+upb_band,b 100-199k,2007,21351,950
+upb_band,a <100k,2003,15765,77
+upb_band,e >=500k,2020,4518,12
+upb_band,b 100-199k,1999,21976,184
+upb_band,c 200-299k,2010,11921,96
+upb_band,b 100-199k,2012,19971,119
+upb_band,d 300-499k,2013,8646,28
+upb_band,c 200-299k,2015,12810,52
+upb_band,c 200-299k,2000,6661,59
+upb_band,c 200-299k,2023,12925,169
+upb_band,d 300-499k,2005,5089,37
+upb_band,a <100k,2008,8261,226
+upb_band,e >=500k,2004,33,0
+upb_band,d 300-499k,2019,14451,57
+upb_band,e >=500k,2010,838,1
+upb_band,e >=500k,2015,1424,5
+upb_band,e >=500k,2023,7483,95
+upb_band,d 300-499k,2009,10172,70
+upb_band,c 200-299k,2004,9564,51
+upb_band,e >=500k,2016,1400,3
+upb_band,c 200-299k,2017,13365,78
+upb_band,d 300-499k,2018,11767,64
+upb_band,d 300-499k,2014,9429,42
+upb_band,c 200-299k,2022,12778,144
+upb_band,b 100-199k,2006,21891,424
+upb_band,e >=500k,2001,6,0
+upb_band,a <100k,2020,2366,9
+upb_band,e >=500k,2003,12,0
+occupancy_status,S,1999,1642,8
+occupancy_status,S,2012,1877,3
+occupancy_status,P,2008,43186,1701
+occupancy_status,I,2008,3789,201
+occupancy_status,P,2009,46152,287
+occupancy_status,I,2009,1589,18
+occupancy_status,S,2004,2087,10
+occupancy_status,P,2010,45762,325
+occupancy_status,I,2010,2172,13
+occupancy_status,S,2013,1924,4
+occupancy_status,P,2015,43997,194
+occupancy_status,I,2015,4156,14
+occupancy_status,P,2000,43930,682
+occupancy_status,I,2000,2603,53
+occupancy_status,P,2023,45181,698
+occupancy_status,I,2023,3709,20
+occupancy_status,S,2005,2355,18
+occupancy_status,S,2019,1977,10
+occupancy_status,P,2006,44861,889
+occupancy_status,I,2006,2277,40
+occupancy_status,S,2020,1786,3
+occupancy_status,P,2020,45760,162
+occupancy_status,I,2020,2406,10
+occupancy_status,S,2006,2514,26
+occupancy_status,P,1999,45460,418
+occupancy_status,I,1999,2148,16
+occupancy_status,P,2012,44752,246
+occupancy_status,I,2012,3324,32
+occupancy_status,S,2008,2797,79
+occupancy_status,S,2009,2200,12
+occupancy_status,P,2004,45438,353
+occupancy_status,I,2004,2074,24
+occupancy_status,S,2011,2127,9
+occupancy_status,P,2016,44339,221
+occupancy_status,I,2016,3971,10
+occupancy_status,P,2001,46100,502
+occupancy_status,I,2001,2072,40
+occupancy_status,S,2007,2519,99
+occupancy_status,P,2003,46684,197
+occupancy_status,I,2003,1601,10
+occupancy_status,P,2011,44928,290
+occupancy_status,I,2011,2901,17
+occupancy_status,S,2016,1603,3
+occupancy_status,S,2001,1495,14
+occupancy_status,P,2007,43392,2128
+occupancy_status,I,2007,3802,207
+occupancy_status,S,2003,1512,7
+occupancy_status,S,2017,1861,7
+occupancy_status,P,2018,43577,272
+occupancy_status,I,2018,4175,15
+occupancy_status,P,2014,43194,205
+occupancy_status,I,2014,4796,24
+occupancy_status,S,2022,1320,4
+occupancy_status,S,2010,2029,5
+occupancy_status,P,2013,42971,195
+occupancy_status,I,2013,5028,28
+occupancy_status,S,2015,1747,5
+occupancy_status,S,2000,2067,14
+occupancy_status,S,2023,1061,5
+occupancy_status,P,2005,45709,485
+occupancy_status,I,2005,1592,19
+occupancy_status,P,2019,44518,205
+occupancy_status,I,2019,3420,10
+occupancy_status,S,2002,1542,7
+occupancy_status,P,2021,45650,199
+occupancy_status,I,2021,2541,13
+occupancy_status,P,2002,46133,396
+occupancy_status,I,2002,2042,32
+occupancy_status,S,2021,1793,3
+occupancy_status,P,2017,43166,282
+occupancy_status,I,2017,4859,16
+occupancy_status,S,2018,2151,8
+occupancy_status,S,2014,1910,7
+occupancy_status,P,2022,44599,622
+occupancy_status,I,2022,4060,22
+fico_band,d 700-739,2010,8440,83
+fico_band,d 700-739,2015,10204,46
+fico_band,d 700-739,2000,11268,83
+fico_band,b 620-659,2002,4546,134
+fico_band,e 740-779,2002,15167,23
+fico_band,d 700-739,2023,10734,234
+fico_band,a <620,2006,2079,177
+fico_band,f >=780,2006,10008,25
+fico_band,c 660-699,2009,3617,73
+fico_band,z missing,2020,7,0
+fico_band,z missing,1999,381,8
+fico_band,c 660-699,2016,6055,81
+fico_band,d 700-739,2018,11604,90
+fico_band,c 660-699,2001,8769,128
+fico_band,d 700-739,2014,10447,63
+fico_band,a <620,2008,833,177
+fico_band,f >=780,2008,14221,123
+fico_band,c 660-699,2003,7889,55
+fico_band,c 660-699,1999,9588,98
+fico_band,f >=780,2011,21581,42
+fico_band,a <620,2011,410,20
+fico_band,c 660-699,2012,3952,59
+fico_band,b 620-659,2017,2322,67
+fico_band,e 740-779,2017,14589,41
+fico_band,z missing,2001,251,8
+fico_band,e 740-779,2022,15487,102
+fico_band,b 620-659,2022,2714,144
+fico_band,f >=780,2007,10623,75
+fico_band,a <620,2007,2159,346
+fico_band,z missing,2003,23,1
+fico_band,e 740-779,2013,14598,30
+fico_band,b 620-659,2013,1872,50
+fico_band,d 700-739,2021,10433,48
+fico_band,b 620-659,2005,5224,158
+fico_band,e 740-779,2005,12740,35
+fico_band,f >=780,2004,7910,16
+fico_band,a <620,2004,1742,72
+fico_band,e 740-779,2019,16154,62
+fico_band,b 620-659,2019,1816,30
+fico_band,c 660-699,2020,4181,28
+fico_band,z missing,2009,1,0
+fico_band,d 700-739,2013,9670,46
+fico_band,f >=780,2020,19183,34
+fico_band,e 740-779,2021,15125,45
+fico_band,b 620-659,2021,1886,37
+fico_band,d 700-739,2005,10786,85
+fico_band,z missing,2006,46,1
+fico_band,c 660-699,2004,9430,109
+fico_band,d 700-739,2019,11049,57
+fico_band,a <620,2020,20,0
+fico_band,a <620,1999,2235,95
+fico_band,f >=780,1999,4438,3
+fico_band,c 660-699,2011,4024,58
+fico_band,f >=780,2012,21638,35
+fico_band,a <620,2012,562,35
+fico_band,d 700-739,2017,11547,87
+fico_band,d 700-739,2022,11453,172
+fico_band,c 660-699,2007,9069,687
+fico_band,z missing,2008,35,2
+fico_band,f >=780,2016,16142,10
+fico_band,a <620,2016,220,8
+fico_band,e 740-779,2018,15136,43
+fico_band,b 620-659,2018,2185,46
+fico_band,f >=780,2001,6736,9
+fico_band,a <620,2001,2413,154
+fico_band,b 620-659,2014,2065,42
+fico_band,e 740-779,2014,14676,37
+fico_band,z missing,2007,38,0
+fico_band,c 660-699,2008,6868,540
+fico_band,f >=780,2003,9249,6
+fico_band,a <620,2003,1191,42
+fico_band,e 740-779,2010,14643,61
+fico_band,b 620-659,2010,1100,48
+fico_band,e 740-779,2015,14729,28
+fico_band,b 620-659,2015,1820,42
+fico_band,e 740-779,2000,13562,54
+fico_band,b 620-659,2000,5658,239
+fico_band,d 700-739,2002,11218,39
+fico_band,e 740-779,2023,16087,120
+fico_band,b 620-659,2023,1862,116
+fico_band,c 660-699,2006,9215,270
+fico_band,f >=780,2009,20513,35
+fico_band,a <620,2009,210,15
+fico_band,z missing,2004,41,0
+fico_band,d 700-739,1999,12495,67
+fico_band,b 620-659,2011,1148,46
+fico_band,e 740-779,2011,14558,59
+fico_band,d 700-739,2012,7980,70
+fico_band,f >=780,2017,14477,19
+fico_band,a <620,2017,213,13
+fico_band,z missing,2014,13,0
+fico_band,f >=780,2022,13542,31
+fico_band,a <620,2022,78,2
+fico_band,z missing,2018,14,0
+fico_band,e 740-779,2007,12157,236
+fico_band,b 620-659,2007,5257,621
+fico_band,f >=780,2013,17491,19
+fico_band,a <620,2013,884,25
+fico_band,z missing,2000,700,15
+fico_band,c 660-699,2021,5901,56
+fico_band,z missing,2023,17,0
+fico_band,f >=780,2005,10000,22
+fico_band,a <620,2005,1940,98
+fico_band,e 740-779,2004,14082,23
+fico_band,b 620-659,2004,5288,115
+fico_band,f >=780,2019,15225,25
+fico_band,a <620,2019,36,1
+fico_band,d 700-739,2020,9400,48
+fico_band,z missing,2010,3,0
+fico_band,c 660-699,2010,3922,71
+fico_band,c 660-699,2015,5987,66
+fico_band,c 660-699,2000,9201,159
+fico_band,f >=780,2002,7735,10
+fico_band,a <620,2002,2289,149
+fico_band,c 660-699,2023,5628,209
+fico_band,b 620-659,2006,5565,251
+fico_band,e 740-779,2006,12127,82
+fico_band,d 700-739,2009,8482,87
+fico_band,z missing,2021,7,0
+fico_band,d 700-739,2016,10796,68
+fico_band,c 660-699,2018,6324,89
+fico_band,d 700-739,2001,11639,51
+fico_band,c 660-699,2014,6117,52
+fico_band,e 740-779,2008,14603,318
+fico_band,b 620-659,2008,2857,358
+fico_band,d 700-739,2003,11408,32
+fico_band,e 740-779,2016,14702,29
+fico_band,b 620-659,2016,1998,38
+fico_band,f >=780,2018,14553,23
+fico_band,a <620,2018,87,4
+fico_band,b 620-659,2001,5110,166
+fico_band,e 740-779,2001,14749,40
+fico_band,f >=780,2014,15960,20
+fico_band,a <620,2014,622,22
+fico_band,z missing,2022,8,0
+fico_band,z missing,2017,8,0
+fico_band,d 700-739,2008,10355,463
+fico_band,e 740-779,2003,16344,14
+fico_band,b 620-659,2003,3693,64
+fico_band,f >=780,2010,21448,51
+fico_band,a <620,2010,407,29
+fico_band,f >=780,2015,16802,23
+fico_band,a <620,2015,358,8
+fico_band,f >=780,2000,5535,16
+fico_band,a <620,2000,2676,183
+fico_band,c 660-699,2002,8369,77
+fico_band,z missing,2013,1,0
+fico_band,f >=780,2023,15561,38
+fico_band,a <620,2023,62,6
+fico_band,d 700-739,2006,10612,149
+fico_band,e 740-779,2009,16128,66
+fico_band,b 620-659,2009,990,41
+fico_band,z missing,2005,40,2
+fico_band,z missing,2019,16,0
+fico_band,c 660-699,2013,5407,57
+fico_band,z missing,2002,393,3
+fico_band,e 740-779,2020,16062,53
+fico_band,f >=780,2021,16606,27
+fico_band,a <620,2021,26,2
+fico_band,c 660-699,2005,8926,122
+fico_band,d 700-739,2004,11106,52
+fico_band,c 660-699,2019,5619,50
+fico_band,b 620-659,2020,1099,12
+fico_band,e 740-779,1999,14596,26
+fico_band,b 620-659,1999,5517,145
+fico_band,d 700-739,2011,8235,91
+fico_band,e 740-779,2012,14508,53
+fico_band,b 620-659,2012,1313,29
+fico_band,c 660-699,2017,6730,78
+fico_band,c 660-699,2022,6697,197
+fico_band,d 700-739,2007,10410,469
+mi_band,d >30,2011,130,9
+mi_band,z missing,2012,2,0
+mi_band,b 1-20,2018,2696,16
+mi_band,b 1-20,2014,1643,9
+mi_band,c 21-30,2021,7866,57
+mi_band,z missing,1999,5,3
+mi_band,d >30,2007,1447,216
+mi_band,b 1-20,1999,5282,73
+mi_band,b 1-20,2012,1498,24
+mi_band,a 0,2016,37526,149
+mi_band,a 0,2001,41517,305
+mi_band,c 21-30,2009,2204,21
+mi_band,a 0,2003,43736,130
+mi_band,d >30,2016,29,1
+mi_band,b 1-20,2017,2456,29
+mi_band,d >30,2001,215,0
+mi_band,c 21-30,2002,4578,148
+mi_band,b 1-20,2022,2263,41
+mi_band,d >30,2003,217,5
+mi_band,b 1-20,2010,793,13
+mi_band,b 1-20,2015,2158,8
+mi_band,b 1-20,2000,3268,79
+mi_band,a 0,2021,39722,145
+mi_band,b 1-20,2023,2674,52
+mi_band,d >30,2004,431,6
+mi_band,d >30,1999,225,3
+mi_band,d >30,2012,247,7
+mi_band,c 21-30,2013,6971,43
+mi_band,a 0,2017,35576,170
+mi_band,a 0,2022,33780,406
+mi_band,c 21-30,2005,3848,96
+mi_band,c 21-30,2019,12882,59
+mi_band,a 0,2011,45406,257
+mi_band,a 0,2007,40110,1468
+mi_band,b 1-20,2008,2338,150
+mi_band,c 21-30,2004,4482,87
+mi_band,b 1-20,2013,1656,12
+mi_band,a 0,2002,42765,245
+mi_band,b 1-20,2005,1538,36
+mi_band,d >30,2009,62,2
+mi_band,b 1-20,2019,3039,24
+mi_band,c 21-30,2016,9957,72
+mi_band,c 21-30,2001,5529,189
+mi_band,d >30,2002,272,4
+mi_band,a 0,2009,46437,281
+mi_band,c 21-30,2003,3625,59
+mi_band,b 1-20,2020,2791,10
+mi_band,z missing,2010,1,0
+mi_band,z missing,2000,3,3
+mi_band,a 0,1999,36517,226
+mi_band,a 0,2012,43744,204
+mi_band,b 1-20,2016,2401,12
+mi_band,b 1-20,2001,2403,60
+mi_band,c 21-30,2020,8157,40
+mi_band,d >30,2022,651,9
+mi_band,d >30,2017,27,0
+mi_band,b 1-20,2003,2219,20
+mi_band,b 1-20,2011,960,17
+mi_band,d >30,2014,95,2
+mi_band,c 21-30,2006,4027,166
+mi_band,b 1-20,2007,1819,147
+mi_band,a 0,2008,40849,1303
+mi_band,d >30,2018,91,1
+mi_band,c 21-30,2010,2529,42
+mi_band,c 21-30,2015,9485,62
+mi_band,a 0,2018,33547,152
+mi_band,c 21-30,2000,8023,277
+mi_band,a 0,2014,37931,170
+mi_band,c 21-30,2023,15082,305
+mi_band,z missing,2001,3,2
+mi_band,d >30,2008,302,34
+mi_band,c 21-30,1999,7221,137
+mi_band,c 21-30,2012,4462,46
+mi_band,d >30,2013,211,4
+mi_band,a 0,2020,38690,124
+mi_band,d >30,2005,682,19
+mi_band,b 1-20,2009,1236,13
+mi_band,d >30,2019,236,1
+mi_band,a 0,2013,41085,168
+mi_band,c 21-30,2017,11827,106
+mi_band,b 1-20,2002,2101,38
+mi_band,c 21-30,2022,13285,192
+mi_band,a 0,2005,43588,371
+mi_band,a 0,2019,33758,141
+mi_band,d >30,2020,314,1
+mi_band,z missing,2004,2,0
+mi_band,c 21-30,2011,3460,33
+mi_band,d >30,2021,379,2
+mi_band,b 1-20,2006,1455,47
+mi_band,c 21-30,2007,6337,603
+mi_band,a 0,2004,42526,261
+mi_band,a 0,2010,46544,285
+mi_band,a 0,2015,38194,142
+mi_band,c 21-30,2018,13569,126
+mi_band,a 0,2000,36909,378
+mi_band,c 21-30,2014,10231,55
+mi_band,b 1-20,2021,2017,11
+mi_band,a 0,2023,30627,331
+mi_band,d >30,2006,949,73
+mi_band,z missing,2009,2,0
+mi_band,d >30,2010,96,3
+mi_band,d >30,2015,63,1
+mi_band,d >30,2000,397,12
+mi_band,d >30,2023,1568,35
+mi_band,a 0,2006,43221,669
+mi_band,c 21-30,2008,6283,494
+mi_band,b 1-20,2004,2158,33
+mi_band,z missing,2002,1,0
+loan_purpose,N,2017,9990,54
+loan_purpose,P,2021,17136,90
+loan_purpose,N,2022,4294,41
+loan_purpose,N,1999,13977,119
+loan_purpose,C,2011,9207,22
+loan_purpose,N,2012,33978,256
+loan_purpose,C,2007,17968,958
+loan_purpose,P,2004,17905,134
+loan_purpose,P,2013,14961,38
+loan_purpose,C,2017,11398,78
+loan_purpose,C,2022,12365,257
+loan_purpose,P,2005,18963,178
+loan_purpose,P,2019,27757,118
+loan_purpose,missing,1999,3,0
+loan_purpose,P,2016,21950,120
+loan_purpose,P,2001,14729,189
+loan_purpose,N,2006,8024,164
+loan_purpose,C,2009,14134,93
+loan_purpose,P,2003,8867,58
+loan_purpose,N,2018,6073,42
+loan_purpose,P,2002,12082,148
+loan_purpose,N,2014,16350,133
+loan_purpose,N,2013,26875,167
+loan_purpose,C,2021,13767,64
+loan_purpose,N,2005,11507,125
+loan_purpose,N,2019,11589,52
+loan_purpose,C,2010,10942,38
+loan_purpose,C,2015,10332,34
+loan_purpose,P,2018,33392,182
+loan_purpose,C,2000,7978,167
+loan_purpose,N,2002,22220,158
+loan_purpose,P,2014,24886,68
+loan_purpose,C,2023,6050,137
+loan_purpose,N,2016,16674,65
+loan_purpose,N,2001,19470,203
+loan_purpose,P,2006,22968,378
+loan_purpose,C,2008,15582,733
+loan_purpose,N,2003,26984,89
+loan_purpose,N,2010,28505,264
+loan_purpose,N,2015,17435,84
+loan_purpose,N,2000,7343,150
+loan_purpose,C,2002,15415,129
+loan_purpose,N,2023,1908,25
+loan_purpose,C,1999,11067,103
+loan_purpose,N,2011,29309,259
+loan_purpose,C,2012,7504,11
+loan_purpose,P,2020,15061,62
+loan_purpose,N,2007,9316,557
+loan_purpose,P,2010,10516,41
+loan_purpose,P,2015,22133,95
+loan_purpose,C,2018,10438,71
+loan_purpose,P,2000,33279,432
+loan_purpose,C,2014,8664,35
+loan_purpose,P,2023,41993,561
+loan_purpose,C,2016,11289,49
+loan_purpose,C,2001,15468,164
+loan_purpose,N,2008,13461,536
+loan_purpose,P,2009,10417,39
+loan_purpose,C,2003,13946,67
+loan_purpose,C,2013,8087,22
+loan_purpose,P,2017,28498,173
+loan_purpose,N,2021,19081,61
+loan_purpose,P,2022,33320,350
+loan_purpose,C,2005,19186,219
+loan_purpose,C,2019,10569,55
+loan_purpose,P,1999,24203,220
+loan_purpose,P,2012,8471,14
+loan_purpose,C,2020,9694,38
+loan_purpose,N,2004,16838,100
+loan_purpose,P,2011,11440,35
+loan_purpose,N,2020,25197,75
+loan_purpose,P,2007,22429,919
+loan_purpose,C,2004,14856,153
+loan_purpose,C,2006,18660,413
+loan_purpose,P,2008,20729,712
+loan_purpose,N,2009,25390,185
+first_time_homebuyer_flag,missing,1999,421,2
+first_time_homebuyer_flag,N,2011,46519,301
+first_time_homebuyer_flag,N,2007,43646,2115
+first_time_homebuyer_flag,Y,2009,3283,9
+first_time_homebuyer_flag,Y,2002,2574,39
+first_time_homebuyer_flag,N,2016,41868,177
+first_time_homebuyer_flag,N,2001,46466,509
+first_time_homebuyer_flag,missing,2008,13,0
+first_time_homebuyer_flag,N,2003,48127,197
+first_time_homebuyer_flag,Y,2004,3261,35
+first_time_homebuyer_flag,Y,2013,4910,17
+first_time_homebuyer_flag,N,2018,36563,195
+first_time_homebuyer_flag,N,2014,41434,216
+first_time_homebuyer_flag,Y,2005,4183,52
+first_time_homebuyer_flag,Y,2019,11255,63
+first_time_homebuyer_flag,N,1999,43560,383
+first_time_homebuyer_flag,missing,2011,52,0
+first_time_homebuyer_flag,N,2012,47538,275
+first_time_homebuyer_flag,Y,2006,5267,121
+first_time_homebuyer_flag,missing,2007,10,0
+first_time_homebuyer_flag,Y,2011,3385,15
+first_time_homebuyer_flag,missing,2006,10,0
+first_time_homebuyer_flag,Y,2007,6057,319
+first_time_homebuyer_flag,N,2009,46654,308
+first_time_homebuyer_flag,Y,2016,8043,57
+first_time_homebuyer_flag,Y,2001,3192,47
+first_time_homebuyer_flag,Y,2003,1659,17
+first_time_homebuyer_flag,N,2004,46326,352
+first_time_homebuyer_flag,N,2013,45012,210
+first_time_homebuyer_flag,Y,2018,13340,100
+first_time_homebuyer_flag,Y,2014,8464,20
+first_time_homebuyer_flag,N,2005,45465,470
+first_time_homebuyer_flag,N,2019,38660,162
+first_time_homebuyer_flag,Y,2021,6979,50
+first_time_homebuyer_flag,missing,2014,2,0
+first_time_homebuyer_flag,Y,1999,5269,57
+first_time_homebuyer_flag,Y,2012,2415,6
+first_time_homebuyer_flag,N,2006,44375,834
+first_time_homebuyer_flag,missing,2009,4,0
+first_time_homebuyer_flag,N,2020,43866,139
+first_time_homebuyer_flag,Y,2008,5626,242
+first_time_homebuyer_flag,missing,2004,12,0
+first_time_homebuyer_flag,N,2021,43005,165
+first_time_homebuyer_flag,missing,2005,8,0
+first_time_homebuyer_flag,missing,2013,1,0
+first_time_homebuyer_flag,Y,2010,3455,16
+first_time_homebuyer_flag,Y,2015,7788,47
+first_time_homebuyer_flag,N,2017,39154,207
+first_time_homebuyer_flag,Y,2000,7689,118
+first_time_homebuyer_flag,N,2022,35332,490
+first_time_homebuyer_flag,Y,2023,19515,329
+first_time_homebuyer_flag,missing,2001,9,0
+first_time_homebuyer_flag,N,2008,44133,1739
+first_time_homebuyer_flag,missing,2003,11,0
+first_time_homebuyer_flag,Y,2020,6086,36
+first_time_homebuyer_flag,missing,2016,2,0
+first_time_homebuyer_flag,N,2010,46493,327
+first_time_homebuyer_flag,N,2015,42104,166
+first_time_homebuyer_flag,Y,2017,10732,98
+first_time_homebuyer_flag,N,2000,40784,631
+first_time_homebuyer_flag,Y,2022,14647,158
+first_time_homebuyer_flag,N,2023,30436,394
+first_time_homebuyer_flag,missing,2002,2,0
+first_time_homebuyer_flag,missing,2010,15,0
+first_time_homebuyer_flag,missing,2015,8,0
+first_time_homebuyer_flag,missing,2000,127,0
+first_time_homebuyer_flag,N,2002,47141,396
+property_type,MH,2017,223,0
+property_type,CO,2002,2810,12
+property_type,SF,2002,42209,400
+property_type,MH,2022,478,9
+property_type,CP,2009,112,0
+property_type,SF,1999,41173,383
+property_type,CO,1999,3171,27
+property_type,SF,2012,36410,192
+property_type,CO,2012,3074,41
+property_type,CP,2017,79,0
+property_type,CP,2022,122,0
+property_type,PU,2006,7247,125
+property_type,MH,2009,139,2
+property_type,PU,2013,11104,36
+property_type,SF,2018,31487,198
+property_type,CO,2018,4044,30
+property_type,SF,2014,33083,181
+property_type,CO,2014,3972,14
+property_type,MH,2021,277,2
+property_type,PU,2005,6192,44
+property_type,CP,2008,192,0
+property_type,PU,2019,14217,44
+property_type,missing,2005,1,0
+property_type,SF,2013,34608,169
+property_type,CO,2013,3910,20
+property_type,PU,2018,14086,64
+property_type,PU,2014,12527,39
+property_type,SF,2005,39355,435
+property_type,CO,2005,3318,31
+property_type,SF,2019,31332,159
+property_type,CO,2019,4092,19
+property_type,CP,2020,58,1
+property_type,CP,2018,88,0
+property_type,CP,2014,91,0
+property_type,PU,2020,14074,56
+property_type,SF,2008,36510,1556
+property_type,CO,2008,4135,157
+property_type,MH,2004,537,7
+property_type,SF,2010,37603,261
+property_type,CO,2010,2517,19
+property_type,SF,2015,32492,144
+property_type,CO,2015,4009,15
+property_type,PU,2017,13147,69
+property_type,SF,2000,38208,633
+property_type,CO,2000,3992,40
+property_type,PU,2022,14710,161
+property_type,SF,2023,29236,467
+property_type,CO,2023,5021,67
+property_type,CP,2006,172,1
+property_type,CP,1999,46,0
+property_type,PU,2010,9615,62
+property_type,CP,2012,72,1
+property_type,PU,2015,13126,53
+property_type,SF,2017,32138,214
+property_type,CO,2017,4299,22
+property_type,PU,2000,6103,63
+property_type,MH,2002,222,3
+property_type,SF,2022,30566,440
+property_type,CO,2022,4103,38
+property_type,PU,2023,14944,159
+property_type,missing,2000,12,0
+property_type,MH,1999,143,7
+property_type,PU,2011,10162,47
+property_type,MH,2012,159,1
+property_type,CP,2002,50,0
+property_type,PU,2007,7184,346
+property_type,SF,2009,37186,239
+property_type,CO,2009,2909,25
+property_type,MH,2010,110,0
+property_type,CP,2011,99,0
+property_type,MH,2015,176,1
+property_type,MH,2000,224,13
+property_type,PU,2002,4416,20
+property_type,missing,2002,10,0
+property_type,MH,2023,630,28
+property_type,CP,2007,174,3
+property_type,SF,2011,36853,238
+property_type,CO,2011,2688,29
+property_type,MH,2006,778,23
+property_type,SF,2007,37377,1855
+property_type,CO,2007,4408,209
+property_type,PU,2009,9595,51
+property_type,MH,2013,185,2
+property_type,CP,2016,81,0
+property_type,CP,2001,37,1
+property_type,PU,2021,13873,39
+property_type,MH,2005,611,12
+property_type,CP,2003,77,0
+property_type,MH,2019,197,3
+property_type,SF,2016,32201,160
+property_type,CO,2016,4167,14
+property_type,SF,2001,41653,493
+property_type,CO,2001,2893,23
+property_type,SF,2003,41704,190
+property_type,CO,2003,2759,7
+property_type,PU,2004,6262,27
+property_type,missing,2004,21,0
+property_type,MH,2020,162,2
+property_type,MH,2016,143,1
+property_type,MH,2001,178,5
+property_type,CP,2013,116,0
+property_type,CO,2020,3642,14
+property_type,SF,2020,32016,102
+property_type,CP,2005,179,0
+property_type,PU,2008,8714,263
+property_type,MH,2003,270,5
+property_type,CP,2019,77,0
+property_type,PU,2016,13321,59
+property_type,PU,2001,4884,34
+property_type,CP,2021,73,0
+property_type,missing,2001,22,0
+property_type,MH,2008,221,5
+property_type,PU,2003,4987,12
+property_type,CO,2004,3241,16
+property_type,SF,2004,39370,337
+property_type,MH,2018,198,3
+property_type,MH,2014,227,2
+property_type,SF,2021,31846,153
+property_type,CO,2021,3915,21
+property_type,CP,2004,168,0
+property_type,PU,1999,4717,25
+property_type,CP,2010,118,1
+property_type,MH,2011,154,2
+property_type,PU,2012,10238,46
+property_type,CP,2015,97,0
+property_type,CP,2000,61,0
+property_type,CP,2023,120,2
+property_type,SF,2006,37451,755
+property_type,CO,2006,4004,51
+property_type,MH,2007,570,21
+harp_indicator,Y,2011,15493,236
+harp_indicator,N,2021,49984,215
+harp_indicator,N,2018,49392,285
+harp_indicator,N,2014,42593,127
+harp_indicator,Y,2010,14641,238
+harp_indicator,Y,2015,4017,48
+harp_indicator,N,2008,49772,1981
+harp_indicator,Y,2009,5364,116
+harp_indicator,N,2004,49599,387
+harp_indicator,Y,2017,1804,20
+harp_indicator,N,2020,49952,175
+harp_indicator,N,2009,44577,201
+harp_indicator,Y,2016,2525,32
+harp_indicator,N,2002,49717,435
+harp_indicator,N,2011,34463,80
+harp_indicator,N,2007,49713,2434
+harp_indicator,Y,2018,511,10
+harp_indicator,Y,2014,7307,109
+harp_indicator,N,2006,49652,955
+harp_indicator,N,2010,35322,105
+harp_indicator,N,2015,45883,165
+harp_indicator,N,2000,48600,749
+harp_indicator,N,2023,49951,723
+harp_indicator,Y,2012,17399,239
+harp_indicator,N,2013,35541,74
+harp_indicator,N,2005,49656,522
+harp_indicator,N,2019,49885,224
+harp_indicator,N,2017,48082,285
+harp_indicator,N,2022,49979,648
+harp_indicator,N,2016,47388,202
+harp_indicator,N,2001,49667,556
+harp_indicator,N,2003,49797,214
+harp_indicator,N,1999,49250,442
+harp_indicator,N,2012,32554,42
+harp_indicator,Y,2013,14382,153
+harp_indicator,Y,2019,30,1
+number_of_borrowers,1,2018,27027,230
+number_of_borrowers,1,2014,24611,167
+number_of_borrowers,missing,2007,23,0
+number_of_borrowers,3,2020,288,1
+number_of_borrowers,missing,2000,31,1
+number_of_borrowers,2,2020,24199,57
+number_of_borrowers,1,2004,19552,249
+number_of_borrowers,missing,2010,1,0
+number_of_borrowers,1,1999,17204,240
+number_of_borrowers,2,2011,29973,128
+number_of_borrowers,1,2012,19926,169
+number_of_borrowers,3,2023,735,7
+number_of_borrowers,2,2007,26138,841
+number_of_borrowers,4,2019,46,1
+number_of_borrowers,missing,1999,28,0
+number_of_borrowers,2,2018,22438,62
+number_of_borrowers,2,2014,25289,69
+number_of_borrowers,5,2018,1,0
+number_of_borrowers,3,2022,603,7
+number_of_borrowers,1,2006,22456,622
+number_of_borrowers,2,2009,30682,124
+number_of_borrowers,4,2018,62,0
+number_of_borrowers,2,2016,24650,66
+number_of_borrowers,2,2001,32977,218
+number_of_borrowers,4,2023,105,0
+number_of_borrowers,1,2008,23639,1404
+number_of_borrowers,2,2003,32841,83
+number_of_borrowers,3,2019,451,2
+number_of_borrowers,2,1999,32018,202
+number_of_borrowers,1,2011,19983,188
+number_of_borrowers,2,2012,30027,112
+number_of_borrowers,4,2021,58,1
+number_of_borrowers,1,2007,23552,1593
+number_of_borrowers,1,2017,26236,232
+number_of_borrowers,missing,2001,11,0
+number_of_borrowers,1,2022,28188,481
+number_of_borrowers,missing,2003,15,0
+number_of_borrowers,4,2020,49,0
+number_of_borrowers,2,2006,27177,333
+number_of_borrowers,1,2009,19251,193
+number_of_borrowers,missing,2005,11,0
+number_of_borrowers,1,2016,25263,168
+number_of_borrowers,1,2001,16679,338
+number_of_borrowers,3,2021,340,2
+number_of_borrowers,2,2008,26110,577
+number_of_borrowers,1,2003,16941,131
+number_of_borrowers,2,2017,23650,73
+number_of_borrowers,2,2022,21115,160
+number_of_borrowers,missing,2008,23,0
+number_of_borrowers,2,2010,30513,153
+number_of_borrowers,2,2015,25466,55
+number_of_borrowers,2,2000,29768,295
+number_of_borrowers,1,2002,16933,268
+number_of_borrowers,2,2023,21489,176
+number_of_borrowers,1,2010,19449,190
+number_of_borrowers,1,2015,24434,158
+number_of_borrowers,1,2000,18801,453
+number_of_borrowers,2,2002,32775,167
+number_of_borrowers,1,2023,27622,540
+number_of_borrowers,missing,2004,12,0
+number_of_borrowers,2,2013,27282,88
+number_of_borrowers,1,2021,26949,161
+number_of_borrowers,2,2005,29048,175
+number_of_borrowers,2,2019,22507,60
+number_of_borrowers,missing,2006,19,0
+number_of_borrowers,5,2019,1,0
+number_of_borrowers,1,2013,22641,139
+number_of_borrowers,2,2021,22634,51
+number_of_borrowers,1,2005,20597,347
+number_of_borrowers,1,2019,26910,162
+number_of_borrowers,5,2021,3,0
+number_of_borrowers,missing,2009,8,0
+number_of_borrowers,3,2018,375,3
+number_of_borrowers,1,2020,25416,117
+number_of_borrowers,4,2022,73,0
+number_of_borrowers,2,2004,30035,138
+number_of_borrowers,missing,2002,9,0
+property_valuation_method,missing,2002,49717,435
+property_valuation_method,1,2020,19316,52
+property_valuation_method,4,2022,70,0
+property_valuation_method,missing,2017,49441,303
+property_valuation_method,2,2023,43791,687
+property_valuation_method,missing,2018,48390,287
+property_valuation_method,missing,2014,49900,236
+property_valuation_method,missing,2010,49963,343
+property_valuation_method,missing,2015,49900,213
+property_valuation_method,missing,2000,48600,749
+property_valuation_method,2,2020,30636,123
+property_valuation_method,2,2022,42826,602
+property_valuation_method,missing,2008,49772,1981
+property_valuation_method,missing,2016,49913,234
+property_valuation_method,1,2017,445,2
+property_valuation_method,missing,2001,49667,556
+property_valuation_method,1,2022,7083,46
+property_valuation_method,missing,2003,49797,214
+property_valuation_method,missing,2013,49923,227
+property_valuation_method,missing,2005,49656,522
+property_valuation_method,missing,2019,44479,202
+property_valuation_method,4,2023,717,12
+property_valuation_method,1,2023,5443,24
+property_valuation_method,missing,2004,49599,387
+property_valuation_method,2,2021,31380,160
+property_valuation_method,missing,2009,49941,317
+property_valuation_method,1,2019,5436,23
+property_valuation_method,1,2021,18604,55
+property_valuation_method,missing,2006,49652,955
+property_valuation_method,missing,1999,49250,442
+property_valuation_method,missing,2012,49953,281
+property_valuation_method,missing,2011,49956,316
+property_valuation_method,1,2018,1513,8
+property_valuation_method,missing,2007,49713,2434
+special_eligibility_program,none,2013,49921,227
+special_eligibility_program,H,2015,311,3
+special_eligibility_program,F,2018,295,8
+special_eligibility_program,H,2023,4684,136
+special_eligibility_program,none,2005,49656,522
+special_eligibility_program,none,2019,45232,187
+special_eligibility_program,none,2020,47958,162
+special_eligibility_program,none,2010,49963,343
+special_eligibility_program,none,2015,49575,209
+special_eligibility_program,F,2017,195,7
+special_eligibility_program,none,2000,48600,749
+special_eligibility_program,F,2022,238,6
+special_eligibility_program,none,2023,44084,549
+special_eligibility_program,H,2019,4280,29
+special_eligibility_program,H,2013,2,0
+special_eligibility_program,none,2008,49772,1981
+special_eligibility_program,F,2020,158,4
+special_eligibility_program,none,2017,46397,256
+special_eligibility_program,H,2018,5374,59
+special_eligibility_program,H,2014,27,0
+special_eligibility_program,none,2022,46776,574
+special_eligibility_program,F,2023,1183,38
+special_eligibility_program,F,2015,14,1
+special_eligibility_program,R,2022,14,0
+special_eligibility_program,none,2006,49652,955
+special_eligibility_program,H,2020,1836,9
+special_eligibility_program,none,2002,49717,435
+special_eligibility_program,H,2021,1674,17
+special_eligibility_program,none,2016,48855,223
+special_eligibility_program,none,2001,49667,556
+special_eligibility_program,R,2021,15,0
+special_eligibility_program,none,2003,49797,214
+special_eligibility_program,none,2021,48179,195
+special_eligibility_program,none,2009,49941,317
+special_eligibility_program,none,1999,49250,442
+special_eligibility_program,none,2012,49953,281
+special_eligibility_program,H,2017,3294,42
+special_eligibility_program,none,2018,44234,228
+special_eligibility_program,none,2014,49873,236
+special_eligibility_program,H,2022,2951,68
+special_eligibility_program,F,2019,403,9
+special_eligibility_program,F,2021,116,3
+special_eligibility_program,F,2016,62,1
+special_eligibility_program,none,2004,49599,387
+special_eligibility_program,none,2011,49956,316
+special_eligibility_program,H,2016,996,10
+special_eligibility_program,none,2007,49713,2434
+number_of_units,1,2016,48888,231
+number_of_units,1,2001,48568,546
+number_of_units,4,2002,147,0
+number_of_units,3,2021,155,2
+number_of_units,2,2008,930,82
+number_of_units,1,2003,48874,213
+number_of_units,1,2018,48717,291
+number_of_units,1,2014,48785,229
+number_of_units,4,2006,80,1
+number_of_units,3,2020,135,2
+number_of_units,1,1999,48017,433
+number_of_units,3,2010,86,1
+number_of_units,2,2011,632,5
+number_of_units,1,2012,49114,275
+number_of_units,3,2015,183,0
+number_of_units,3,2000,102,0
+number_of_units,4,2013,156,0
+number_of_units,3,2023,179,1
+number_of_units,4,2005,109,1
+number_of_units,2,2007,1025,67
+number_of_units,4,2019,119,1
+number_of_units,2,2017,916,2
+number_of_units,2,2022,913,8
+number_of_units,3,2009,84,0
+number_of_units,4,2004,120,1
+number_of_units,3,1999,155,0
+number_of_units,1,2010,49244,341
+number_of_units,3,2012,128,0
+number_of_units,1,2015,48828,208
+number_of_units,1,2000,47419,719
+number_of_units,2,2002,786,8
+number_of_units,1,2023,48869,702
+number_of_units,4,2008,164,6
+number_of_units,missing,2004,5,0
+number_of_units,2,1999,952,9
+number_of_units,1,2011,49073,311
+number_of_units,2,2012,549,5
+number_of_units,3,2002,126,2
+number_of_units,4,2021,107,1
+number_of_units,1,2007,48408,2357
+number_of_units,missing,2000,1,0
+number_of_units,1,2004,48482,370
+number_of_units,2,2020,603,2
+number_of_units,4,2011,129,0
+number_of_units,2,2013,744,1
+number_of_units,3,2016,169,1
+number_of_units,3,2001,141,1
+number_of_units,1,2021,49046,208
+number_of_units,2,2005,775,14
+number_of_units,4,2007,141,5
+number_of_units,3,2003,109,0
+number_of_units,2,2019,765,6
+number_of_units,3,2017,216,2
+number_of_units,4,2018,147,0
+number_of_units,4,2014,148,1
+number_of_units,3,2022,200,0
+number_of_units,1,2006,48612,936
+number_of_units,2,2009,374,6
+number_of_units,2,2010,529,1
+number_of_units,3,2011,122,0
+number_of_units,2,2015,739,3
+number_of_units,4,2016,150,0
+number_of_units,2,2000,962,28
+number_of_units,4,2001,125,1
+number_of_units,1,2002,48657,425
+number_of_units,2,2023,803,19
+number_of_units,3,2007,139,5
+number_of_units,4,2003,106,0
+number_of_units,2,2006,831,18
+number_of_units,1,2009,49420,310
+number_of_units,missing,2005,1,0
+number_of_units,4,2017,187,3
+number_of_units,3,2018,196,1
+number_of_units,3,2014,191,0
+number_of_units,1,2020,49111,171
+number_of_units,4,2022,130,2
+number_of_units,2,2004,863,15
+number_of_units,missing,2002,1,0
+number_of_units,4,2010,104,0
+number_of_units,4,2015,150,2
+number_of_units,2,2016,706,2
+number_of_units,4,2000,116,2
+number_of_units,2,2001,833,8
+number_of_units,3,2013,201,0
+number_of_units,4,2023,100,1
+number_of_units,3,2005,123,0
+number_of_units,1,2008,48516,1885
+number_of_units,2,2003,708,1
+number_of_units,3,2019,174,0
+number_of_units,4,1999,122,0
+number_of_units,4,2012,100,0
+number_of_units,1,2013,48822,226
+number_of_units,2,2021,676,4
+number_of_units,1,2005,48648,507
+number_of_units,3,2008,162,8
+number_of_units,1,2019,48857,218
+number_of_units,missing,1999,4,0
+number_of_units,missing,2012,62,1
+number_of_units,2,2018,843,3
+number_of_units,2,2014,776,6
+number_of_units,4,2009,63,1
+number_of_units,3,2004,129,1
+prepayment_penalty_flag,N,2021,49984,215
+prepayment_penalty_flag,Y,2007,48,1
+prepayment_penalty_flag,N,2004,49438,387
+number_of_units,1,2017,48567,298
+number_of_units,1,2022,48736,638
+number_of_units,3,2006,129,0
+number_of_units,4,2020,103,0
+prepayment_penalty_flag,Y,2004,161,0
+prepayment_penalty_flag,N,2006,49562,954
+prepayment_penalty_flag,N,2010,49963,343
+prepayment_penalty_flag,N,2015,49900,213
+prepayment_penalty_flag,N,2000,48401,749
+prepayment_penalty_flag,N,2023,49951,723
+prepayment_penalty_flag,Y,2000,199,0
+prepayment_penalty_flag,N,2008,49772,1981
+prepayment_penalty_flag,N,2018,49903,295
+prepayment_penalty_flag,N,2014,49900,236
+prepayment_penalty_flag,Y,2006,90,1
+prepayment_penalty_flag,N,2016,49913,234
+prepayment_penalty_flag,N,2001,49603,556
+prepayment_penalty_flag,Y,2002,59,0
+prepayment_penalty_flag,N,2003,49614,214
+prepayment_penalty_flag,N,2011,49956,316
+prepayment_penalty_flag,N,2007,49665,2433
+prepayment_penalty_flag,N,2020,49952,175
+prepayment_penalty_flag,Y,2001,64,0
+prepayment_penalty_flag,N,2002,49658,435
+prepayment_penalty_flag,Y,2003,183,0
+prepayment_penalty_flag,N,2009,49941,317
+prepayment_penalty_flag,Y,1999,549,2
+prepayment_penalty_flag,N,2013,49923,227
+prepayment_penalty_flag,N,2005,49552,522
+prepayment_penalty_flag,N,2019,49915,225
+prepayment_penalty_flag,N,2017,49886,305
+prepayment_penalty_flag,N,2022,49979,648
+prepayment_penalty_flag,N,1999,48701,440
+prepayment_penalty_flag,N,2012,49953,281
+prepayment_penalty_flag,Y,2005,104,0
+io_indicator,N,2013,49923,227
+io_indicator,N,2005,49656,522
+io_indicator,N,2019,49915,225
+io_indicator,N,2009,49941,317
+io_indicator,N,2018,49903,295
+io_indicator,N,2014,49900,236
+io_indicator,N,2016,49913,234
+io_indicator,N,2001,49667,556
+io_indicator,N,2003,49797,214
+io_indicator,N,2010,49963,343
+io_indicator,N,2015,49900,213
+io_indicator,N,2000,48600,749
+io_indicator,N,2023,49951,723
+io_indicator,N,2008,49772,1981
+io_indicator,N,2011,49956,316
+io_indicator,N,2007,49713,2434
+io_indicator,N,2006,49652,955
+io_indicator,N,2017,49886,305
+io_indicator,N,2022,49979,648
+io_indicator,N,2002,49717,435
+io_indicator,N,2021,49984,215
+io_indicator,N,2020,49952,175
+io_indicator,N,2004,49599,387
+io_indicator,N,1999,49250,442
+io_indicator,N,2012,49953,281
+property_state,IL,2013,2469,14
+property_state,TX,2013,2979,11
+property_state,WI,2013,1118,3
+property_state,IA,2015,429,0
+property_state,VT,2015,124,1
+property_state,SD,2015,90,1
+property_state,HI,2015,181,2
+property_state,IN,2016,987,2
+property_state,SC,2016,665,4
+property_state,WA,2016,1658,4
+property_state,OH,2016,1545,5
+property_state,NJ,2016,1248,4
+property_state,MN,1999,1459,14
+property_state,DE,1999,193,0
+property_state,HI,2010,177,0
+property_state,IA,2010,609,0
+property_state,VT,2010,166,0
+property_state,SD,2010,127,2
+property_state,KY,2011,836,1
+property_state,MS,2011,151,0
+property_state,NV,2011,296,2
+property_state,MN,2012,1563,10
+property_state,DE,2012,144,2
+property_state,AZ,2017,1561,6
+property_state,OK,2017,416,1
+property_state,AL,2017,490,4
+property_state,ID,2017,357,3
+property_state,CT,2018,461,3
+property_state,UT,2018,845,2
+property_state,GA,2018,1676,10
+property_state,NM,2018,224,1
+property_state,NH,2018,255,0
+property_state,IA,2000,430,5
+property_state,HI,2000,124,0
+property_state,VT,2000,179,0
+property_state,SD,2000,84,2
+property_state,OH,2001,2371,40
+property_state,NJ,2001,1288,10
+property_state,IN,2001,1386,35
+property_state,SC,2001,639,18
+property_state,WA,2001,1171,11
+property_state,CO,2002,1113,7
+property_state,LA,2002,216,4
+property_state,RI,2013,182,2
+property_state,NE,2013,210,1
+property_state,GA,2014,1582,12
+property_state,UT,2014,654,4
+property_state,NM,2014,237,2
+property_state,CT,2014,500,5
+property_state,NH,2014,263,1
+property_state,PR,2014,29,0
+property_state,MD,2021,1144,1
+property_state,PA,2021,1674,7
+property_state,ID,2022,368,7
+property_state,AZ,2022,1612,20
+property_state,AL,2022,692,7
+property_state,OK,2022,510,5
+property_state,SD,2023,96,1
+property_state,VT,2023,98,1
+property_state,IA,2023,478,10
+property_state,HI,2023,83,3
+property_state,PR,2018,4,0
+property_state,TX,2005,2450,25
+property_state,IL,2005,2594,13
+property_state,WI,2005,1367,10
+property_state,NE,2005,309,2
+property_state,RI,2005,222,4
+property_state,NY,2006,1788,29
+property_state,MO,2006,1378,11
+property_state,ND,2006,89,1
+property_state,KY,2007,730,25
+property_state,NV,2007,438,63
+property_state,MS,2007,278,16
+property_state,FL,2008,2506,225
+property_state,OR,2008,965,40
+property_state,MI,2009,1472,8
+property_state,CA,2009,5633,22
+property_state,MT,2009,229,1
+property_state,DC,2009,96,0
+property_state,OH,2003,2251,16
+property_state,IN,2003,1261,9
+property_state,WA,2003,1226,2
+property_state,SC,2003,621,5
+property_state,NJ,2003,1554,4
+property_state,AK,2004,126,0
+property_state,WY,2004,115,0
+property_state,GU,2006,8,0
+property_state,IL,2019,2227,11
+property_state,WI,2019,965,5
+property_state,TX,2019,3820,24
+property_state,RI,2019,153,1
+property_state,NE,2019,226,0
+property_state,MA,2020,1377,0
+property_state,NC,2020,1352,5
+property_state,KS,2020,407,1
+property_state,VI,2021,4,0
+property_state,IA,2013,403,1
+property_state,VT,2013,170,0
+property_state,HI,2013,208,0
+property_state,TX,2015,3443,15
+property_state,IL,2015,2346,8
+property_state,NE,2015,249,0
+property_state,WI,2015,992,2
+property_state,RI,2015,164,0
+property_state,KY,2016,549,1
+property_state,NV,2016,549,2
+property_state,MS,2016,159,1
+property_state,FL,1999,2910,32
+property_state,OR,1999,988,16
+property_state,IL,2010,3090,29
+property_state,NE,2010,333,0
+property_state,WI,2010,1632,8
+property_state,TX,2010,2263,6
+property_state,RI,2010,160,0
+property_state,WA,2011,1580,18
+property_state,IN,2011,1294,5
+property_state,OH,2011,1865,14
+property_state,SC,2011,620,3
+property_state,NJ,2011,1499,13
+property_state,FL,2012,2508,26
+property_state,OR,2012,818,3
+property_state,NH,2017,249,1
+property_state,GA,2017,1549,15
+property_state,UT,2017,900,6
+property_state,NM,2017,215,2
+property_state,CT,2017,431,3
+property_state,AZ,2018,1720,10
+property_state,OK,2018,484,4
+property_state,ID,2018,398,3
+property_state,AL,2018,561,5
+property_state,TX,2000,3208,52
+property_state,IL,2000,2663,39
+property_state,NE,2000,317,5
+property_state,WI,2000,985,10
+property_state,RI,2000,132,1
+property_state,KY,2001,871,11
+property_state,MS,2001,134,3
+property_state,NV,2001,430,6
+property_state,PA,2002,1628,15
+property_state,MD,2002,1097,6
+property_state,SD,2013,77,0
+property_state,AZ,2014,1336,6
+property_state,AL,2014,525,4
+property_state,ID,2014,300,1
+property_state,OK,2014,374,3
+property_state,CO,2021,1386,1
+property_state,LA,2021,453,0
+property_state,GA,2022,1889,35
+property_state,UT,2022,767,14
+property_state,CT,2022,550,7
+property_state,NH,2022,228,4
+property_state,NM,2022,248,4
+property_state,IL,2023,2312,33
+property_state,TX,2023,4964,67
+property_state,WI,2023,746,8
+property_state,NE,2023,266,2
+property_state,RI,2023,134,1
+property_state,HI,2005,193,0
+property_state,VT,2005,176,3
+property_state,IA,2005,517,6
+property_state,SD,2005,148,1
+property_state,MA,2006,1097,24
+property_state,NC,2006,1772,24
+property_state,KS,2006,444,14
+property_state,IN,2007,1213,52
+property_state,WA,2007,1522,53
+property_state,NJ,2007,1369,64
+property_state,OH,2007,1797,55
+property_state,SC,2007,885,38
+property_state,MN,2008,1158,38
+property_state,DE,2008,192,3
+property_state,AK,2009,148,0
+property_state,WY,2009,94,0
+property_state,KY,2003,687,3
+property_state,NV,2003,482,0
+property_state,MS,2003,144,1
+property_state,CA,2004,5084,14
+property_state,MI,2004,2222,22
+property_state,MT,2004,169,0
+property_state,DC,2004,82,0
+property_state,IA,2019,386,0
+property_state,SD,2019,130,0
+property_state,HI,2019,132,1
+property_state,VT,2019,105,0
+property_state,MO,2020,1015,4
+property_state,ND,2020,107,0
+property_state,NY,2020,1311,8
+property_state,GU,2020,3,0
+property_state,PR,2022,6,0
+property_state,PR,2017,5,0
+property_state,AZ,2013,1443,8
+property_state,ID,2013,307,2
+property_state,OK,2013,309,3
+property_state,GA,2015,1469,4
+property_state,NM,2015,211,0
+property_state,UT,2015,750,4
+property_state,CT,2015,482,2
+property_state,NH,2015,252,0
+property_state,CA,2016,7990,27
+property_state,MI,2016,1825,4
+property_state,MT,2016,203,0
+property_state,NC,1999,1506,10
+property_state,KS,1999,413,2
+property_state,MA,1999,1085,10
+property_state,NM,2010,222,3
+property_state,UT,2010,718,3
+property_state,NH,2010,295,1
+property_state,GA,2010,1079,9
+property_state,CT,2010,561,2
+property_state,PR,2010,29,1
+property_state,AK,2011,147,0
+property_state,WY,2011,82,0
+property_state,KS,2012,463,0
+property_state,NC,2012,1604,7
+property_state,MA,2012,1623,5
+property_state,DC,2016,110,0
+property_state,TX,2017,3796,33
+property_state,IL,2017,2351,16
+property_state,WI,2017,957,7
+property_state,NE,2017,229,2
+property_state,RI,2017,158,1
+property_state,HI,2018,130,0
+property_state,SD,2018,97,1
+property_state,IA,2018,406,0
+property_state,VT,2018,113,0
+property_state,PR,2000,171,3
+property_state,GA,2000,1457,31
+property_state,NM,2000,291,5
+property_state,NH,2000,341,7
+property_state,CT,2000,501,6
+property_state,UT,2000,397,12
+property_state,CA,2001,6127,32
+property_state,MI,2001,2776,35
+property_state,DC,2001,62,1
+property_state,MT,2001,150,0
+property_state,VA,2002,1440,1
+property_state,AR,2002,178,2
+property_state,ME,2002,200,1
+property_state,WV,2002,212,4
+property_state,AL,2013,512,1
+property_state,HI,2014,185,1
+property_state,IA,2014,435,1
+property_state,SD,2014,79,0
+property_state,VT,2014,125,0
+property_state,TN,2021,972,2
+property_state,NE,2022,254,3
+property_state,WI,2022,743,8
+property_state,TX,2022,4783,72
+property_state,IL,2022,2038,24
+property_state,RI,2022,122,2
+property_state,NH,2023,222,2
+property_state,GA,2023,1854,37
+property_state,CT,2023,528,13
+property_state,NM,2023,220,3
+property_state,UT,2023,650,4
+property_state,ID,2005,402,3
+property_state,OK,2005,446,6
+property_state,AZ,2005,1737,12
+property_state,AL,2005,546,9
+property_state,FL,2006,3439,142
+property_state,OR,2006,950,9
+property_state,AK,2007,143,1
+property_state,WY,2007,111,4
+property_state,NY,2008,1774,100
+property_state,MO,2008,1287,37
+property_state,GU,2008,15,0
+property_state,ND,2008,86,1
+property_state,WA,2009,1646,13
+property_state,OH,2009,1881,8
+property_state,IN,2009,1448,7
+property_state,NJ,2009,1559,15
+property_state,SC,2009,697,5
+property_state,MI,2003,2577,12
+property_state,CA,2003,5812,8
+property_state,MT,2003,165,1
+property_state,DC,2003,80,0
+property_state,KY,2004,723,5
+property_state,NV,2004,527,2
+property_state,MS,2004,186,12
+property_state,ID,2019,406,2
+property_state,AZ,2019,1892,5
+property_state,AL,2019,532,2
+property_state,OK,2019,409,2
+property_state,MN,2020,1093,4
+property_state,DE,2020,173,0
+property_state,PR,2023,5,0
+property_state,PR,2015,4,0
+property_state,TN,2013,831,1
+property_state,VA,2015,1343,4
+property_state,ME,2015,178,1
+property_state,AR,2015,345,2
+property_state,WV,2015,115,1
+property_state,MO,2016,984,2
+property_state,ND,2016,131,1
+property_state,NY,2016,1487,7
+property_state,WY,1999,108,2
+property_state,AK,1999,43,1
+property_state,VA,2010,1493,10
+property_state,AR,2010,300,3
+property_state,ME,2010,256,0
+property_state,WV,2010,131,1
+property_state,KS,2011,501,1
+property_state,NC,2011,1678,8
+property_state,MA,2011,1446,13
+property_state,AK,2012,83,0
+property_state,WY,2012,64,0
+property_state,PA,2017,1386,6
+property_state,MD,2017,880,6
+property_state,CO,2018,1586,7
+property_state,LA,2018,526,6
+property_state,ME,2000,188,5
+property_state,VA,2000,1182,13
+property_state,WV,2000,143,4
+property_state,AR,2000,210,1
+property_state,MO,2001,1199,21
+property_state,NY,2001,1652,15
+property_state,ND,2001,71,0
+property_state,GU,2001,6,0
+property_state,NH,2002,314,1
+property_state,GA,2002,1523,30
+property_state,UT,2002,414,2
+property_state,CT,2002,488,1
+property_state,NM,2002,252,1
+property_state,PR,2002,83,1
+property_state,CO,2014,1386,7
+property_state,LA,2014,456,3
+property_state,OK,2021,340,2
+property_state,AZ,2021,1864,6
+property_state,AL,2021,559,1
+property_state,ID,2021,377,2
+property_state,MD,2022,969,14
+property_state,PA,2022,1874,22
+property_state,AR,2023,398,3
+property_state,VA,2023,1341,21
+property_state,ME,2023,199,3
+property_state,WV,2023,154,2
+property_state,TN,2005,758,5
+property_state,IN,2006,1177,23
+property_state,OH,2006,1826,40
+property_state,NJ,2006,1307,27
+property_state,SC,2006,806,12
+property_state,WA,2006,1423,18
+property_state,MA,2007,1010,46
+property_state,KS,2007,452,11
+property_state,NC,2007,2001,61
+property_state,MI,2008,1265,66
+property_state,CA,2008,5838,297
+property_state,MT,2008,210,3
+property_state,DC,2008,97,3
+property_state,FL,2009,1628,16
+property_state,OR,2009,955,7
+property_state,GU,2016,8,0
+property_state,NY,2003,2262,11
+property_state,MO,2003,1144,2
+property_state,ND,2003,105,0
+property_state,MN,2004,1551,9
+property_state,DE,2004,231,2
+property_state,TN,2019,971,2
+property_state,MS,2020,160,2
+property_state,NV,2020,585,1
+property_state,KY,2020,595,1
+property_state,VI,2022,7,0
+property_state,GU,2003,6,0
+property_state,VI,2017,2,0
+property_state,WA,2013,1389,5
+property_state,OH,2013,1938,7
+property_state,IN,2013,1124,12
+property_state,NJ,2013,1151,7
+property_state,SC,2013,738,5
+property_state,NV,2015,508,5
+property_state,KY,2015,564,0
+property_state,MS,2015,144,0
+property_state,IL,2016,2460,10
+property_state,WI,2016,979,5
+property_state,TX,2016,3387,32
+property_state,NE,2016,196,2
+property_state,CO,1999,1402,15
+property_state,LA,1999,278,4
+property_state,NV,2010,293,2
+property_state,KY,2010,822,5
+property_state,MS,2010,150,1
+property_state,HI,2011,192,0
+property_state,IA,2011,600,2
+property_state,VT,2011,157,0
+property_state,SD,2011,106,0
+property_state,CO,2012,1059,2
+property_state,LA,2012,309,1
+property_state,RI,2016,173,0
+property_state,MI,2017,1953,9
+property_state,CA,2017,6477,31
+property_state,MT,2017,186,0
+property_state,DC,2017,109,2
+property_state,WY,2018,72,0
+property_state,AK,2018,80,0
+property_state,KY,2000,821,11
+property_state,NV,2000,529,11
+property_state,MS,2000,136,8
+property_state,TX,2001,2013,44
+property_state,IL,2001,2974,25
+property_state,WI,2001,1504,14
+property_state,NE,2001,401,3
+property_state,RI,2001,153,3
+property_state,MN,2002,1944,12
+property_state,DE,2002,192,2
+property_state,WY,2014,87,0
+property_state,AK,2014,94,0
+property_state,FL,2021,3410,22
+property_state,OR,2021,888,2
+property_state,CA,2022,4025,60
+property_state,MI,2022,1702,29
+property_state,MT,2022,188,1
+property_state,DC,2022,95,0
+property_state,NV,2023,560,9
+property_state,KY,2023,675,6
+property_state,MS,2023,184,2
+property_state,IN,2005,1176,9
+property_state,WA,2005,1479,9
+property_state,OH,2005,1852,27
+property_state,NJ,2005,1499,13
+property_state,SC,2005,692,9
+property_state,TN,2006,990,18
+property_state,IA,2007,520,13
+property_state,VT,2007,161,1
+property_state,HI,2007,156,3
+property_state,SD,2007,124,1
+property_state,PA,2008,1671,48
+property_state,MD,2008,1099,37
+property_state,AZ,2009,993,10
+property_state,ID,2009,317,4
+property_state,OK,2009,433,2
+property_state,AL,2009,459,5
+property_state,IL,2003,2905,11
+property_state,WI,2003,1423,1
+property_state,TX,2003,2132,19
+property_state,NE,2003,386,1
+property_state,RI,2003,142,0
+property_state,NH,2004,358,5
+property_state,PR,2004,196,2
+property_state,NM,2004,280,3
+property_state,CT,2004,516,3
+property_state,GA,2004,1407,11
+property_state,UT,2004,498,4
+property_state,OH,2019,1826,5
+property_state,SC,2019,770,0
+property_state,WA,2019,1556,13
+property_state,NJ,2019,1279,5
+property_state,IN,2019,1202,4
+property_state,VA,2020,1576,5
+property_state,AR,2020,308,2
+property_state,ME,2020,197,0
+property_state,WV,2020,99,0
+property_state,VI,2008,5,0
+property_state,KY,2013,704,1
+property_state,NV,2013,493,5
+property_state,NJ,2015,1255,5
+property_state,OH,2015,1553,9
+property_state,IN,2015,1066,5
+property_state,WA,2015,1571,5
+property_state,SC,2015,725,4
+property_state,HI,2016,193,2
+property_state,VT,2016,138,2
+property_state,IA,2016,442,5
+property_state,PA,1999,1635,24
+property_state,MD,1999,810,11
+property_state,NJ,2010,1496,12
+property_state,OH,2010,2132,12
+property_state,IN,2010,1288,9
+property_state,WA,2010,1694,21
+property_state,SC,2010,533,2
+property_state,IL,2011,2786,38
+property_state,WI,2011,1475,2
+property_state,TX,2011,2596,7
+property_state,RI,2011,162,3
+property_state,NE,2011,291,0
+property_state,PA,2012,1482,11
+property_state,MD,2012,1197,8
+property_state,SD,2016,88,1
+property_state,WY,2017,89,1
+property_state,AK,2017,94,0
+property_state,CA,2018,5018,23
+property_state,MI,2018,2028,15
+property_state,MT,2018,176,4
+property_state,DC,2018,86,2
+property_state,IN,2000,1278,16
+property_state,NJ,2000,1624,11
+property_state,SC,2000,724,36
+property_state,OH,2000,2101,34
+property_state,WA,2000,1171,28
+property_state,IA,2001,640,5
+property_state,HI,2001,77,0
+property_state,VT,2001,156,1
+property_state,SD,2001,173,0
+property_state,FL,2002,2921,24
+property_state,OR,2002,724,4
+property_state,MS,2013,142,0
+property_state,CA,2014,7241,26
+property_state,MI,2014,1897,7
+property_state,MT,2014,204,1
+property_state,DC,2014,130,0
+property_state,MN,2021,1073,3
+property_state,DE,2021,240,1
+property_state,AK,2022,81,2
+property_state,WY,2022,76,0
+property_state,OH,2023,2267,20
+property_state,IN,2023,1396,25
+property_state,SC,2023,1007,10
+property_state,WA,2023,1095,8
+property_state,NJ,2023,1354,16
+property_state,KY,2005,735,6
+property_state,NV,2005,535,5
+property_state,MS,2005,158,5
+property_state,VA,2006,1425,25
+property_state,ME,2006,259,5
+property_state,AR,2006,456,7
+property_state,WV,2006,227,3
+property_state,WI,2007,1310,35
+property_state,TX,2007,3355,94
+property_state,IL,2007,2632,131
+property_state,NE,2007,267,10
+property_state,RI,2007,156,10
+property_state,CO,2008,1296,26
+property_state,LA,2008,492,19
+property_state,GA,2009,1243,13
+property_state,UT,2009,744,5
+property_state,CT,2009,646,4
+property_state,NH,2009,354,2
+property_state,NM,2009,283,1
+property_state,PR,2009,72,1
+property_state,IA,2003,684,7
+property_state,HI,2003,142,2
+property_state,VT,2003,212,2
+property_state,SD,2003,122,1
+property_state,AZ,2004,1226,7
+property_state,AL,2004,567,7
+property_state,OK,2004,469,2
+property_state,ID,2004,330,2
+property_state,KY,2019,673,4
+property_state,NV,2019,726,7
+property_state,MS,2019,193,0
+property_state,TN,2020,905,2
+property_state,NM,2013,271,1
+property_state,GA,2013,1516,5
+property_state,NH,2013,281,2
+property_state,AZ,2015,1370,4
+property_state,OK,2015,332,4
+property_state,AL,2015,471,3
+property_state,ID,2015,309,2
+property_state,AK,2016,98,0
+property_state,NY,1999,2281,11
+property_state,MO,1999,1002,9
+property_state,ND,1999,76,0
+property_state,AZ,2010,1035,12
+property_state,ID,2010,288,4
+property_state,OK,2010,358,5
+property_state,AL,2010,443,6
+property_state,MI,2011,1514,6
+property_state,CA,2011,7135,32
+property_state,DC,2011,115,0
+property_state,MT,2011,207,2
+property_state,NY,2012,1657,15
+property_state,MO,2012,1211,6
+property_state,ND,2012,103,0
+property_state,GU,2012,11,0
+property_state,WY,2016,79,0
+property_state,SD,2017,90,0
+property_state,HI,2017,191,1
+property_state,IA,2017,384,1
+property_state,VT,2017,128,2
+property_state,IL,2018,2137,13
+property_state,WI,2018,951,5
+property_state,TX,2018,4379,20
+property_state,NE,2018,242,1
+property_state,RI,2018,164,0
+property_state,OK,2000,513,6
+property_state,AZ,2000,1490,18
+property_state,AL,2000,506,17
+property_state,ID,2000,331,8
+property_state,WY,2001,96,0
+property_state,AK,2001,103,0
+property_state,TN,2002,582,9
+property_state,CT,2013,565,1
+property_state,UT,2013,559,2
+property_state,PR,2013,19,0
+property_state,IL,2014,2193,13
+property_state,TX,2014,3685,12
+property_state,WI,2014,914,6
+property_state,NE,2014,263,1
+property_state,RI,2014,192,1
+property_state,FL,2020,2662,16
+property_state,VA,2021,1480,7
+property_state,ME,2021,186,0
+property_state,WV,2021,138,3
+property_state,AR,2021,315,1
+property_state,SD,2022,112,1
+property_state,IA,2022,365,5
+property_state,HI,2022,96,3
+property_state,VT,2022,83,0
+property_state,OK,2023,589,11
+property_state,ID,2023,427,10
+property_state,AZ,2023,1416,18
+property_state,AL,2023,646,7
+property_state,GU,1999,19,0
+property_state,GA,2005,1410,26
+property_state,NM,2005,297,1
+property_state,PR,2005,200,6
+property_state,CT,2005,513,3
+property_state,UT,2005,481,2
+property_state,NH,2005,340,7
+property_state,MN,2006,1202,24
+property_state,DE,2006,188,2
+property_state,MI,2007,1700,110
+property_state,CA,2007,3719,274
+property_state,MT,2007,204,7
+property_state,DC,2007,96,6
+property_state,MA,2008,1225,34
+property_state,KS,2008,428,9
+property_state,NC,2008,1824,50
+property_state,KY,2009,859,2
+property_state,NV,2009,295,2
+property_state,MS,2009,152,5
+property_state,WY,2003,89,0
+property_state,AK,2003,113,1
+property_state,IN,2004,1287,19
+property_state,OH,2004,2021,26
+property_state,WA,2004,1119,5
+property_state,NJ,2004,1512,16
+property_state,SC,2004,622,4
+property_state,GA,2019,1579,6
+property_state,UT,2019,1063,4
+property_state,CT,2019,445,3
+property_state,NH,2019,255,0
+property_state,NM,2019,235,0
+property_state,OR,2020,932,4
+property_state,PR,2019,7,0
+property_state,CO,2013,1218,2
+property_state,LA,2013,391,1
+property_state,PA,2015,1443,9
+property_state,MD,2015,897,3
+property_state,MN,2016,1218,4
+property_state,DE,2016,151,1
+property_state,NJ,1999,1530,11
+property_state,IN,1999,1312,11
+property_state,OH,1999,1968,22
+property_state,SC,1999,657,5
+property_state,WA,1999,1400,13
+property_state,PA,2010,1758,16
+property_state,MD,2010,1232,8
+property_state,OR,2011,882,10
+property_state,FL,2011,1866,19
+property_state,OH,2012,2105,9
+property_state,WA,2012,1363,10
+property_state,IN,2012,1218,4
+property_state,SC,2012,585,4
+property_state,NJ,2012,1245,9
+property_state,VA,2017,1184,5
+property_state,ME,2017,197,4
+property_state,AR,2017,308,3
+property_state,WV,2017,134,0
+property_state,TN,2018,1019,1
+property_state,PA,2000,1718,23
+property_state,MD,2000,808,11
+property_state,MN,2001,2039,11
+property_state,DE,2001,153,0
+property_state,WI,2002,1477,13
+property_state,IL,2002,2962,16
+property_state,TX,2002,2104,23
+property_state,RI,2002,181,0
+property_state,NE,2002,343,3
+property_state,TN,2014,966,3
+property_state,VT,2021,85,0
+property_state,IA,2021,401,2
+property_state,HI,2021,130,0
+property_state,SD,2021,91,1
+property_state,AR,2022,408,4
+property_state,VA,2022,1380,9
+property_state,WV,2022,153,1
+property_state,ME,2022,234,2
+property_state,MD,2023,905,8
+property_state,PA,2023,1885,25
+property_state,VI,2015,3,0
+property_state,CO,2005,962,7
+property_state,LA,2005,437,41
+property_state,AK,2006,180,3
+property_state,WY,2006,114,1
+property_state,FL,2007,3106,374
+property_state,OR,2007,903,27
+property_state,KY,2008,679,15
+property_state,NV,2008,475,37
+property_state,MS,2008,238,16
+property_state,KS,2009,472,0
+property_state,MA,2009,1580,6
+property_state,NC,2009,1873,11
+property_state,MN,2003,1810,8
+property_state,DE,2003,185,1
+property_state,NY,2004,2084,15
+property_state,MO,2004,1193,4
+property_state,ND,2004,102,1
+property_state,GU,2004,7,0
+property_state,LA,2019,414,2
+property_state,CO,2019,1648,3
+property_state,MI,2020,1718,5
+property_state,CA,2020,7808,21
+property_state,DC,2020,154,2
+property_state,MT,2020,146,0
+property_state,VI,2023,2,0
+property_state,ND,2013,119,0
+property_state,NY,2013,1847,5
+property_state,MO,2013,1098,7
+property_state,MA,2015,1164,6
+property_state,KS,2015,455,2
+property_state,NC,2015,1525,3
+property_state,TN,2016,855,1
+property_state,GA,1999,1373,9
+property_state,UT,1999,600,15
+property_state,PR,1999,313,5
+property_state,NH,1999,328,2
+property_state,CT,1999,531,2
+property_state,NM,1999,315,10
+property_state,NC,2010,1715,5
+property_state,MA,2010,1524,6
+property_state,KS,2010,508,4
+property_state,ME,2011,228,1
+property_state,VA,2011,1670,7
+property_state,AR,2011,267,0
+property_state,WV,2011,114,0
+property_state,GA,2012,1415,11
+property_state,CT,2012,624,4
+property_state,UT,2012,652,2
+property_state,NH,2012,310,2
+property_state,NM,2012,211,0
+property_state,PR,2012,24,0
+property_state,FL,2017,3383,51
+property_state,OR,2017,958,2
+property_state,MN,2018,1163,5
+property_state,DE,2018,178,0
+property_state,MA,2000,874,7
+property_state,NC,2000,1548,24
+property_state,KS,2000,409,4
+property_state,TN,2001,698,12
+property_state,WY,2002,92,0
+property_state,AK,2002,146,0
+property_state,GU,2013,16,0
+property_state,DE,2014,187,0
+property_state,MN,2014,1194,4
+property_state,MT,2021,173,0
+property_state,CA,2021,6434,33
+property_state,MI,2021,1663,9
+property_state,DC,2021,88,0
+property_state,FL,2022,4342,62
+property_state,OR,2022,763,17
+property_state,NC,2023,1704,23
+property_state,MA,2023,764,15
+property_state,KS,2023,433,5
+property_state,NY,2005,1920,19
+property_state,MO,2005,1187,14
+property_state,ND,2005,106,0
+property_state,RI,2006,183,8
+property_state,WI,2006,1374,20
+property_state,TX,2006,3117,30
+property_state,IL,2006,2585,43
+property_state,NE,2006,258,2
+property_state,VA,2007,1361,45
+property_state,ME,2007,222,17
+property_state,AR,2007,456,23
+property_state,WV,2007,230,9
+property_state,OK,2008,509,9
+property_state,ID,2008,409,17
+property_state,AL,2008,666,19
+property_state,AZ,2008,1246,81
+property_state,PA,2009,1931,7
+property_state,MD,2009,1261,8
+property_state,VI,2009,2,0
+property_state,TN,2003,567,4
+property_state,LA,2004,390,36
+property_state,CO,2004,961,6
+property_state,NY,2019,1443,10
+property_state,MO,2019,1025,2
+property_state,ND,2019,84,1
+property_state,VT,2020,88,0
+property_state,IA,2020,442,0
+property_state,HI,2020,113,0
+property_state,SD,2020,136,1
+property_state,GU,2019,6,0
+property_state,GU,2005,4,0
+property_state,MI,2013,1960,12
+property_state,CA,2013,6797,23
+property_state,DC,2013,163,0
+property_state,AK,2015,97,1
+property_state,ID,2016,316,0
+property_state,AZ,2016,1437,3
+property_state,AL,2016,481,2
+property_state,VA,1999,1146,6
+property_state,AR,1999,222,0
+property_state,WV,1999,110,1
+property_state,ME,1999,221,1
+property_state,WY,2010,92,0
+property_state,AK,2010,138,0
+property_state,CT,2011,613,3
+property_state,NH,2011,299,4
+property_state,UT,2011,675,2
+property_state,NM,2011,254,1
+property_state,GA,2011,1295,10
+property_state,ME,2012,203,0
+property_state,VA,2012,1648,12
+property_state,AR,2012,270,1
+property_state,WV,2012,136,0
+property_state,OK,2016,290,0
+property_state,WA,2017,1646,5
+property_state,OH,2017,1655,5
+property_state,SC,2017,750,5
+property_state,IN,2017,1080,2
+property_state,NJ,2017,1257,7
+property_state,NV,2018,680,4
+property_state,KY,2018,676,3
+property_state,WY,2000,75,1
+property_state,AK,2000,57,1
+property_state,AZ,2001,1160,14
+property_state,OK,2001,361,7
+property_state,ID,2001,268,6
+property_state,AL,2001,467,8
+property_state,MA,2002,1330,6
+property_state,NC,2002,1303,20
+property_state,KS,2002,472,2
+property_state,MT,2013,171,0
+property_state,KY,2014,600,4
+property_state,NV,2014,500,4
+property_state,MS,2014,181,2
+property_state,WY,2015,96,1
+property_state,MO,2021,972,4
+property_state,NY,2021,1538,6
+property_state,ND,2021,98,1
+property_state,GU,2021,7,0
+property_state,SC,2022,1018,7
+property_state,OH,2022,1918,25
+property_state,WA,2022,1176,11
+property_state,NJ,2022,1227,14
+property_state,IN,2022,1299,17
+property_state,WY,2023,90,1
+property_state,MS,2018,192,1
+property_state,AK,2023,64,2
+property_state,CA,2005,4730,27
+property_state,MT,2005,187,1
+property_state,MI,2005,1974,39
+property_state,DC,2005,107,1
+property_state,MD,2006,1184,24
+property_state,PA,2006,1839,31
+property_state,NM,2007,348,17
+property_state,UT,2007,744,25
+property_state,GA,2007,1743,111
+property_state,CT,2007,558,16
+property_state,NH,2007,290,12
+property_state,PR,2007,208,4
+property_state,TN,2008,896,31
+property_state,NE,2009,298,1
+property_state,RI,2009,165,1
+property_state,IL,2009,3105,36
+property_state,TX,2009,2245,9
+property_state,WI,2009,1624,9
+property_state,OK,2003,337,1
+property_state,AZ,2003,1165,3
+property_state,AL,2003,523,1
+property_state,ID,2003,243,0
+property_state,VT,2004,170,0
+property_state,IA,2004,570,4
+property_state,HI,2004,176,0
+property_state,SD,2004,159,1
+property_state,CA,2019,5897,30
+property_state,MI,2019,1838,10
+property_state,DC,2019,105,0
+property_state,MT,2019,167,1
+property_state,LA,2020,421,0
+property_state,CO,2020,1673,3
+property_state,PR,2011,9,0
+property_state,VI,2006,4,0
+property_state,VA,2013,1641,7
+property_state,ME,2013,251,1
+property_state,TN,2015,964,5
+property_state,MA,2016,1254,2
+property_state,NC,2016,1517,10
+property_state,CA,1999,6143,36
+property_state,MI,1999,2548,21
+property_state,MT,1999,179,1
+property_state,DC,1999,72,1
+property_state,TN,2010,785,3
+property_state,NY,2011,2043,16
+property_state,MO,2011,1206,7
+property_state,GU,2011,16,0
+property_state,ND,2011,96,0
+property_state,MI,2012,2048,12
+property_state,CA,2012,7392,36
+property_state,MT,2012,161,0
+property_state,DC,2012,125,0
+property_state,KS,2016,420,1
+property_state,CO,2017,1730,8
+property_state,LA,2017,447,4
+property_state,MD,2018,880,13
+property_state,PA,2018,1522,8
+property_state,TN,2000,660,14
+property_state,MA,2001,1124,4
+property_state,NC,2001,1444,21
+property_state,KS,2001,464,6
+property_state,AL,2002,456,5
+property_state,AZ,2002,1121,9
+property_state,ID,2002,249,2
+property_state,OK,2002,334,4
+property_state,AR,2013,343,1
+property_state,WV,2013,194,0
+property_state,PA,2014,1551,6
+property_state,MD,2014,1059,6
+property_state,IN,2020,1128,2
+property_state,SC,2020,698,2
+property_state,UT,2021,883,6
+property_state,CT,2021,589,1
+property_state,GA,2021,1586,10
+property_state,NH,2021,276,1
+property_state,NM,2021,225,0
+property_state,CO,2022,1192,11
+property_state,LA,2022,518,4
+property_state,TN,2023,1195,25
+property_state,AR,2005,319,3
+property_state,WV,2005,212,6
+property_state,ME,2005,248,4
+property_state,VA,2005,1486,11
+property_state,KY,2006,751,19
+property_state,NV,2006,484,16
+property_state,MS,2006,257,7
+property_state,NY,2007,1850,74
+property_state,MO,2007,1305,49
+property_state,ND,2007,110,2
+property_state,WY,2008,96,3
+property_state,AK,2008,150,1
+property_state,MN,2009,1418,8
+property_state,DE,2009,189,2
+property_state,MA,2003,1099,4
+property_state,NC,2003,1249,6
+property_state,KS,2003,452,2
+property_state,FL,2004,3259,22
+property_state,OR,2004,842,4
+property_state,GU,2007,18,0
+property_state,VI,2014,4,0
+property_state,VI,2018,6,0
+property_state,VA,2019,1353,5
+property_state,AR,2019,361,2
+property_state,WV,2019,103,1
+property_state,ME,2019,223,1
+property_state,OH,2020,1778,4
+property_state,WA,2020,1688,6
+property_state,NJ,2020,1414,9
+property_state,PR,2021,10,0
+property_state,MD,2013,1237,8
+property_state,CO,2015,1710,6
+property_state,LA,2015,446,7
+property_state,OR,2016,1022,2
+property_state,FL,2016,2988,46
+property_state,KY,1999,820,5
+property_state,NV,1999,486,7
+property_state,MS,1999,154,2
+property_state,CO,2010,1337,8
+property_state,LA,2010,427,2
+property_state,DE,2011,193,1
+property_state,MN,2011,1530,15
+property_state,KY,2012,771,4
+property_state,NV,2012,445,9
+property_state,MS,2012,118,0
+property_state,TN,2017,968,2
+property_state,VA,2018,1206,4
+property_state,AR,2018,379,4
+property_state,WV,2018,130,2
+property_state,ME,2018,205,3
+property_state,CO,2000,1653,19
+property_state,LA,2000,219,8
+property_state,OR,2001,869,8
+property_state,FL,2001,2863,36
+property_state,IA,2002,611,4
+property_state,HI,2002,117,0
+property_state,VT,2002,191,0
+property_state,SD,2002,126,0
+property_state,PA,2013,1592,11
+property_state,VA,2014,1480,3
+property_state,ME,2014,216,0
+property_state,AR,2014,315,1
+property_state,WV,2014,137,2
+property_state,IL,2021,1991,7
+property_state,WI,2021,797,4
+property_state,TX,2021,3557,17
+property_state,NE,2021,229,1
+property_state,RI,2021,172,2
+property_state,TN,2022,1248,11
+property_state,CO,2023,1155,15
+property_state,LA,2023,489,7
+property_state,MD,2005,1489,15
+property_state,PA,2005,1915,12
+property_state,CA,2006,3502,69
+property_state,MI,2006,1837,57
+property_state,MT,2006,195,3
+property_state,DC,2006,83,2
+property_state,DE,2007,181,7
+property_state,MN,2007,1135,36
+property_state,OH,2008,1342,29
+property_state,SC,2008,858,31
+property_state,IN,2008,1048,20
+property_state,WA,2008,1717,68
+property_state,NJ,2008,1363,58
+property_state,MO,2009,1226,8
+property_state,ND,2009,106,0
+property_state,NY,2009,1939,19
+property_state,OR,2003,720,0
+property_state,FL,2003,2926,19
+property_state,NC,2004,1331,8
+property_state,MA,2004,995,7
+property_state,KS,2004,445,6
+property_state,PA,2019,1387,10
+property_state,MD,2019,918,4
+property_state,AK,2020,91,0
+property_state,WY,2020,63,1
+property_state,VI,2013,2,0
+property_state,VI,2005,5,1
+property_state,GU,2009,20,0
+property_state,VI,2019,1,0
+property_state,MN,2013,1212,9
+property_state,FL,2015,2954,27
+property_state,OR,2015,1041,1
+property_state,CO,2016,1902,7
+property_state,TX,1999,2575,21
+property_state,IL,1999,2572,23
+property_state,WI,1999,994,3
+property_state,RI,1999,99,2
+property_state,NE,1999,242,5
+property_state,FL,2010,1648,28
+property_state,OR,2010,964,9
+property_state,PA,2011,1730,7
+property_state,MD,2011,1292,10
+property_state,WI,2012,1511,6
+property_state,IL,2012,2835,26
+property_state,TX,2012,2077,2
+property_state,RI,2012,186,0
+property_state,NE,2012,237,0
+property_state,LA,2016,381,4
+property_state,NC,2017,1488,3
+property_state,MA,2017,1097,6
+property_state,KS,2017,431,4
+property_state,NY,2018,1566,14
+property_state,MO,2018,965,4
+property_state,ND,2018,112,0
+property_state,FL,2000,3165,46
+property_state,OR,2000,952,17
+property_state,CO,2001,1534,16
+property_state,LA,2001,242,5
+property_state,WA,2002,1052,7
+property_state,IN,2002,1435,25
+property_state,OH,2002,2286,43
+property_state,NJ,2002,1403,6
+property_state,SC,2002,663,26
+property_state,DE,2013,181,1
+property_state,MO,2014,1072,3
+property_state,NY,2014,1693,15
+property_state,ND,2014,162,0
+property_state,KY,2021,656,4
+property_state,MS,2021,180,1
+property_state,NV,2021,596,3
+property_state,KS,2022,401,3
+property_state,NC,2022,1786,17
+property_state,MA,2022,838,13
+property_state,FL,2023,4413,81
+property_state,OR,2023,636,8
+property_state,MN,2005,1271,12
+property_state,DE,2005,199,2
+property_state,CT,2006,529,11
+property_state,GA,2006,1680,39
+property_state,NM,2006,390,7
+property_state,UT,2006,692,12
+property_state,NH,2006,345,7
+property_state,PR,2006,179,5
+property_state,MD,2007,1091,67
+property_state,PA,2007,1933,62
+property_state,VI,2007,2,0
+property_state,HI,2008,211,11
+property_state,IA,2008,469,6
+property_state,SD,2008,109,1
+property_state,VT,2008,168,2
+property_state,ME,2009,267,1
+property_state,VA,2009,1713,10
+property_state,AR,2009,305,3
+property_state,WV,2009,185,2
+property_state,CO,2003,1042,4
+property_state,LA,2003,257,11
+property_state,TN,2004,782,8
+property_state,MN,2019,1161,5
+property_state,DE,2019,196,0
+property_state,AZ,2020,1849,10
+property_state,OK,2020,320,0
+property_state,ID,2020,346,1
+property_state,AL,2020,522,0
+property_state,GU,2014,8,0
+property_state,GU,2018,10,0
+property_state,OR,2013,823,1
+property_state,FL,2013,2886,25
+property_state,MN,2015,1252,2
+property_state,PA,2016,1317,5
+property_state,MD,2016,925,5
+property_state,HI,1999,148,1
+property_state,SD,1999,104,0
+property_state,IA,1999,407,3
+property_state,VT,1999,219,0
+property_state,MN,2010,1660,13
+property_state,DE,2010,164,3
+property_state,LA,2011,427,5
+property_state,CO,2011,1127,6
+property_state,IA,2012,554,2
+property_state,HI,2012,196,1
+property_state,SD,2012,67,0
+property_state,VT,2012,200,0
+property_state,NY,2017,1640,9
+property_state,MO,2017,988,8
+property_state,ND,2017,123,1
+property_state,KS,2018,459,3
+property_state,MA,2018,982,5
+property_state,NC,2018,1526,11
+property_state,MN,2000,1574,22
+property_state,DE,2000,188,2
+property_state,MD,2001,1009,4
+property_state,PA,2001,1398,14
+property_state,KY,2002,768,11
+property_state,NV,2002,438,2
+property_state,MS,2002,102,3
+property_state,KS,2014,519,2
+property_state,NC,2014,1610,8
+property_state,MA,2014,1156,3
+property_state,DE,2015,131,3
+property_state,GA,2020,1421,7
+property_state,OH,2021,1838,6
+property_state,IN,2021,1113,8
+property_state,WA,2021,1476,4
+property_state,SC,2021,802,2
+property_state,NJ,2021,1449,8
+property_state,MO,2022,1023,16
+property_state,NY,2022,1752,20
+property_state,ND,2022,98,3
+property_state,MN,2023,1043,17
+property_state,DE,2023,221,2
+property_state,FL,2005,3591,41
+property_state,OR,2005,897,6
+property_state,AZ,2006,1509,33
+property_state,OK,2006,558,2
+property_state,AL,2006,682,20
+property_state,ID,2006,384,5
+property_state,CO,2007,1030,24
+property_state,LA,2007,579,22
+property_state,IL,2008,2825,143
+property_state,TX,2008,3102,70
+property_state,WI,2008,1380,33
+property_state,NE,2008,228,2
+property_state,RI,2008,157,8
+property_state,TN,2009,774,6
+property_state,PA,2003,1972,4
+property_state,MD,2003,1236,3
+property_state,AR,2004,245,3
+property_state,VA,2004,1567,5
+property_state,ME,2004,186,0
+property_state,WV,2004,204,1
+property_state,OR,2019,938,0
+property_state,FL,2019,3271,19
+property_state,CT,2020,484,3
+property_state,UT,2020,1093,5
+property_state,NH,2020,286,0
+property_state,NM,2020,196,0
+property_state,GU,2022,5,0
+property_state,PR,2020,8,0
+property_state,GU,2017,6,0
+property_state,VI,2016,2,0
+property_state,VI,2003,1,0
+property_state,KS,2013,478,3
+property_state,MA,2013,1399,5
+property_state,NC,2013,1642,5
+property_state,ND,2015,146,1
+property_state,NY,2015,1623,8
+property_state,MO,2015,994,3
+property_state,ME,2016,173,1
+property_state,AR,2016,283,2
+property_state,VA,2016,1345,2
+property_state,AZ,1999,1322,20
+property_state,OK,1999,397,5
+property_state,ID,1999,365,0
+property_state,AL,1999,493,5
+property_state,NY,2010,1867,9
+property_state,MO,2010,1363,4
+property_state,ND,2010,131,1
+property_state,TN,2011,728,4
+property_state,OK,2012,292,0
+property_state,AL,2012,394,4
+property_state,AZ,2012,1454,12
+property_state,ID,2012,307,1
+property_state,WV,2016,128,0
+property_state,MN,2017,1213,5
+property_state,DE,2017,145,4
+property_state,OR,2018,899,4
+property_state,FL,2018,3520,28
+property_state,NY,2000,2044,31
+property_state,MO,2000,955,15
+property_state,ND,2000,67,2
+property_state,VA,2001,1343,6
+property_state,WV,2001,204,4
+property_state,ME,2001,192,1
+property_state,AR,2001,172,2
+property_state,MI,2002,2505,29
+property_state,CA,2002,6567,20
+property_state,DC,2002,70,1
+property_state,MT,2002,182,1
+property_state,FL,2014,3040,19
+property_state,OR,2014,880,1
+property_state,GU,2015,11,0
+property_state,TX,2020,3186,20
+property_state,WY,2021,77,0
+property_state,AK,2021,79,0
+property_state,MN,2022,1086,12
+property_state,DE,2022,211,2
+property_state,MO,2023,1134,19
+property_state,NY,2023,1761,27
+property_state,ND,2023,49,0
+property_state,GU,2023,6,0
+property_state,NC,2005,1358,9
+property_state,MA,2005,1154,15
+property_state,KS,2005,422,8
+property_state,HI,2006,171,1
+property_state,IA,2006,482,3
+property_state,VT,2006,149,1
+property_state,SD,2006,135,3
+property_state,TN,2007,1024,41
+property_state,GU,2000,13,0
+property_state,GA,2008,1573,91
+property_state,UT,2008,887,34
+property_state,CT,2008,525,29
+property_state,NH,2008,283,14
+property_state,PR,2008,144,4
+property_state,NM,2008,319,9
+property_state,CO,2009,1416,8
+property_state,LA,2009,368,1
+property_state,AR,2003,206,0
+property_state,ME,2003,195,1
+property_state,VA,2003,1512,2
+property_state,WV,2003,153,0
+property_state,PA,2004,1904,16
+property_state,MD,2004,1428,8
+property_state,MA,2019,1104,7
+property_state,NC,2019,1541,5
+property_state,KS,2019,384,1
+property_state,IL,2020,2121,8
+property_state,RI,2020,169,1
+property_state,WI,2020,903,1
+property_state,NE,2020,242,0
+property_state,GU,2010,18,0
+property_state,AK,2013,80,0
+property_state,CA,2015,7786,21
+property_state,MI,2015,1775,11
+property_state,DC,2015,147,0
+property_state,GA,2016,1381,4
+property_state,CT,2016,474,3
+property_state,UT,2016,856,4
+property_state,NH,2016,243,0
+property_state,NM,2016,218,2
+property_state,TN,1999,677,7
+property_state,CA,2010,6597,39
+property_state,MI,2010,1589,14
+property_state,DC,2010,100,0
+property_state,MT,2010,173,2
+property_state,AZ,2011,1055,10
+property_state,AL,2011,400,3
+property_state,ID,2011,268,3
+property_state,OK,2011,342,2
+property_state,TN,2012,675,2
+property_state,PR,2016,5,0
+property_state,NV,2017,660,2
+property_state,KY,2017,609,1
+property_state,MS,2017,156,0
+property_state,IN,2018,1307,9
+property_state,WA,2018,1527,8
+property_state,OH,2018,1842,11
+property_state,NJ,2018,1316,12
+property_state,SC,2018,817,3
+property_state,CA,2000,4840,47
+property_state,MI,2000,2366,43
+property_state,MT,2000,124,6
+property_state,DC,2000,64,1
+property_state,GA,2001,1488,28
+property_state,NH,2001,282,1
+property_state,NM,2001,235,1
+property_state,CT,2001,462,4
+property_state,UT,2001,462,4
+property_state,PR,2001,111,0
+property_state,NY,2002,1780,17
+property_state,ND,2002,108,0
+property_state,MO,2002,1210,10
+property_state,GU,2002,12,0
+property_state,WY,2013,74,0
+property_state,IN,2014,1117,3
+property_state,OH,2014,1736,10
+property_state,NJ,2014,1179,8
+property_state,WA,2014,1259,8
+property_state,SC,2014,713,4
+property_state,MT,2015,205,0
+property_state,NC,2021,1591,5
+property_state,MA,2021,1284,8
+property_state,KS,2021,345,0
+property_state,KY,2022,618,3
+property_state,NV,2022,593,9
+property_state,MS,2022,209,6
+property_state,MT,2023,156,1
+property_state,CA,2023,3462,36
+property_state,MI,2023,1928,46
+property_state,DC,2023,92,4
+property_state,AK,2005,129,0
+property_state,WY,2005,115,1
+property_state,CO,2006,1009,8
+property_state,LA,2006,560,5
+property_state,AZ,2007,1296,119
+property_state,AL,2007,677,32
+property_state,OK,2007,588,17
+property_state,ID,2007,376,18
+property_state,VA,2008,1486,37
+property_state,WV,2008,195,2
+property_state,AR,2008,368,6
+property_state,ME,2008,218,8
+property_state,SD,2009,127,1
+property_state,HI,2009,193,1
+property_state,VT,2009,201,0
+property_state,IA,2009,602,1
+property_state,GA,2003,1466,12
+property_state,UT,2003,489,3
+property_state,NM,2003,244,2
+property_state,CT,2003,531,4
+property_state,NH,2003,356,0
+property_state,PR,2003,134,0
+property_state,WI,2004,1280,3
+property_state,TX,2004,2809,20
+property_state,IL,2004,2538,24
+property_state,NE,2004,368,1
+property_state,RI,2004,180,2
+property_state,WY,2019,86,0
+property_state,AK,2019,98,0
+property_state,PA,2020,1273,5
+property_state,MD,2020,1116,3
+property_state,VI,2020,1,0

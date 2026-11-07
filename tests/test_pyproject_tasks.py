@@ -90,3 +90,21 @@ def test_apply_to_file_preserves_crlf_bytes_and_makes_backup(tmp_path):
     ).encode()
     assert apply_to_file(f, tmp_path / "bak") == []  # idempotente
     _complete(raw.decode())
+
+
+def test_outdated_sequence_commands_are_updated_without_touching_the_rest():
+    old = BOOT + (
+        '\n[tool.poe.tasks.gold]\nhelp = "x"\nsequence = [\n'
+        '  { cmd = "dbt run --select gold --project-dir dbt --profiles-dir dbt" },\n'
+        '  { cmd = "dbt test --select gold --project-dir dbt --profiles-dir dbt" },\n]\n'
+        "\n[tool.other]\nkeep = true\n"
+    )
+    new, changes = ensure_tasks(old)
+    assert any("gold" in c and "desatualizados" in c for c in changes)
+    t = tomllib.loads(new)
+    assert [s["cmd"] for s in t["tool"]["poe"]["tasks"]["gold"]["sequence"]][1].count(
+        "--exclude tag:eda"
+    ) == 1
+    assert t["tool"]["other"] == {"keep": True}  # secao vizinha preservada
+    _complete(new)
+    assert ensure_tasks(new) == (new, [])

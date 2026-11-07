@@ -22,6 +22,7 @@ SIMPLE: dict[str, str] = {
     "default-report": "python scripts/report_default.py",
     "inspect-dq": "python scripts/inspect_dq.py",
     "diagnose-age": "python scripts/diagnose_default_age.py",
+    "eda-report": "python scripts/report_eda.py",
     "lint": "ruff check .",
     "fmt": "ruff format .",
     "test": "pytest -q",
@@ -37,7 +38,11 @@ SEQUENCES: dict[str, tuple[str, list[str]]] = {
     ),
     "gold": (
         "Gold (eventos de default, curvas, dataset de PD): modelos e depois testes",
-        [f"dbt run --select gold {DBT}", f"dbt test --select gold {DBT}"],
+        [f"dbt run --select gold {DBT}", f"dbt test --select gold --exclude tag:eda {DBT}"],
+    ),
+    "eda": (
+        "EDA (agregados por variavel, faixa e vintage): modelos e depois testes",
+        [f"dbt run --select eda {DBT}", f"dbt test --select eda {DBT}"],
     ),
 }
 
@@ -76,16 +81,27 @@ def ensure_tasks(text: str) -> tuple[str, list[str]]:
         if n_sub:
             changes.append("atualizada tarefa 'dbt-smoke' (agora so o modelo smoke)")
 
-    # 2) tarefas em sequencia (tabelas). Forma antiga em string e substituida; forma quebrada e apenas avisada
+    # 2) tarefas em sequencia (tabelas). Comandos desatualizados sao atualizados; string antiga e substituida;
+    #    forma quebrada (strings no sequence) e apenas avisada
     for name, (help_, cmds) in SEQUENCES.items():
         cur = tasks.get(name)
         if isinstance(cur, dict) and isinstance(cur.get("sequence"), list):
-            if all(isinstance(s, str) for s in cur["sequence"]):
+            seq = cur["sequence"]
+            if all(isinstance(st, str) for st in seq):
                 changes.append(
                     f"ATENCAO: '{name}' usa strings no sequence (referencias, nao comandos): corrija manualmente"
                 )
-            continue
-        if isinstance(cur, str):
+                continue
+            if [st.get("cmd") if isinstance(st, dict) else None for st in seq] == cmds:
+                continue
+            work = re.sub(
+                rf"^\[tool\.poe\.tasks\.{re.escape(name)}\][^\n]*\n(?:(?!\[).*\n?)*",
+                "",
+                work,
+                flags=re.M,
+            )
+            changes.append(f"atualizada tarefa '{name}' (comandos desatualizados)")
+        elif isinstance(cur, str):
             work = re.sub(rf"^{re.escape(name)}\s*=.*\n?", "", work, flags=re.M)
             changes.append(f"substituida '{name}' (string) por tabela em sequencia")
         else:

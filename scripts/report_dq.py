@@ -141,6 +141,7 @@ doc = [
         "ele sera incluido aqui a cada execucao)_",
     ),
 ]
+Path("docs").mkdir(parents=True, exist_ok=True)
 Path("docs/data_quality_report.md").write_text(
     "\n".join(doc).rstrip("\n") + "\n", encoding="utf-8", newline="\n"
 )

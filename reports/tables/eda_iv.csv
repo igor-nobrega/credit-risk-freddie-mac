@@ -1,0 +1,20 @@
+variavel,faixas,IV,leitura
+fico_band,7,1.03889,"suspeito (>0,5)"
+rate_band,6,0.52459,"suspeito (>0,5)"
+ltv_band,7,0.25572,medio
+dti_band,7,0.24976,medio
+number_of_borrowers,6,0.19578,medio
+channel,5,0.18723,medio
+mi_band,5,0.16246,medio
+property_state,54,0.07705,fraco (muitas faixas)
+property_valuation_method,4,0.03554,fraco
+property_type,6,0.02804,fraco
+loan_purpose,4,0.02107,fraco
+upb_band,5,0.00749,sem poder
+harp_indicator,2,0.0072,sem poder
+special_eligibility_program,4,0.00617,sem poder
+number_of_units,5,0.00443,sem poder
+occupancy_status,3,0.0042,sem poder
+first_time_homebuyer_flag,3,0.00314,sem poder
+prepayment_penalty_flag,2,0.00107,sem poder
+io_indicator,1,0.0,sem poder

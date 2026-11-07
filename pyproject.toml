@@ -53,6 +53,7 @@ ignore = ["E501"]
 testpaths = ["tests"]
 
 [tool.poe.tasks]
+eda-report = "python scripts/report_eda.py"
 diagnose-age = "python scripts/diagnose_default_age.py"
 default-report = "python scripts/report_default.py"
 inspect-dq = "python scripts/inspect_dq.py"
@@ -79,5 +80,12 @@ sequence = [
 help = "Gold (eventos de default, curvas, dataset de PD): modelos e depois testes"
 sequence = [
   { cmd = "dbt run --select gold --project-dir dbt --profiles-dir dbt" },
-  { cmd = "dbt test --select gold --project-dir dbt --profiles-dir dbt" },
+  { cmd = "dbt test --select gold --exclude tag:eda --project-dir dbt --profiles-dir dbt" },
+]
+
+[tool.poe.tasks.eda]
+help = "EDA (agregados por variavel, faixa e vintage): modelos e depois testes"
+sequence = [
+  { cmd = "dbt run --select eda --project-dir dbt --profiles-dir dbt" },
+  { cmd = "dbt test --select eda --project-dir dbt --profiles-dir dbt" },
 ]

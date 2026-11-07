@@ -1,0 +1,9 @@
+check_name,bucket,n_loans,n_defaults_24m,n_ever_default,taxa_24m,taxa_alguma_vez,pct_dos_loans
+first_row_age,c 2-3,30858,399,1573,0.01293,0.050975,0.024687
+first_row_age,e >12,13703,16,532,0.001168,0.038824,0.010963
+first_row_age,b 1,105075,983,4339,0.009355,0.041294,0.084063
+first_row_age,d 4-12,12649,151,908,0.011938,0.071784,0.01012
+first_row_age,a <=0,1087677,11950,45048,0.010987,0.041417,0.870168
+first_payment_months,c >8,5520,71,207,0.012862,0.0375,0.004416
+first_payment_months,b 6-8,1455,16,44,0.010997,0.030241,0.001164
+first_payment_months,a 0-5,1242987,13412,52149,0.01079,0.041955,0.99442

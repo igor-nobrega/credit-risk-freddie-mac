@@ -276,6 +276,7 @@ doc = [
         "prepagamento; ele sera incluido aqui a cada execucao)_",
     ),
 ]
+Path("docs").mkdir(parents=True, exist_ok=True)
 Path("docs/default_definition_report.md").write_text(
     "\n".join(doc).rstrip("\n") + "\n", encoding="utf-8", newline="\n"
 )

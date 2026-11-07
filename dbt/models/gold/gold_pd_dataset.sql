@@ -21,7 +21,7 @@ select
            and e.months_observable >= 12, false) as usable_12m,
   coalesce(not e.first_payment_inconsistent and not coalesce(e.default_age < 1, false)
            and e.months_observable >= 24, false) as usable_24m,
-  e.assisted_while_dpd90, e.months_to_first_payment,
+  e.assisted_while_dpd90, e.months_to_first_payment, e.first_row_age,
   -- exclusoes: 1o pagamento incompativel com o loan_id (loans modificados/convertidos) ou default antes do 1o pagamento
   case when e.first_payment_inconsistent then 'first_payment_inconsistent'
        when e.default_age < 1 then 'default_before_first_payment' end as excluded_reason,

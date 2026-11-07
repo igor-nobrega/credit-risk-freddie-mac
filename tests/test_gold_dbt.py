@@ -113,6 +113,7 @@ def oracle(raw: Path):
             upb_default=upb_def,
             ce_code=cer["zb"] if cer else None,
             m2fp=m2fp[lid],
+            first_age=rs[0]["per"] - fp + 1,
         )
     return out
 
@@ -142,6 +143,8 @@ def gold(tmp_path_factory):
                 "silver",
                 "dq",
                 "gold",
+                "--exclude",
+                "tag:eda",  # o invariante da EDA depende de tabelas que este fixture nao constroi
                 "--project-dir",
                 str(DBT_DIR),
                 "--profiles-dir",
@@ -166,7 +169,7 @@ def test_events_match_oracle_for_every_loan(gold):
     rows = con.execute(
         "select loan_id, default_age, default_trigger, cured_after_dpd90, zb_age, months_observable, "
         "terminal_state, ever_modified, upb_at_default, credit_event_code, default_na_age, dpd90_na_age, "
-        "assisted_while_dpd90, months_to_first_payment, first_payment_inconsistent "
+        "assisted_while_dpd90, months_to_first_payment, first_payment_inconsistent, first_row_age "
         "from gold.gold_loan_events where has_perf"
     ).fetchall()
     n_no_perf = con.execute(
@@ -191,6 +194,7 @@ def test_events_match_oracle_for_every_loan(gold):
         asst,
         m2fp,
         fpi,
+        fra,
     ) in rows:
         o = orc[lid]
         assert (dage, trig, cured, zage, mobs, term, mod) == (
@@ -203,6 +207,7 @@ def test_events_match_oracle_for_every_loan(gold):
             o["modified"],
         ), lid
         assert cecode == o["ce_code"], lid
+        assert fra == o["first_age"], lid
         assert (dna, d90na, asst, m2fp, fpi) == (
             o["default_na_age"],
             o["dpd90_na_age"],

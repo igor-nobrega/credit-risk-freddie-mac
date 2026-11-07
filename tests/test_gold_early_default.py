@@ -98,6 +98,8 @@ def early(tmp_path_factory):
                 cmd,
                 "--select",
                 *sel,
+                "--exclude",
+                "tag:eda",  # o invariante da EDA depende de tabelas que este fixture nao constroi
                 "--project-dir",
                 str(DBT_DIR),
                 "--profiles-dir",
