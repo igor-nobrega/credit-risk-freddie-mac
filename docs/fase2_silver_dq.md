@@ -32,9 +32,9 @@ uv run poe dq-report    # gera docs/data_quality_report.md, reports/tables/dq_*.
 `loan_id` nao nulo e unico em `silver_orig`; (`loan_id`, `monthly_reporting_period`) unico em `silver_perf`
 (severidade `error`); dominios categoricos (`accepted_values`, severidade `warn`).
 
-## Sugestoes de entradas para o decision_log
-- **D-001 Escopo de dados:** Sample, vintages 1999-2025, 27 arquivos; motivo: viabilidade local e mesma estrutura do dataset completo.
-- **D-002 Bronze tudo texto:** nenhuma interpretacao antes de medir; linhagem por arquivo.
-- **D-003 Sentinelas viram NULL com flag `_was_missing`:** preserva o sinal de "nao informado".
-- **D-004 Duplicatas na originacao:** manter o arquivo mais recente (empate dentro do mesmo arquivo e arbitrario; quantificado por R01).
-- **D-005 Fora de faixa nao e corrigido na silver:** medido (R02-R12) e decidido na fase de features.
+## Entradas sugeridas para o decision_log (numeracao canonica do projeto; D-002 e a definicao de default)
+- **D-001 Escopo de dados:** Sample, vintages 1999-2025 (27 arquivos); motivo: viabilidade local e mesma estrutura do dataset completo.
+- **D-003 Bronze tudo texto:** nenhuma interpretacao antes de medir; linhagem por arquivo; linhas malformadas vao para rejeitados.
+- **D-004 Sentinelas viram NULL com flag `_was_missing`:** preserva o sinal de "nao informado".
+- **D-005 Duplicatas na originacao:** manter o arquivo mais recente (nenhuma duplicata encontrada; regra R01).
+- **D-006 Fora de faixa nao e corrigido na silver:** medido (R02-R11, sem falhas) e decidido na fase de features.

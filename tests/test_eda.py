@@ -39,6 +39,42 @@ def fico(v):
     )
 
 
+def dti(v):
+    if pd.isna(v):
+        return "z missing"
+    return (
+        "a <=20"
+        if v <= 20
+        else "b 21-30"
+        if v <= 30
+        else "c 31-40"
+        if v <= 40
+        else "d 41-45"
+        if v <= 45
+        else "e 46-50"
+        if v <= 50
+        else "f >50"
+    )
+
+
+def rate(v):
+    if pd.isna(v):
+        return "z missing"
+    return (
+        "a <3"
+        if v < 3
+        else "b 3-3.99"
+        if v < 4
+        else "c 4-4.99"
+        if v < 5
+        else "d 5-5.99"
+        if v < 6
+        else "e 6-6.99"
+        if v < 7
+        else "f >=7"
+    )
+
+
 def ltv(v):
     if pd.isna(v):
         return "z missing"
@@ -111,7 +147,8 @@ def eda(tmp_path_factory):
 def _pd(data):
     con = connect(data / "warehouse.duckdb", read_only=True)
     df = con.execute(
-        "select vintage_year, credit_score, ltv, occupancy_status, property_valuation_method, target_24m, usable_24m, "
+        "select vintage_year, credit_score, ltv, dti, original_interest_rate, occupancy_status, property_valuation_method, "
+        "target_24m, usable_24m, "
         "observable_24m, first_row_age, default_na_age from gold.gold_pd_dataset"
     ).fetchdf()
     feats = con.execute("select * from eda.eda_features").fetchdf()
@@ -168,7 +205,8 @@ def test_report_runs_end_to_end_with_decomposition(eda):
     _, work, rep = eda
     assert rep.returncode == 0, rep.stdout + rep.stderr
     doc = (work / "docs" / "eda_report.md").read_text(encoding="utf-8")
-    assert "Efeito do PERFIL" in doc
+    assert "definicao_de_celula" in doc and "risco residual dentro das mesmas celulas" in doc
+    assert "IV_intra_vintage" in doc and "corrigido do ruido amostral" in doc
     assert doc.endswith("\n") and not doc.endswith("\n\n")
     for f in (
         "eda_default_by_feature.png",
@@ -177,7 +215,7 @@ def test_report_runs_end_to_end_with_decomposition(eda):
     ):
         assert (work / "reports" / "figures" / f).stat().st_size > 10_000
     iv = pd.read_csv(work / "reports" / "tables" / "eda_iv.csv")
-    assert len(iv) == 19 and (iv["IV"] >= 0).all()
+    assert len(iv) == 19 and (iv["IV_agregado"] >= 0).all() and (iv["IV_intra_vintage"] >= 0).all()
 
 
 def test_report_refuses_without_eda_tables(tmp_path):
@@ -218,3 +256,47 @@ def test_all_reports_work_in_a_clean_checkout_without_docs_dir(eda, tmp_path, sc
     assert r.returncode == 0, r.stdout + r.stderr
     text = (tmp_path / "docs" / doc).read_text(encoding="utf-8")
     assert text.endswith("\n") and not text.endswith("\n\n")
+
+
+def test_mix_decomposition_sql_matches_python_standardization(eda):
+    """O modelo SQL (4 definicoes de celula) bate com a padronizacao feita em Python sobre o mesmo dataset."""
+    from credit_risk.eda_stats import era_of, standardize_mix
+
+    data = eda[0]
+    df, _, _ = _pd(data)
+    u = df[df["usable_24m"] & (df["vintage_year"] <= 2023)].copy()
+    u["era"] = u["vintage_year"].map(era_of)
+    f, lt, d, r = (
+        u["credit_score"].map(fico),
+        u["ltv"].map(ltv),
+        u["dti"].map(dti),
+        u["original_interest_rate"].map(rate),
+    )
+    cells = {
+        "fico_x_ltv": f + "|" + lt,
+        "fico_x_ltv_x_dti": f + "|" + lt + "|" + d,
+        "fico_x_ltv_x_dti_x_taxa": f + "|" + lt + "|" + d + "|" + r,
+        "taxa_de_juros_apenas": r,
+    }
+    con = connect(data / "warehouse.duckdb", read_only=True)
+    sql = (
+        con.execute("select * from eda.eda_mix_decomposition")
+        .fetchdf()
+        .set_index("cell_definition")
+    )
+    con.close()
+    assert set(sql.index) == set(cells)
+    for name, cell in cells.items():
+        c = pd.DataFrame(
+            {"era": u["era"], "cell": cell, "n_loans": 1, "n_defaults": u["target_24m"].astype(int)}
+        )
+        c = c[c["era"].isin(["2012-2017", "2022-2023"])]
+        want = standardize_mix(c, "2012-2017", "2022-2023")
+        got = sql.loc[name]
+        assert got["base_rate"] == pytest.approx(want["base"], abs=1e-9), name
+        assert got["expected_rate"] == pytest.approx(want["expected"], abs=1e-9), name
+        assert got["actual_rate"] == pytest.approx(want["actual"], abs=1e-9), name
+        assert got["n_cells"] == c["cell"].nunique(), name
+        assert got["mix_effect"] + got["rate_effect"] == pytest.approx(
+            got["actual_rate"] - got["base_rate"], abs=1e-12
+        )

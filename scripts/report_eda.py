@@ -19,7 +19,7 @@ from matplotlib.ticker import MaxNLocator
 
 from credit_risk import config
 from credit_risk.duck import connect
-from credit_risk.eda_stats import iv_of, standardize_mix
+from credit_risk.eda_stats import ERAS, iv_table
 from credit_risk.reportlib import read_manual
 
 BASE_ERA, TEST_ERA = "2012-2017", "2022-2023"
@@ -30,6 +30,7 @@ try:
     F = con.execute("select * from eda.eda_features").fetchdf()
     X = con.execute("select * from eda.eda_exclusion_check").fetchdf()
     H = con.execute("select * from eda.eda_fico_ltv").fetchdf()
+    M = con.execute("select * from eda.eda_mix_decomposition").fetchdf()
 except Exception as e:  # noqa: BLE001
     print(
         "ERRO: as tabelas de EDA nao existem ou estao desatualizadas (o relatorio NAO foi gerado)."
@@ -75,33 +76,15 @@ P["share"] = P["n_loans"] / P.groupby("feature")["n_loans"].transform("sum")
 P["default_rate"] = P["n_defaults"] / P["n_loans"]
 P["lift"] = P["default_rate"] / overall
 
-IV = pd.DataFrame(
-    [(f, len(g), iv_of(g)) for f, g in P.groupby("feature")], columns=["variavel", "faixas", "IV"]
-).sort_values("IV", ascending=False)
-IV["leitura"] = pd.cut(
-    IV["IV"],
-    [-1, 0.02, 0.1, 0.3, 0.5, 99],
-    labels=["sem poder", "fraco", "medio", "forte", "suspeito (>0,5)"],
-).astype(str)
+IV = iv_table(F)
 IV.loc[IV["variavel"] == "property_state", "leitura"] += " (muitas faixas)"
+IV["faixas"] = IV["variavel"].map(P.groupby("feature")["bucket"].nunique())
 
-# ---------- 2) FICO x LTV: padronizacao 2012-2017 -> 2022-2023 ------------------------------------
+# ---------- 2) FICO x LTV (mapa de calor) e decomposicao 2012-2017 -> 2022-2023 (modelo SQL) --------
 H["cell"] = H["fico_band"] + " | " + H["ltv_band"]
-decomp, mix_effect, rate_effect = None, 0.0, 0.0
-sm = standardize_mix(H, BASE_ERA, TEST_ERA)
-if sm is not None:
-    mix_effect, rate_effect = sm["mix_effect"], sm["rate_effect"]
-    decomp = pd.DataFrame(
-        [
-            (f"taxa {BASE_ERA} (base)", sm["base"]),
-            (
-                f"taxa esperada em {TEST_ERA} se so o PERFIL (mix FICO x LTV) mudasse",
-                sm["expected"],
-            ),
-            (f"taxa observada em {TEST_ERA}", sm["actual"]),
-        ],
-        columns=["medida", "taxa_24m"],
-    )
+MD = M.copy()
+MD["definicao_de_celula"] = MD["cell_definition"].str.replace("_x_", " x ").str.replace("_", " ")
+MD["excesso_residual"] = MD["rate_effect"] / (MD["actual_rate"] - MD["base_rate"])
 
 # ---------- 3) vintage: mix e risco por faixa de FICO ---------------------------------------------
 fv = F[F["feature"] == "fico_band"].copy()
@@ -158,12 +141,17 @@ F.to_csv(tables / "eda_features.csv", index=False, lineterminator="\n")
 P.round({"share": 6, "default_rate": 6, "lift": 4}).to_csv(
     tables / "eda_feature_pooled.csv", index=False, lineterminator="\n"
 )
-IV.round({"IV": 5}).to_csv(tables / "eda_iv.csv", index=False, lineterminator="\n")
+IV.round(5).to_csv(tables / "eda_iv.csv", index=False, lineterminator="\n")
+M.round(8).to_csv(tables / "eda_mix_decomposition.csv", index=False, lineterminator="\n")
 X.round(6).to_csv(tables / "eda_exclusion_check.csv", index=False, lineterminator="\n")
 H.drop(columns="cell").to_csv(tables / "eda_fico_ltv.csv", index=False, lineterminator="\n")
 
 # ---------- figuras --------------------------------------------------------------------------------
-top = [v for v in IV["variavel"] if v != "property_state"][:6]
+top = [
+    v
+    for v in IV.sort_values("IV_intra_vintage", ascending=False)["variavel"]
+    if v != "property_state"
+][:6]
 fig, axes = plt.subplots(2, 3, figsize=(13, 7))
 for ax, v in zip(axes.ravel(), top, strict=False):
     d = P[P["feature"] == v].sort_values("bucket")
@@ -173,7 +161,11 @@ for ax, v in zip(axes.ravel(), top, strict=False):
         color="#4c72b0",
     )
     ax.axhline(100 * overall, color="crimson", lw=1, ls="--")
-    ax.set_title(f"{v} (IV {IV.loc[IV['variavel'] == v, 'IV'].iloc[0]:.3f})", fontsize=9)
+    r_ = IV[IV["variavel"] == v].iloc[0]
+    ax.set_title(
+        f"{v} (IV agregado {r_['IV_agregado']:.2f} | intra-vintage {r_['IV_intra_vintage']:.2f})",
+        fontsize=8,
+    )
     ax.tick_params(axis="x", labelrotation=45, labelsize=7)
     ax.set_ylabel("default 24m (%)", fontsize=8)
 fig.suptitle("Taxa de default em 24 meses por faixa (linha = media geral)")
@@ -258,10 +250,26 @@ doc = [
     f"Alvo: `target_24m` (D-002, definicao B). Populacao: `usable_24m`, vintages 1999-2023 "
     f"({n(tot_loans)} loans, {n(tot_def)} defaults, taxa media {pc(overall)}).\n",
     "## 1. Poder discriminatorio (IV univariado)",
-    "IV = soma de (%bons - %maus) x WoE por faixa. Leitura usual: < 0,02 sem poder; 0,02-0,1 fraco; 0,1-0,3 medio; "
-    "0,3-0,5 forte; > 0,5 suspeito. Calculado sobre todas as vintages juntas (mistura ciclos): serve para ordenar "
-    "variaveis, nao para estimar efeitos.\n",
-    md(IV, {"IV": f3}),
+    "IV = soma de (%bons - %maus) x WoE por faixa, **corrigido do ruido amostral** (subtrai o IV esperado de uma variavel "
+    "independente do alvo, que cresce com o numero de faixas e com poucos defaults). Leitura usual do agregado: < 0,02 sem poder; 0,02-0,1 fraco; "
+    "0,1-0,3 medio; 0,3-0,5 forte; > 0,5 suspeito. **`IV_agregado` mistura todas as vintages** e pode ser inflado por "
+    "variaveis que apenas identificam a EPOCA. **`IV_intra_vintage`** (media dos IV de cada vintage, ponderada pelos "
+    "defaults) remove esse efeito: se `razao_intra_agregado` < 0,6, a variavel esta confundida com a epoca. "
+    "As colunas por era mostram a estabilidade do poder ao longo do tempo.\n",
+    md(
+        IV[
+            [
+                "variavel",
+                "faixas",
+                "IV_agregado",
+                "IV_intra_vintage",
+                "razao_intra_agregado",
+                *ERAS,
+                "leitura",
+            ]
+        ],
+        {c: f3 for c in ["IV_agregado", "IV_intra_vintage", *ERAS]} | {"razao_intra_agregado": f2},
+    ),
     "\n![Default por faixa](../reports/figures/eda_default_by_feature.png)\n",
     "## 2. Perfis de risco das 4 variaveis mais fortes",
     md(sel, fmt_p),
@@ -269,11 +277,37 @@ doc = [
     "\n![FICO x LTV](../reports/figures/eda_fico_ltv_heatmap.png)\n",
     "## 4. Por que 2022-2023 destoam? Perfil (mix) versus risco dentro do perfil",
 ]
-if decomp is not None:
+if len(MD):
+    worst = MD.iloc[(MD["cell_definition"] == "fico_x_ltv_x_dti_x_taxa").to_numpy().argmax()]
     doc += [
-        md(decomp, {"taxa_24m": pc}),
-        f"\nEfeito do PERFIL (FICO x LTV): {100 * mix_effect:+.2f} p.p.; efeito RESIDUAL (risco dentro das mesmas "
-        f"celulas, assistencia nao marcada, macro): {100 * rate_effect:+.2f} p.p.\n",
+        "Aplica as taxas por CELULA de 2012-2017 ao perfil de 2022-2023. `taxa esperada` = o que 2022-2023 teria se so o "
+        "PERFIL mudasse; o que sobra e risco dentro das mesmas celulas (macro, assistencia nao marcada, outros fatores). "
+        "Celulas mais finas controlam mais variaveis.\n",
+        md(
+            MD[
+                [
+                    "definicao_de_celula",
+                    "n_cells",
+                    "base_rate",
+                    "expected_rate",
+                    "actual_rate",
+                    "mix_effect",
+                    "rate_effect",
+                    "excesso_residual",
+                ]
+            ],
+            {
+                "base_rate": pc,
+                "expected_rate": pc,
+                "actual_rate": pc,
+                "mix_effect": pc,
+                "rate_effect": pc,
+                "excesso_residual": pc,
+            },
+        ),
+        f"\nControlando por FICO, LTV, DTI e taxa de juros ao mesmo tempo, **{pc(worst['excesso_residual'])} do excesso** de "
+        f"2022-2023 sobre 2012-2017 ({100 * (worst['actual_rate'] - worst['base_rate']):+.2f} p.p.) permanece como risco "
+        "residual dentro das mesmas celulas.\n",
     ]
 else:
     doc += ["_(eras de base e de teste nao disponiveis nesta base)_\n"]

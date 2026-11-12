@@ -108,3 +108,46 @@ def test_outdated_sequence_commands_are_updated_without_touching_the_rest():
     assert t["tool"]["other"] == {"keep": True}  # secao vizinha preservada
     _complete(new)
     assert ensure_tasks(new) == (new, [])
+
+
+def _gold_block(cmds):
+    return (
+        '[tool.poe.tasks.gold]\nhelp = "x"\nsequence = [\n'
+        + "".join(f'  {{ cmd = "{c}" }},\n' for c in cmds)
+        + "]\n"
+    )
+
+
+_OLD_GOLD = [
+    "dbt run --select gold --project-dir dbt --profiles-dir dbt",
+    "dbt test --select gold --project-dir dbt --profiles-dir dbt",
+]
+
+
+def test_update_never_swallows_comments_or_lines_after_the_block():
+    """Regressao: o bloco desatualizado era removido junto com tudo que vinha depois dele (comentarios do usuario)."""
+    old = BOOT + "\n" + _gold_block(_OLD_GOLD) + "\n# meu ajuste local\n# outro comentario\n"
+    new, changes = ensure_tasks(old)
+    assert any("gold" in c for c in changes)
+    assert "# meu ajuste local" in new and "# outro comentario" in new
+    _complete(new)
+    assert ensure_tasks(new)[1] == []
+
+
+def test_block_in_the_middle_keeps_following_content():
+    old = BOOT + "\n" + _gold_block(_OLD_GOLD) + "\n# entre blocos\n[tool.other]\nkeep = true\n"
+    new, _ = ensure_tasks(old)
+    t = tomllib.loads(new)
+    assert t["tool"]["other"] == {"keep": True} and "# entre blocos" in new
+    _complete(new)
+
+
+def test_block_with_custom_format_is_warned_not_mutilated():
+    custom = (
+        '[tool.poe.tasks.gold]\nsequence = [ { cmd = "dbt run --select gold" },\n'
+        '  { cmd = "dbt test --select gold" } ]\nhelp = "meu formato"\n'
+    )
+    old = BOOT + "\n" + custom + "\n# nao apagar\n"
+    new, changes = ensure_tasks(old)
+    assert any("ATENCAO" in c and "gold" in c for c in changes)
+    assert custom in new and "# nao apagar" in new  # nada foi apagado

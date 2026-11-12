@@ -9,6 +9,7 @@ publicando somente agregados.
 | `eda_features` | Default em 24m (alvo oficial `target_24m`) por variavel, faixa e vintage (`usable_24m`, vintages <= 2023) |
 | `eda_exclusion_check` | Risco por faixa de `first_payment_months` e `first_row_age` em toda a populacao com janela de 24m (inclui excluidos) |
 | `eda_fico_ltv` | FICO x LTV por era de originacao |
+| `eda_mix_decomposition` | Padronizacao 2012-2017 -> 2022-2023 com 4 definicoes de celula (FICO x LTV, + DTI, + taxa, so taxa): perfil x risco residual |
 
 As faixas ficam em macros (`dbt/macros/eda_bands.sql`), reutilizadas pelos modelos. O teste
 `assert_eda_features_partition_population` garante que toda variavel particiona a MESMA populacao.
@@ -22,10 +23,10 @@ uv run poe eda-report                   # docs/eda_report.md + CSVs agregados + 
 ```
 
 ## Perguntas que o relatorio responde
-1. **Quais variaveis discriminam?** IV univariado (secao 1) e perfis das 4 mais fortes (secao 2).
+1. **Quais variaveis discriminam?** IV univariado **corrigido do ruido amostral**, agregado, por era e INTRA-vintage (secao 1), e perfis das 4 mais fortes (secao 2). O IV agregado pode ser inflado por variaveis que so identificam a epoca; a razao `IV_intra_vintage / IV_agregado` < 0,6 sinaliza isso.
 2. **FICO x LTV:** onde esta a fronteira de risco, e ela mudou entre eras? (secao 3)
-3. **Por que 2022-2023 destoam?** Padronizacao: separa o efeito do PERFIL (mix FICO x LTV) do efeito do RISCO dentro
-   das celulas (secao 4). Efeito residual grande aponta para assistencia nao marcada ou macro, nao para o perfil.
+3. **Por que 2022-2023 destoam?** Padronizacao aninhada (FICO x LTV, depois + DTI, depois + taxa): separa o efeito do PERFIL do
+   efeito do RISCO dentro das celulas (secao 4). Efeito residual grande aponta para assistencia nao marcada ou macro, nao para o perfil.
 4. **`property_valuation_method` e proxy de tempo?** (secao 5) Se a ausencia mudar de ~100% para ~0% numa vintage, a variavel
    identifica a epoca: nao use no scorecard sem tratar.
 5. **A regra de exclusao do 1o pagamento esta bem calibrada? E a entrada tardia?** (secao 6) Compare `taxa_alguma_vez` entre as

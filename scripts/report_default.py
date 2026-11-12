@@ -43,6 +43,8 @@ REQUIRED_SUMMARY = [
     "n_first_payment_inconsistent",
     "n_default_in_first_payment_inconsistent",
     "n_default_before_first_payment",
+    "n_late_entry",
+    "n_default_in_late_entry",
     "n_without_perf",
 ]
 REQUIRED_DEFS = {"dpd90_noassist", "dpd90_noassist_or_credit_event"}
@@ -220,6 +222,11 @@ fig.savefig(figs / "default_definitions_compare.png", dpi=150)
 T7 = pd.DataFrame(
     [
         ("sem nenhuma linha de performance", tot["n_without_perf"], 0),
+        (
+            "entrada tardia (1a linha com idade > 3), nao explicada acima",
+            tot["n_late_entry"],
+            tot["n_default_in_late_entry"],
+        ),
         (
             "1o pagamento incompativel com o loan_id",
             tot["n_first_payment_inconsistent"],

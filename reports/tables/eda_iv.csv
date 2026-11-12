@@ -1,20 +1,20 @@
-variavel,faixas,IV,leitura
-fico_band,7,1.03889,"suspeito (>0,5)"
-rate_band,6,0.52459,"suspeito (>0,5)"
-ltv_band,7,0.25572,medio
-dti_band,7,0.24976,medio
-number_of_borrowers,6,0.19578,medio
-channel,5,0.18723,medio
-mi_band,5,0.16246,medio
-property_state,54,0.07705,fraco (muitas faixas)
-property_valuation_method,4,0.03554,fraco
-property_type,6,0.02804,fraco
-loan_purpose,4,0.02107,fraco
-upb_band,5,0.00749,sem poder
-harp_indicator,2,0.0072,sem poder
-special_eligibility_program,4,0.00617,sem poder
-number_of_units,5,0.00443,sem poder
-occupancy_status,3,0.0042,sem poder
-first_time_homebuyer_flag,3,0.00314,sem poder
-prepayment_penalty_flag,2,0.00107,sem poder
-io_indicator,1,0.0,sem poder
+variavel,IV_agregado,IV_intra_vintage,razao_intra_agregado,1999-2003,2004-2008,2009-2011,2012-2017,2018-2021,2022-2023,leitura,faixas
+fico_band,1.03972,0.95094,0.91462,1.3484,0.77004,0.93694,0.94792,0.51857,0.92934,estavel,7
+rate_band,0.52855,0.31059,0.58764,0.46126,0.50069,0.64718,0.36172,0.15391,0.04347,confundida com a epoca,6
+ltv_band,0.2542,0.3627,1.42682,0.50366,0.3547,0.89786,0.42239,0.0884,0.06491,estavel,7
+dti_band,0.24944,0.26554,1.06454,0.1289,0.22349,0.83506,0.48572,0.1162,0.10525,estavel,7
+number_of_borrowers,0.19627,0.20026,1.02035,0.25913,0.23053,0.15356,0.19001,0.19192,0.15944,estavel,6
+channel,0.18899,0.09064,0.4796,0.1336,0.1087,0.10987,0.02778,0.0076,0.0,confundida com a epoca,5
+mi_band,0.15989,0.18827,1.17755,0.41419,0.24395,0.07806,0.06475,0.0538,0.04798,estavel,5
+property_state,0.07282,0.14566,2.00029,0.14521,0.13544,0.12272,0.08583,0.03609,0.01728,estavel (muitas faixas),54
+property_valuation_method,0.03663,0.00894,0.24411,0.0,0.0,0.0,0.0,0.03769,0.07222,confundida com a epoca,4
+property_type,0.02786,0.02376,0.85307,0.03511,0.00644,0.01047,0.00861,0.02087,0.03676,estavel,6
+loan_purpose,0.02178,0.04993,2.29219,0.02196,0.01189,0.1277,0.03985,0.01533,0.06138,estavel,4
+upb_band,0.00742,0.04737,6.38372,0.08187,0.04607,0.03462,0.03099,0.03712,0.04893,sem poder,5
+harp_indicator,0.00675,0.09526,14.11969,0.0,0.0,0.58485,0.30248,0.01457,0.0,sem poder,2
+special_eligibility_program,0.00574,0.01543,2.68714,0.0,0.0,0.0,0.02867,0.07971,0.0737,sem poder,4
+occupancy_status,0.00405,0.01681,4.14799,0.01423,0.01149,0.00557,0.0099,0.00384,0.06804,sem poder,3
+number_of_units,0.00402,0.00508,1.26373,0.00207,0.00724,0.0,0.0,0.0,0.00168,sem poder,5
+first_time_homebuyer_flag,0.00251,0.01072,4.26868,0.01186,0.00646,0.01239,0.00417,0.03967,0.00011,sem poder,3
+io_indicator,0.0,0.0,,0.0,0.0,0.0,0.0,0.0,0.0,sem poder,1
+prepayment_penalty_flag,0.0,3e-05,,0.0,0.0,0.0,0.0,0.0,0.0,sem poder,2

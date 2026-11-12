@@ -53,6 +53,7 @@ ignore = ["E501"]
 testpaths = ["tests"]
 
 [tool.poe.tasks]
+doctor = "python scripts/doctor.py"
 eda-report = "python scripts/report_eda.py"
 diagnose-age = "python scripts/diagnose_default_age.py"
 default-report = "python scripts/report_default.py"

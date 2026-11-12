@@ -1,6 +1,6 @@
 # Relatorio de Qualidade de Dados
 
-Gerado em 2026-11-05 por `uv run poe dq-report` (somente agregados).
+Gerado em 2026-11-12 por `uv run poe dq-report` (somente agregados).
 
 ## 1. Volumetria e reconciliacao (arquivo -> bronze)
 | tabela | arquivos | linhas_arquivo | carregadas | rejeitadas |

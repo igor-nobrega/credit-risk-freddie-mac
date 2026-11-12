@@ -1,6 +1,6 @@
 # Relatorio de Definicao de Default
 
-Gerado em 2026-11-06 06:38 por `uv run poe default-report` (somente agregados). **Layout v3: definicoes A e B, assistencia e exclusoes.**
+Gerado em 2026-11-12 17:33 por `uv run poe default-report` (somente agregados). **Layout v3: definicoes A e B, assistencia e exclusoes.**
 Corte de dados (ultimo periodo de performance): **2026-03**. Idade = meses desde o primeiro pagamento.
 
 ## 1. Estados terminais (todas as vintages)
@@ -138,6 +138,7 @@ Os campos de assistencia e desastre so existem desde 2014 e so marcam meses 90+ 
 | motivo | loans | defaults_entre_eles | pct_dos_loans |
 |---|---|---|---|
 | sem nenhuma linha de performance | 5 | 0 | 0.00% |
+| entrada tardia (1a linha com idade > 3), nao explicada acima | 25.456 | 1.605 | 1.89% |
 | 1o pagamento incompativel com o loan_id | 5.628 | 221 | 0.42% |
 | default antes do 1o pagamento (idade < 1), nao explicado acima | 0 | 0 | 0.00% |
 

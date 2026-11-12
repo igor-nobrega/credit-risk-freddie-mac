@@ -32,6 +32,10 @@ select
   count(*) filter (where e.first_payment_inconsistent) as n_first_payment_inconsistent,
   count(*) filter (where e.first_payment_inconsistent and e.default_age is not null) as n_default_in_first_payment_inconsistent,
   count(*) filter (where e.has_perf and not e.first_payment_inconsistent and e.default_age < 1) as n_default_before_first_payment,
+  count(*) filter (where e.has_perf and not e.first_payment_inconsistent and not coalesce(e.default_age < 1, false)
+                   and e.first_row_age > 3) as n_late_entry,
+  count(*) filter (where e.has_perf and not e.first_payment_inconsistent and not coalesce(e.default_age < 1, false)
+                   and e.first_row_age > 3 and e.default_age is not null) as n_default_in_late_entry,
   count(*) filter (where not e.has_perf) as n_without_perf,
   max(e.cutoff_period) as cutoff_period
 from {{ ref('gold_loan_events') }} e

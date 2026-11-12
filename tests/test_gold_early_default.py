@@ -47,7 +47,7 @@ def early(tmp_path_factory):
         i for i in sorted(first) if i not in dirty
     ]  # so loans "limpos": o unico default e o injetado
     assert len(clean) >= 4
-    ids, bad_fp = clean[:3], clean[3]
+    ids, bad_fp, late = clean[:3], clean[3], clean[4]
     o = data / "raw" / "orig" / "sample_orig_2012.txt"
     ol = []
     for x in o.read_text().split("\n"):
@@ -86,7 +86,13 @@ def early(tmp_path_factory):
             zero_balance_removal_upb="80000.00",
         ),
     ]
-    p.write_text("\n".join(lines + extra) + "\n")
+    # entrada tardia: o loan so aparece na performance a partir da idade 10 (periodo 201212; 1o pagamento em 201203)
+    kept = [
+        x
+        for x in lines
+        if not (x.split("|")[0] == late and x.split("|")[PI["monthly_reporting_period"]] < "201212")
+    ]
+    p.write_text("\n".join(kept + extra) + "\n")
     ingest_all(raw_dir=data / "raw", bronze_dir=data / "bronze", db_path=data / "warehouse.duckdb")
     exe = Path(sys.executable).parent / ("dbt.exe" if os.name == "nt" else "dbt")
     env = {**os.environ, "CREDIT_RISK_DATA_DIR": str(data)}
@@ -120,11 +126,11 @@ def early(tmp_path_factory):
     results = json.loads((data / "target" / "run_results.json").read_text(encoding="utf-8"))[
         "results"
     ]
-    return data, t, results, ids, bad_fp
+    return data, t, results, ids, bad_fp, late
 
 
 def test_dbt_emits_warn_not_error(early):
-    _, proc, results, _, _ = early
+    _, proc, results, _, _, _ = early
     assert proc.returncode == 0  # WARN nao derruba o build
     by = {r["unique_id"].split(".")[2]: r for r in results}
     assert by["assert_default_age_positive"]["status"] == "warn"
@@ -133,7 +139,7 @@ def test_dbt_emits_warn_not_error(early):
 
 
 def test_double_termination_rule_flags_the_two_loans(early):
-    data, _, _, _, _ = early
+    data, _, _, _, _, _ = early
     con = connect(data / "warehouse.duckdb", read_only=True)
     r = dict(con.execute("select rule_id, n_failed from dq.dq_rule_results").fetchall())
     con.close()
@@ -141,7 +147,7 @@ def test_double_termination_rule_flags_the_two_loans(early):
 
 
 def test_gold_ages_for_early_events(early):
-    data, _, _, ids, _ = early
+    data, _, _, ids, _, _ = early
     con = connect(data / "warehouse.duckdb", read_only=True)
     got = {
         r[0]: r[1:]
@@ -157,7 +163,7 @@ def test_gold_ages_for_early_events(early):
 
 
 def test_diagnostic_explains_the_warn(early):
-    data, _, _, ids, _ = early
+    data, _, _, ids, _, _ = early
     con = connect(data / "warehouse.duckdb", read_only=True)
     text = default_age_report(con)
     con.close()
@@ -172,7 +178,7 @@ def test_diagnostic_explains_the_warn(early):
 
 
 def test_first_payment_inconsistency_is_flagged_and_excluded(early):
-    data, _, _, ids, bad_fp = early
+    data, _, _, ids, bad_fp, late = early
     con = connect(data / "warehouse.duckdb", read_only=True)
     ev = con.execute(
         "select first_payment_inconsistent, months_to_first_payment from gold.gold_loan_events where loan_id = ?",
@@ -188,11 +194,23 @@ def test_first_payment_inconsistency_is_flagged_and_excluded(early):
     usable = dict(con.execute("select loan_id, usable_24m from gold.gold_pd_dataset").fetchall())
     con.close()
     assert ev == (True, 41)
-    assert [usable[i] for i in [*ids, bad_fp]] == [False] * 4  # excluidos nao entram no treino
-    assert sum(usable.values()) == len(usable) - 4
+    assert [usable[i] for i in [*ids, bad_fp, late]] == [
+        False
+    ] * 5  # excluidos nao entram no treino
+    assert sum(usable.values()) == len(usable) - 5
     assert reasons[bad_fp] == "first_payment_inconsistent"
     assert [reasons[i] for i in ids] == ["default_before_first_payment"] * 3
+    assert reasons[late] == "late_entry"
     assert (
-        sum(v is None for v in reasons.values()) == len(reasons) - 4
-    )  # so esses 4 loans sao excluidos
+        sum(v is None for v in reasons.values()) == len(reasons) - 5
+    )  # so esses 5 loans sao excluidos
     assert n_flag == 1 and r28 == 1
+    con = connect(data / "warehouse.duckdb", read_only=True)
+    fra = con.execute(
+        "select first_row_age from gold.gold_loan_events where loan_id = ?", [late]
+    ).fetchone()[0]
+    n_late = con.execute("select sum(n_late_entry) from gold.gold_default_summary").fetchone()[0]
+    con.close()
+    assert (
+        fra == 10 and n_late == 1
+    )  # o resumo conta so a entrada tardia nao explicada por outro motivo

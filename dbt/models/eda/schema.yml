@@ -13,3 +13,8 @@ models:
     description: "Risco por faixa de first_payment_months e first_row_age em toda a populacao observavel (calibracao das exclusoes)."
   - name: eda_fico_ltv
     description: "FICO x LTV por era (agregado)."
+  - name: eda_mix_decomposition
+    description: "Padronizacao 2012-2017 -> 2022-2023: efeito do perfil (mix) vs risco residual, para 4 definicoes de celula."
+    columns:
+      - name: cell_definition
+        data_tests: [not_null, unique]

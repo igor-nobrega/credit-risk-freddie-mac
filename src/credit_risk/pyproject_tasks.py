@@ -23,6 +23,7 @@ SIMPLE: dict[str, str] = {
     "inspect-dq": "python scripts/inspect_dq.py",
     "diagnose-age": "python scripts/diagnose_default_age.py",
     "eda-report": "python scripts/report_eda.py",
+    "doctor": "python scripts/doctor.py",
     "lint": "ruff check .",
     "fmt": "ruff format .",
     "test": "pytest -q",
@@ -94,12 +95,22 @@ def ensure_tasks(text: str) -> tuple[str, list[str]]:
                 continue
             if [st.get("cmd") if isinstance(st, dict) else None for st in seq] == cmds:
                 continue
-            work = re.sub(
-                rf"^\[tool\.poe\.tasks\.{re.escape(name)}\][^\n]*\n(?:(?!\[).*\n?)*",
+            # remove SOMENTE o bloco no formato que este modulo gera (cabecalho, help opcional e a lista sequence
+            # ate o "]" da coluna 0). Comentarios, linhas e secoes vizinhas nunca sao tocados.
+            work, n_block = re.subn(
+                rf"^\[tool\.poe\.tasks\.{re.escape(name)}\][ \t]*\n(?:help[ \t]*=[^\n]*\n)?"
+                r"sequence[ \t]*=[ \t]*\[[ \t]*\n(?:[^\n]*\n)*?\][ \t]*(?:\n|\Z)",
                 "",
                 work,
+                count=1,
                 flags=re.M,
             )
+            if not n_block:
+                changes.append(
+                    f"ATENCAO: o bloco '[tool.poe.tasks.{name}]' tem formato proprio e nao foi atualizado: "
+                    "apague-o e rode este script de novo"
+                )
+                continue
             changes.append(f"atualizada tarefa '{name}' (comandos desatualizados)")
         elif isinstance(cur, str):
             work = re.sub(rf"^{re.escape(name)}\s*=.*\n?", "", work, flags=re.M)
